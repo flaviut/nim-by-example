@@ -1,0 +1,25 @@
+{
+    "output": "../build/",
+
+    "title": "Nimrod by Example",
+    "description": "A book of short examples of Nimrod features",
+
+    "github": null,
+    "githubHost": "https://github.com/",
+
+    "plugins": [],
+
+    "links": {
+        "home": "http://nimrod-lang.org/",
+
+        "about": null,
+        "issues": null,
+        "contribute": null,
+
+        "sharing": {
+            "google": false,
+            "facebook": false,
+            "twitter": false
+        }
+    }
+}
