@@ -9,32 +9,37 @@ proc getAlphabet(): string =
     result.add(letter)
 
 const abcs = getAlphabet()
+
 var
-  foo = "bar"
-  bar = "foo"
-# oops, I need to fix the names
-let temp = foo
-foo = bar
-bar = temp
+  a = "foo"
+  b = 0
 
-echo "abcs is ", abcs
-echo "foo is ", foo
-echo "bar is ", bar
+let
+  c = "foo"
+  d = 5
+
+a.add "bar" # This is fine because ``a`` is mutable.
+b.inc # This is also fine.
+
+c.add "bar" # This will result in an error.
+d.inc # As will this.
 ```
 
 ```
-$ nimrod c -r ./assignment.nim
-abcs is abcdefghijklmnopqrstuvwxyz
-foo is foo
-bar is bar
+$ nimrod c --verbosity:2 ./assignment.nim
+a20.nim(19, 0) Error: for a 'var' type a variable needs to be passed
+  c.add "bar" # This will result in an error.
+  ^
 ```
 
-A `const` variable is evaluated at compile-time, so if you inspect the C sources, you'll see the following line:
+Without `--verbosity:2` only the error will be shown.
+
+A `const` variable's value will be evaluated at compile-time, so if you inspect the C sources, you'll see the following line:
 
 ``` C
 STRING_LITERAL(TMP129, "abcdefghijklmnopqrstuvwxyz", 26);
 ```
 
-The limitation with `const` is that it cannot interface with C because there is no compile-time foreign function interface at this time.
+The limitation with this is that procedures which are evaluated at compile-time cannot interface with C because there is no compile-time foreign function interface at this time.
 
- `var` variables are the standard mutable variables, you can modify them after they've been assigned. `let` variables are also fairly standard immutable variables. This means you can assign to them at creation time and can't change them later on.
+As seen in the example, `var` variables are standard mutable variables, you can modify them after they've been assigned. `let` variables on the other hand are immutable variables. This means you can assign to them at creation time and can't change them later on. The difference between `let` and `const` is that a `const`'s expression must be evaluated at compile-time, a `let`'s expression doesn't have this requirement.
