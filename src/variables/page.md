@@ -3,12 +3,12 @@
 Nimrod supports three different types of variables, `let`, `var`, and `const`. As with most things, multiple variables can be declared in the same section.
 
 ``` nimrod
-proc getLetterA(): string =
+proc getAlphabet(): string =
   result = ""
   for letter in 'a'..'z':
     result.add(letter)
 
-const abcs = getLetterA()
+const abcs = getAlphabet()
 var
   foo = "bar"
   bar = "foo"
