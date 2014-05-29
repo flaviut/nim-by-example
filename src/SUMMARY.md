@@ -1,5 +1,5 @@
 # Summary
 
-Nimrod is a statically typed, imperative programming language that gives the
-programmer powerful compile-time tools, allowing for expressiveness without
-compromising run-time efficiency.
+* [Hello World](hello_world.md)
+* [Variables](variables.md)
+* [Varargs](varargs.md)
