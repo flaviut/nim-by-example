@@ -5,6 +5,7 @@ Nimrod also supports case statements, which are like switches in other languages
 * You can use strings in the switch statement
 * Sets and ranges of ordinal types are also usable
 * case statements, like most things, are actually expressions
+* It is required that every possible case be covered
 
 ``` Nimrod
 case "charlie"
@@ -33,6 +34,8 @@ proc positiveOrNegative(num: int): string =
     "zero"
   of 1..high(int):
     "positive"
+  else:
+    "impossible"
 
 echo positiveOrNegative(-1)
 ```
