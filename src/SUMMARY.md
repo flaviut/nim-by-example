@@ -1,5 +1,6 @@
 # Summary
 
+* [Getting Started](getting_started.md)
 * [Hello World](hello_world.md)
 * [Numbers](numbers.md)
 * [Variables](variables/page.md)
