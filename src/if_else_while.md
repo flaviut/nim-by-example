@@ -1,4 +1,4 @@
-# Control Flow
+# If, Else, While, Block
 
 Nimrod many different control flow constructs, including the standard `if`s, `else`s, and `while`s.
 
@@ -21,3 +21,5 @@ while true:
     echo "Correct!"
     break
 ```
+
+When inside a loop, it is possible to use `continue` or `break` any point within the loop with the standard semantics, where `continue` skips to the next iteration and `break` ends the loop.
