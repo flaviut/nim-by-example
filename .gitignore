@@ -1,2 +1,3 @@
 src/_book/
 !*.md
+nohup.out
