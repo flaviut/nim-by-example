@@ -6,7 +6,7 @@
     "plugins": [],
     "links": {
         "home": "http://nimrod-lang.org/",
-        "about": null,
+        "about": false,
         "issues": null,
         "contribute": null,
         "sharing": {

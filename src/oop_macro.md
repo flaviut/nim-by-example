@@ -212,7 +212,6 @@ class(Dog of Animal):
 class(Cat of Animal) do:
   method vocalize: string = "meow"
 
-
 run_test()
 echo "Tests passed!"
 ```
