@@ -12,3 +12,4 @@
 * [Exceptions](exceptions.md)
 * [Functions]()
 * [Varargs](varargs.md)
+* [OOP Macro](oop_macro.md)
