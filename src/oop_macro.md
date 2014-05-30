@@ -75,13 +75,12 @@ macro class*(): stmt {.immediate.} =
       lisprepr(in_stmts)
   assert class_name.kind == nnkIdent
 
-  # echo "class_name: ", treerepr(class_name)
+  # echo treerepr(class_name)
   # -----------------------------------------
-  # class_name: Ident !"Animal"
+  # Ident !"Animal"
 
-  # echo "stmts: ", treerepr(in_stmts)
+  # echo treerepr(in_stmts)
   # ----------------------------------
-  # stmts:
   # StmtList
   #   VarSection
   #     IdentDefs
