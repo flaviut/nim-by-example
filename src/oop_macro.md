@@ -29,7 +29,7 @@ class(Dog of Animal):
   method vocalize: string = "woof"
 
 class(Cat of Animal):
-  method vocalize: string = "woof"
+  method vocalize: string = "meow"
 
 # a short test (used later)
 proc run_test() =
