@@ -10,13 +10,13 @@ To indicate the size of an integer literal, append `u` or `i` and the size you'd
 
 Integers can also have `0[xX]`, `0o`, `0[Bb]` prepended to indicate a hex, octal, or binary literal, respectively. Underscores are also valid in literals, and can help with readability.
 
-``` nimrod
+~~~ nimrod
 let
   a: int8 = 0x7F # Works
   b: uint8 = 0x1111_1111 # Works
   d = 0xFF # type is int
   c: uint8 = 256 # Compile time error
-```
+~~~
 
 Precedence rules are the same as most other languages, but instead of `^`, `&`, `|`, `>>`, `<<`, the `xor`, `and`, `or`, `shr`, `shl` operators are used, respectively.
 

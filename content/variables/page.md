@@ -2,7 +2,7 @@
 
 Nimrod supports three different types of variables, `let`, `var`, and `const`. As with most things, multiple variables can be declared in the same section.
 
-``` nimrod
+~~~ nimrod
 proc getAlphabet(): string =
   result = ""
   for letter in 'a'..'z':
@@ -23,22 +23,22 @@ b.inc # This is also fine.
 
 c.add "bar" # This will result in an error.
 d.inc # As will this.
-```
+~~~
 
-```
+~~~
 $ nimrod c --verbosity:2 ./assignment.nim
 a20.nim(19, 0) Error: for a 'var' type a variable needs to be passed
   c.add "bar" # This will result in an error.
   ^
-```
+~~~
 
 Without `--verbosity:2` only the error will be shown.
 
 A `const` variable's value will be evaluated at compile-time, so if you inspect the C sources, you'll see the following line:
 
-``` C
+~~~ C
 STRING_LITERAL(TMP129, "abcdefghijklmnopqrstuvwxyz", 26);
-```
+~~~
 
 The limitation with this is that procedures which are evaluated at compile-time cannot interface with C because there is no compile-time foreign function interface at this time.
 

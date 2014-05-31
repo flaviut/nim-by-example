@@ -1,3 +1,4 @@
-src/_book/
 !*.md
 nohup.out
+output/
+tmp/

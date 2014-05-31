@@ -2,7 +2,7 @@
 
 In Nimrod, objects are like structs from C family languages and define a grouping of fields.
 
-``` nimrod
+~~~ nimrod
 type
   Animal* = object
     name*, genus*, species*: string
@@ -35,4 +35,4 @@ let spot = PAnimal(name: "Spot",
 
 # Same as before, only pointer value is unchangeable
 spot.age = 2
-```
+~~~

@@ -2,7 +2,7 @@
 
 # OOP Macro
 This is the code that we currently must write to use OOP in nimrod:
-```nimrod
+~~~nimrod
 type Animal =
   ref object {.inheritable.}
     name: string
@@ -15,11 +15,11 @@ method vocalize(self: Dog): string = "woof"
 
 type Cat = ref object of Animal
 method vocalize(self: Cat): string = "meow"
-```
+~~~
 
 All these typedefs and `self: T` parameters are repetitive, so it'd be good to write a macro to mask them. Something like this would be best:
 
-```nimrod
+~~~nimrod
 class(Animal of TObject):
   var name: string
   method vocalize: string = "..."
@@ -38,9 +38,9 @@ proc run_test() =
   pets.add Dog(name: "ruffles")
   assert(@["meow", "woof"] == @[pets[0].vocalize,
                                 pets[1].vocalize])
-```
+~~~
 
-```nimrod
+~~~nimrod
 import macros
 
 macro class*(): stmt {.immediate.} =
@@ -214,4 +214,4 @@ class(Cat of Animal) do:
 
 run_test()
 echo "Tests passed!"
-```
+~~~

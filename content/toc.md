@@ -1,0 +1,16 @@
+## Summary
+
+* [Getting Started](getting_started/)
+* [Hello World](hello_world/)
+* [Numbers](numbers/)
+* [Variables](variables/page/)
+  * [Result](variables/result/)
+* [Objects](objects/)
+* [Enums](enums/)
+* [If, Else, While, Block](if_else_while/)
+* [Case Statements](case/)
+* [For Loops & Iterators](for_iterators/)
+* [Exceptions](exceptions/)
+* [Functions]()
+* [Varargs](varargs/)
+* [OOP Macro](oop_macro/)

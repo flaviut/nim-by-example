@@ -4,7 +4,7 @@ Nimrod many different control flow constructs, including the standard `if`s, `el
 
 When inside a loop or block, it is possible to use `continue` or `break` any point, where `continue` skips to the next iteration and `break` ends the loop. The break statement can also receive the name of the block to break out of, so it is possible to break out of nested loops.
 
-``` Nimrod
+~~~ Nimrod
 import strutils
 
 let answer = 4  # Chosen by a fair dice roll,
@@ -25,4 +25,4 @@ block busyloops:
   while true:
     while true:
       break busyloops
-```
+~~~
