@@ -1,0 +1,25 @@
+box: flaviut/python-ruby@0.0.2
+build:
+    steps:
+        # Execute the bundle install step, a step provided by wercker
+        - bundle-install
+        # Execute a custom script step.
+        - script:
+            name: install nanoc
+            code: sudo gem install nanoc
+        - script:
+            name: install pygments
+            code: sudo pip install pygments
+deploy:
+    steps:
+        - script:
+            name: build and deploy
+            code: |
+              git config remote.origin.url $GIT_CREDENTIALS
+              git checkout gh-pages
+              git reset --hard master
+              nanoc
+              cp -r ./output/. ./
+              git add --all .
+              git commit -am'Build Site'
+              git push --hard
