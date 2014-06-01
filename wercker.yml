@@ -10,8 +10,6 @@ build:
         - script:
             name: install pygments
             code: sudo pip install pygments
-deploy:
-    steps:
         - script:
             name: build and deploy
             code: |
