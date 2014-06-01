@@ -1,9 +1,9 @@
-box: flaviut/python-ruby@0.0.2
+box: flaviut/python-ruby@0.0.3
 build:
     steps:
         - script:
-            name: install nanoc and kramdown
-            code: sudo gem install nanoc kramdown
+            name: install nanoc and dependencies
+            code: sudo gem install nanoc kramdown nokogiri
         - script:
             name: install pygments
             code: sudo pip install pygments
