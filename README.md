@@ -1,3 +1,3 @@
 This repo contains the sources for the Nimrod by Example book.
 
-Builds are done manually, a modified copy of highlight.js is shipped with the Gitbook sources in `node_modules`. To build, make sure you have node.js installed and use the `node_modules/gitbook/bin/gitbook.js` command.
+If you'd like, use `nanoc` to build. However, its easiest to simply write things and wait for the webpage at http://nimrod-by-example.github.io/ to update, courtesy of the people at wercker.
