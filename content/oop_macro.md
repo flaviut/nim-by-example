@@ -4,85 +4,71 @@ title: OOP Macro
 <!--- Thanks to fowl for creating this page -->
 # OOP Macro
 This is the code that we currently must write to use OOP in nimrod:
-```nimrod
-type Animal =
-  ref object {.inheritable.}
-    name: string
-method vocalize(self: Animal): string = "..."
 
-type Dog =
-  ref object of Animal
-    lastRabiesDate: int
-method vocalize(self: Dog): string = "woof"
+```nimrod
+type Animal = ref object of TObject
+    name: string
+    age: int
+method vocalize(this: Animal): string = "..."
+method ageHumanYrs(this: Animal): int = this.age
+
+type Dog = ref object of Animal
+method vocalize(this: Dog): string = "woof"
+method ageHummanYrs(this: Dog): int = this.age * 7
 
 type Cat = ref object of Animal
-method vocalize(self: Cat): string = "meow"
+method vocalize(this: Cat): string = "meow"
 ```
 
-All these typedefs and `self: T` parameters are repetitive, so it'd be good to write a macro to mask them. Something like this would be best:
+All these typedefs and `this: T` parameters are repetitive, so it'd be good to write a macro to mask them. Something like this would be best:
 
 ```nimrod
-class(Animal of TObject):
+class Animal of TObject:
   var name: string
+  var age: int
   method vocalize: string = "..."
+  method age_human_yrs: int = this.age # `this` is injected
 
-class(Dog of Animal):
-  var lastRabiesDate: int
+class Dog of Animal:
   method vocalize: string = "woof"
+  method age_human_yrs: int = this.age * 7
 
-class(Cat of Animal):
+class Cat of Animal:
   method vocalize: string = "meow"
-
-# a short test (used later)
-proc run_test() =
-  var pets: seq[Animal] = @[]
-  pets.add Cat(name: "meowth")
-  pets.add Dog(name: "ruffles")
-  assert(@["meow", "woof"] == @[pets[0].vocalize,
-                                pets[1].vocalize])
 ```
 
 ```nimrod
 import macros
 
-macro class*(): stmt {.immediate.} =
+macro class*(head: expr, body: stmt): stmt {.immediate.} =
   # The macro is immediate so that it doesn't
   # resolve identifiers passed to it
 
-  let cs = callsite()
-  var
-    class_name, in_stmts: PNimrodNode
-    superclass: PNimrodNode
+  var typeName, baseName: PNimrodNode
 
-  # Manual parsing of arguments. Here we expect
-  # a class name and attached stmts list
-  if cs[1].kind == nnkInfix and $cs[1][0] == "of":
-    # the expression is "class_name" of "superclass"
-    # echo cs[1].treerepr
-    # -------------------
+  if head.kind == NnkIdent:
+    # `head` is expression `typeName`
+    # echo head.treeRepr
+    # --------------------
+    # Ident !"Animal"
+    typeName = head
+
+  elif head.kind == NnkInfix and $head[0] == "of":
+    # `head` is expression `typeName of baseClass`
+    # echo head.treeRepr
+    # --------------------
     # Infix
     #   Ident !"of"
     #   Ident !"Animal"
     #   Ident !"TObject"
+    typeName = head[1]
+    baseName = head[2]
 
-    class_name = cs[1][1]
-    superclass = cs[1][2]
   else:
-    class_name = cs[1]
+    quit "Invalide node: " & head.lispRepr
 
-  in_stmts = cs[2]
-
-  if in_stmts.kind != nnkStmtList:
-    quit "Malformed arguments for class() macro: expected nnkStmtList, got " &
-      lisprepr(in_stmts)
-  assert class_name.kind == nnkIdent
-
-  # echo treerepr(class_name)
-  # -----------------------------------------
-  # Ident !"Animal"
-
-  # echo treerepr(in_stmts)
-  # ----------------------------------
+  # echo treeRepr(body)
+  # --------------------
   # StmtList
   #   VarSection
   #     IdentDefs
@@ -113,39 +99,34 @@ macro class*(): stmt {.immediate.} =
   #     Empty
   #     StmtList
   #       DotExpr
-  #         Ident !"self"
+  #         Ident !"this"
   #         Ident !"age"
 
+  # create a new stmtList for the result
   result = newStmtList()
-  result.add newEmptyNode()
-  # create a new stmtList for the result,
-  # the first slot is a placeholder
-  # the type definition we generate
 
-  var rec_list = newNimNode(nnkRecList)
   # var declarations will be turned into object fields
+  var recList = newNimNode(nnkRecList)
 
-  # Iterate over the statements, adding `self: T`
+  # Iterate over the statements, adding `this: T`
   # to the parameters of functions
-  for node in children(in_stmts):
-    case node.kind
-    of nnkMethodDef, nnkProcDef:
-      # inject self:T into the arguments
-      let p = node.params.copyNimTree
-      p.insert(1, newIdentDefs(ident"self", class_name))
-      node.params = p
-      result.add node
+  for node in body.children:
+    case node.kind:
 
-    of nnkVarSection:
-      # variables get turned into fields on the type,
-      # isn't that neat?
-      # here we just collect them though
-      for N in children(node):
-        assert n.kind == nnkIdentDefs, "Invalid node " & lispRepr(N)
-        rec_list.add N
+      of NnkMethodDef, NnkProcDef:
+        # inject `this: T` into the arguments
+        let p = copyNimTree(node.params)
+        p.insert(1, newIdentDefs(ident"this", typeName))
+        node.params = p
+        result.add(node)
 
-    else:
-      result.add node
+      of NnkVarSection:
+        # variables get turned into fields of the type.
+        for n in node.children:
+          recList.add(n)
+
+      else:
+        result.add(node)
 
   # The following prints out the AST structure:
   #
@@ -153,7 +134,7 @@ macro class*(): stmt {.immediate.} =
   # dumptree:
   #   type X = ref object of Y
   #     z: int
-  # --------------------------
+  # --------------------
   # TypeSection
   #   TypeDef
   #     Ident !"X"
@@ -169,17 +150,34 @@ macro class*(): stmt {.immediate.} =
   #             Ident !"int"
   #             Empty
 
-  var obj_ty = newNimNode(nnkObjectTy).add(
-    newEmptyNode(),
-    (if superclass.isNil: newEmptyNode() else: newNimNode(nnkOfInherit).add(superclass)),
-    rec_list
+  result.insert(0,
+    if baseName == nil:
+      quote do:
+        type `typeName` = ref object
+    else:
+      quote do:
+        type `typeName` = ref object of `baseName`
   )
-  result[0] = newNimNode(nnkTypeSection).add(
-    newNimNode(nnkTypeDef).add(
-      class_name,
-      newEmptyNode(),
-      newNimNode(nnkRefTy).add(obj_ty)
-  ))
+  # Inspect the tree structure:
+  #
+  # echo result.treeRepr
+  # --------------------
+  # StmtList
+  #   StmtList
+  #     TypeSection
+  #       TypeDef
+  #         Ident !"Animal"
+  #         Empty
+  #         RefTy
+  #           ObjectTy
+  #             Empty
+  #             OfInherit
+  #               Ident !"TObject"
+  #             Empty   <= We want to replace this
+  #   MethodDef
+  #   ...
+
+  result[0][0][0][2][0][2] = recList
 
   # Lets inspect the human-readable version of the output
   # echo repr(result)
@@ -189,31 +187,41 @@ macro class*(): stmt {.immediate.} =
   #      name: string
   #      age: int
   #
-  #  method vocalize(self: Animal): string =
+  #  method vocalize(this: Animal): string =
   #    "..."
   #
-  #  method age_human_yrs(self: Animal): int =
-  #    self.age
+  #  method age_human_yrs(this: Animal): int =
+  #    this.age
 
-  # more could be done here, it could be made an
-  # option to use ref types, export type names, etc
+# ---
 
-
-class(Animal of TObject):
-  var
-    name: string
-    age: int
+class Animal of TObject:
+  var name: string
+  var age: int
   method vocalize: string = "..."
-  method age_human_yrs: int = self.age
-    # self is injected
+  method age_human_yrs: int = this.age # `this` is injected
 
-class(Dog of Animal):
+class Dog of Animal:
   method vocalize: string = "woof"
-  method age_human_yrs: int = self.age * 7
+  method age_human_yrs: int = this.age * 7
 
-class(Cat of Animal) do:
+class Cat of Animal:
   method vocalize: string = "meow"
 
-run_test()
-echo "Tests passed!"
+# ---
+
+var animals: seq[Animal] = @[]
+animals.add(Dog(name: "Sparky", age: 10))
+animals.add(Cat(name: "Mitten", age: 10))
+
+for a in animals:
+  echo a.vocalize()
+  echo a.age_human_yrs()
+```
+``` console
+$ nimrod c -r oopmacro.nim
+woof
+70
+meow
+10
 ```
