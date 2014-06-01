@@ -13,6 +13,7 @@ build:
               git remote add publish $GIT_CREDENTIALS
               git config --global user.email $GIT_EMAIL
               git config --global user.name $GIT_NAME
+              git checkout master
               nanoc
               cp -r ./output/. ./
               git add --all .
