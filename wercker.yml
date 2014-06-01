@@ -1,12 +1,9 @@
 box: flaviut/python-ruby@0.0.2
 build:
     steps:
-        # Execute the bundle install step, a step provided by wercker
-        - bundle-install
-        # Execute a custom script step.
         - script:
-            name: install nanoc
-            code: sudo gem install nanoc
+            name: install nanoc and kramdown
+            code: sudo gem install nanoc kramdown
         - script:
             name: install pygments
             code: sudo pip install pygments
