@@ -1,10 +1,10 @@
 ---
 title: OOP Macro
 ---
-<!--- Thanks to fowl for creating this page -->
+<!--- Thanks to fowl for creating this page, filwit for fixing some oddities -->
 
 # OOP Macro
-This is the code that we currently must write to use OOP in nimrod:
+This is the code that we currently must write to use OOP in Nimrod:
 
 ```nimrod
 type Animal = ref object of TObject
@@ -37,6 +37,8 @@ class Dog of Animal:
 class Cat of Animal:
   method vocalize: string = "meow"
 ```
+
+To get that nice notation, we can use a macro:
 
 ```nimrod
 import macros
