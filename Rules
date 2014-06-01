@@ -18,8 +18,10 @@ compile '*' do
 		filter :kramdown
 		layout 'blank'
 	elsif item[:extension] == 'md'
-    filter :kramdown
-    filter :colorize_syntax, :default_colorizer => :pygmentsrb
+    filter :kramdown, {:input => 'GFM'}
+    filter :colorize_syntax, :default_colorizer => :pygmentize
+    filter :code_class_simplfier
+    filter :relativize_paths, :type => :html
     layout 'default'
   elsif item[:extension] == 'css'
     # don’t filter stylesheets

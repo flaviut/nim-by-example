@@ -1,6 +1,6 @@
 Nimrod is a powerful statically typed language that allows the programmer expressiveness without compromising run-time performance.
 
-~~~ nimrod
+``` nimrod
 import tables, strutils
 
 var wordFrequencies = initTable[string, int]
@@ -17,4 +17,4 @@ for word, frequency in wordFrequencies:
     mostFrequentWord = word
 
 echo "The most frequent word is '", word, "'"
-~~~
+```

@@ -2,3 +2,5 @@
 nohup.out
 output/
 tmp/
+crash.log
+

@@ -2,16 +2,16 @@
 
 The code for a simple hello world program is as follows:
 
-~~~ Nimrod
+``` nimrod
 echo "Hello World"
-~~~
+```
 
 To compile and execute the program, the following command should be run
 
-~~~
+``` console
 $ nimrod c -r --verbosity:0 ./helloworld.nim
 Hello World
-~~~
+```
 
 The command has several elements:
 

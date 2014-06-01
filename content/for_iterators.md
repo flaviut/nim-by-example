@@ -6,7 +6,7 @@ Nimrod has first class iterators and syntax to use them, for loops. The `continu
 
 When iterating over an object with one item, Nimrod will call an iterator called `items` with the first parameter the type you want to iterate over. The same thing happens when iterating with two items, but in that case, the `pairs` iterator is called.
 
-~~~ nimrod
+``` nimrod
 type
   TRange = object
     low: int
@@ -24,18 +24,18 @@ iterator pairs(range: TRange): tuple[a: int, b: char] =
 
 for i, c in TRange(low: 1, high: 3):
   echo c
-~~~
-~~~
+```
+``` console
 $ nimrod c -r items_pair.nim
 b
 c
 d
-~~~
+```
 
 ## Inline Iterators
 Inline iterators basically take the body of the for loop and inline it into the iterator. This means that they do not have any overhead from function calling, but if carelessly created may increase code size dramatically.
 
-~~~ nimrod
+``` nimrod
 iterator countTo(n: int): int =
   var i = 0
   while i <= n:
@@ -44,8 +44,8 @@ iterator countTo(n: int): int =
 
 for i in countTo(5):
   echo i
-~~~
-~~~
+```
+```console
 $ nimrod c -r ./inline_iter.nim
 0
 1
@@ -53,13 +53,13 @@ $ nimrod c -r ./inline_iter.nim
 3
 4
 5
-~~~
+```
 
 
 ## Closure Iterators
 Closure iterators hold on to their state and can be resumed at any time. The `finished()` function can be used to check if there are any more elements available in the iterator.
 
-~~~ nimrod
+``` nimrod
 proc countTo(n: int): iterator(): int =
   return iterator (): int =
     var i = 0
@@ -81,10 +81,10 @@ let countTo9 = countTo(9)
 for i in countTo9:
   output.add($i)
 echo output
-~~~
-~~~
+```
+```console
 $ nimrod c -r ./closure_iter.nim
 0
 12345678910111213141516171819200
 0123456789
-~~~
+```

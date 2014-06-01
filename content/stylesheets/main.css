@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: Georgia, Palatino, serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: #E6E6E6;
+  color: #2B2B2B;
+  text-rendering: optimizelegibility;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: #DE1B1B;
+}
+
+a:hover {
+  color: #FE3B3B;
+}
+
+#main {
+  position: absolute;
+
+  top: 40px;
+  left: 255px;
+
+  max-width: 600px;
+}
+
+#main h1 {
+  font-size: 40px;
+  font-weight: normal;
+
+  line-height: 40px;
+
+  letter-spacing: -1px;
+}
+
+#main p {
+  margin: 20px 0;
+
+  font-size: 15px;
+
+  line-height: 20px;
+}
+
+#main ul, #main ol {
+  margin: 20px;
+}
+
+#main li {
+  font-size: 15px;
+
+  line-height: 20px;
+}
+
+#main ul li {
+  list-style-type: square;
+}
+
+#main table, th, td {
+  border-collapse: collapse;
+  border: 1px solid #CCC;
+	background-color: #EEEEEE;
+  padding: 3px;
+
+  font-size: 15px;
+  line-height: 20px;
+}
+
+#main code, code * {
+  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+}
+
+#main code {
+	border-radius: 3px;
+	border: 1px solid #CCC;
+	background-color: #EEEEEE;
+	padding: 0px 3px;
+}
+
+#main pre code { /* Block Code */
+	display: block;
+  word-wrap: break-word;
+  overflow: auto;
+
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+	border-radius: 3px;
+	border: 1px solid #CCC;
+	background-color: #EEEEEE;
+	padding: 20px 10px;
+	font-size: 15px;
+  margin: 30px 5px
+}
+
+#main span.line-numbers {
+  display: none;
+}
+
+#sidebar {
+  position: absolute;
+
+  top: 40px;
+  left: 20px;
+  width: 175px;
+
+  padding: 20px 20px 0 0;
+
+  border-right: 1px solid #ccc;
+}
+
+#sidebar h2 {
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #333;
+  letter-spacing: 1px;
+  line-height: 20px;
+}
+
+#sidebar ul {
+	position: relative;
+	left: 30px;
+  list-style: decimal-leading-zero;
+}
+
+#sidebar li {
+  font-size: 14px;
+  line-height: 20px;
+}

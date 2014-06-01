@@ -7,7 +7,7 @@ Nimrod also supports case statements, which are like switches in other languages
 * case statements, like most things, are actually expressions
 * It is required that every possible case be covered
 
-~~~ Nimrod
+``` nimrod
 case "charlie"
 of "alfa":
   echo "A"
@@ -38,11 +38,11 @@ proc positiveOrNegative(num: int): string =
     "impossible"
 
 echo positiveOrNegative(-1)
-~~~
+```
 
-~~~
+``` console
 $ nimrod c -r ./case_stmts.nim
 C
 Consonant
 negative
-~~~
+```

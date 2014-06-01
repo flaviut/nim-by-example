@@ -19,15 +19,15 @@ Once you have downloaded the appropriate distribution and extracted the files so
 ## Downloading from Git
 To install Nimrod from git, ensure that you have gcc installed on Windows, Linux, and BSDs and clang on Mac. Afterwards, run the following series of commands to download and bootstrap Nimrod:
 
-~~~
-git clone -b master git://github.com/Araq/Nimrod.git
-cd Nimrod
-git clone --depth 1 git://github.com/nimrod-code/csources
-cd csources
-sh build.sh # Replace with build.bat on windows
-cd ..
-bin/nimrod c koch
-./koch boot -d:release
-~~~
+```console
+$ git clone -b master git://github.com/Araq/Nimrod.git
+$ cd Nimrod
+$ git clone --depth 1 git://github.com/nimrod-code/csources
+$ cd csources
+$ sh build.sh # Replace with build.bat on windows
+$ cd ..
+$ bin/nimrod c koch
+$ ./koch boot -d:release
+```
 
 Once compiled, you may want to add the `bin` directory to your path for easy access.
