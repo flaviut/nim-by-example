@@ -19,4 +19,4 @@ build:
               cp -r ./output/. ./
               git add --all .
               git commit -am'Build Site'
-              git push --hard
+              git push --force
