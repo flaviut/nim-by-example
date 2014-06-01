@@ -1,1 +1,4 @@
+---
+title: Exceptions
+---
 # Exceptions

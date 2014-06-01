@@ -1,3 +1,6 @@
+---
+title: Varargs
+---
 # Varargs
 
 Standard varargs simply allows you to pass multiple parameters to your function.

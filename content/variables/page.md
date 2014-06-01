@@ -1,3 +1,6 @@
+---
+title: Variables
+---
 # Variables
 
 Nimrod supports three different types of variables, `let`, `var`, and `const`. As with most things, multiple variables can be declared in the same section.

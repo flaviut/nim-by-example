@@ -1,3 +1,9 @@
+---
+title: Main
+---
+
+# Nimrod by Example
+
 Nimrod is a powerful statically typed language that allows the programmer expressiveness without compromising run-time performance.
 
 ``` nimrod

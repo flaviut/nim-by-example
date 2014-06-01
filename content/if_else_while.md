@@ -1,3 +1,7 @@
+---
+title: If, Else, While, Block
+---
+
 # If, Else, While, Block
 
 Nimrod many different control flow constructs, including the standard `if`s, `else`s, and `while`s.

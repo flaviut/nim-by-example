@@ -1,3 +1,6 @@
+---
+title: Numbers
+---
 # Numbers
 
 Nimrod has several primitive types:

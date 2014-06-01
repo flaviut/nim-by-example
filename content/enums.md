@@ -1,1 +1,4 @@
+---
+title: Enums
+---
 # Enums

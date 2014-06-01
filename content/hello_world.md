@@ -1,3 +1,6 @@
+---
+title: Hello World
+---
 # Hello World
 
 The code for a simple hello world program is as follows:

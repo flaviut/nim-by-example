@@ -1,3 +1,6 @@
+---
+title: Case Statements
+---
 # Case Statements
 
 Nimrod also supports case statements, which are like switches in other languages. There are several things to note here:

@@ -1,5 +1,7 @@
+---
+title: OOP Macro
+---
 <!--- Thanks to fowl for creating this page -->
-
 # OOP Macro
 This is the code that we currently must write to use OOP in nimrod:
 ```nimrod

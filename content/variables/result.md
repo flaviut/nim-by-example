@@ -1,3 +1,6 @@
+---
+title: Result
+---
 # Result
 
 The `result` variable is a special variable that serves as an implicit return variable. This is useful because in most cases, the control flow semantics of the `return` statement are unneeded. `result` is initialized with the default value for a given return type, so the following code starts as `0`, before being initialized to `number`:

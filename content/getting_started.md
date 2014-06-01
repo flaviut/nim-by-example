@@ -1,3 +1,6 @@
+---
+title: Getting Started
+---
 # Getting Started
 When installing Nimrod, you have two options: downloading a copy directly from git, or downloading a prepackaged distribution from the website
 

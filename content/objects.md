@@ -1,3 +1,6 @@
+---
+title: Objects
+---
 # Objects
 
 In Nimrod, objects are like structs from C family languages and define a grouping of fields.

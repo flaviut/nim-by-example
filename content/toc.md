@@ -1,4 +1,4 @@
-## Summary
+## Pages
 
 * [Getting Started](/getting_started/)
 * [Hello World](/hello_world/)
