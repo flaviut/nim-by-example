@@ -11,38 +11,50 @@ proc getAlphabet(): string =
   for letter in 'a'..'z':
     result.add(letter)
 
-const abcs = getAlphabet()
+# Computed at runtime
+const alphabet = getAlphabet()
 
+# Mutable variables
 var
   a = "foo"
   b = 0
+  # Works fine, initialized to 0
+  c: int
 
+# Immutable variables
 let
-  c = "foo"
-  d = 5
+  d = "foo"
+  e = 5
+  # Compile-time error, must be initialized at creation
+  f: float
 
-a.add "bar" # This is fine because ``a`` is mutable.
-b.inc # This is also fine.
+# Works fine, `a` is mutable
+a.add("bar")
+b += 1
+c = 3
 
-c.add "bar" # This will result in an error.
-d.inc # As will this.
+# Compile-time error, const cannot be modified at run-time
+alphabet = "abc"
+
+# Compile-time error, `d` and `e` are immutable
+d.add("bar")
+e += 1
 ```
 
 ``` console
-$ nimrod c --verbosity:2 ./assignment.nim
-a20.nim(19, 0) Error: for a 'var' type a variable needs to be passed
-  c.add "bar" # This will result in an error.
-  ^
+$ nimrod c --verbosity:2 ./variables.nim
+variables.nim(18, 2) Error: 'let' symbol requires an initialization
+    e: float
+    ^
 ```
 
-Without `--verbosity:2` only the error will be shown.
+Without `--verbosity:2` only the error will be shown without the position cursor.
 
+## Const
 A `const` variable's value will be evaluated at compile-time, so if you inspect the C sources, you'll see the following line:
 
 ``` c
 STRING_LITERAL(TMP129, "abcdefghijklmnopqrstuvwxyz", 26);
 ```
 
-The limitation with this is that procedures which are evaluated at compile-time cannot interface with C because there is no compile-time foreign function interface at this time.
-
-As seen in the example, `var` variables are standard mutable variables, you can modify them after they've been assigned. `let` variables on the other hand are immutable variables. This means you can assign to them at creation time and can't change them later on. The difference between `let` and `const` is that a `const`'s expression must be evaluated at compile-time, a `let`'s expression doesn't have this requirement.
+The only limitation with const is that compile-time evaluation cannot interface with C because there is no compile-time foreign function interface at this time.
