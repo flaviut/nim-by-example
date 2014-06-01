@@ -10,13 +10,11 @@ build:
         - script:
             name: build and deploy
             code: |
-              git config remote.origin.url $GIT_CREDENTIALS
+              git remote add publish $GIT_CREDENTIALS
               git config --global user.email $GIT_EMAIL
               git config --global user.name $GIT_NAME
-              git checkout gh-pages
-              git reset --hard master
               nanoc
               cp -r ./output/. ./
               git add --all .
               git commit -am'Build Site'
-              git push --force
+              git push --force publish
