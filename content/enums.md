@@ -44,7 +44,7 @@ for color in Colors.Red..Colors.Blue:
   echo color
 ```
 
-```
+```console
 $ nimrod c -r enums.nim
 cdNorth ord: 0
 cdEast ord: 1
