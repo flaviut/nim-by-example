@@ -16,8 +16,7 @@ a {
   text-decoration: none;
 }
 
-a:link,
-a:visited {
+a:link, a:visited{
   color: #DE1B1B;
 }
 
@@ -138,4 +137,8 @@ a:hover {
 #sidebar li {
   font-size: 14px;
   line-height: 20px;
+}
+
+#sidebar a:visited {
+  color: #AE6B1B;
 }
