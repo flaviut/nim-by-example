@@ -1,16 +1,8 @@
-@font-face {
-    font-family: "FontAwesome";
-    src: url('/fonts/fontawesomee.eot?45135880'); /* IE9 Compat Modes */
-    src: url('/fonts/fontawesomew.woff?45135880') format('woff'), /* Modern Browsers */
-         url('/fonts/fontawesomet.ttf?45135880')  format('truetype'), /* Safari, Android, iOS */
-         url('/fonts/fontawesomes.svg?45135880#fontello') format('svg'); /* Legacy iOS */
-}
-
 * {
   margin: 0;
   padding: 0;
 
-  font-family: Georgia, Palatino, serif;
+  font-family: Palatino, serif;
   box-sizing: border-box;
 }
 
@@ -39,6 +31,28 @@ a:hover {
   left: 255px;
 
   max-width: 600px;
+}
+
+#main #gh-buttons {
+  float: right;
+}
+
+#main #starcount {
+  line-height: 20px;
+  font-size: 15px;
+  text-align: center;
+  color: #000;
+
+  position: absolute;
+  display: block;
+  float: right;
+  right: 5px;
+  width: 3em;
+  background: #FFF;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+
+  height: 20px;
 }
 
 #main h1 {
@@ -72,7 +86,7 @@ a:hover {
 #main table, th, td {
   border-collapse: collapse;
   border: 1px solid #CCC;
-	background-color: #FFF;
+  background-color: #FFF;
   padding: 3px;
 }
 
@@ -88,11 +102,11 @@ a:hover {
 
 #main code {
   background: #FFFFFF;
-	padding: 0px 3px;
+  padding: 0px 3px;
 }
 
 #main pre code { /* Block Code */
-	display: block;
+  display: block;
   word-wrap: break-word;
   overflow: auto;
 
@@ -106,7 +120,7 @@ a:hover {
   background:#FFF;
   box-shadow:1px 3px 12px #BBB;
   padding: 10px 15px;
-	font-size: 15px;
+  font-size: 15px;
   margin: 20px 10px 20px 0px;
 }
 
@@ -124,6 +138,9 @@ a:hover {
   padding: 20px;
 
   border-right: 1px solid #ccc;
+
+  font-size: 14px;
+  line-height: 20px;
 }
 
 #sidebar h2 {
@@ -135,19 +152,14 @@ a:hover {
 }
 
 #sidebar ul {
-	position: relative;
-	left: 30px;
+  position: relative;
+  left: 30px;
   list-style: decimal-leading-zero;
-}
-
-#sidebar li {
-  font-size: 14px;
-  line-height: 20px;
 }
 
 #sidebar a.visited:after { /* selected with JS */
   content: "";
-  font-family: "FontAwesome";
+  font-family: "fontello";
   position: absolute;
   left: -3em;
   color: #EEE;
