@@ -7,8 +7,8 @@
 }
 
 body {
-  background: #E6E6E6;
-  color: #2B2B2B;
+  background: #F5F7F6;
+  line-height: 20px;
   text-rendering: optimizelegibility;
 }
 
@@ -17,7 +17,7 @@ a {
 }
 
 a:link, a:visited{
-  color: #DE1B1B;
+  color: #B45D47;
 }
 
 a:hover {
@@ -43,10 +43,9 @@ a:hover {
 }
 
 #main p {
-  margin: 20px 0;
-
+  margin: 20px 0px;
+  margin-right: 1em;
   font-size: 15px;
-
   line-height: 20px;
 }
 
@@ -56,8 +55,6 @@ a:hover {
 
 #main li {
   font-size: 15px;
-
-  line-height: 20px;
 }
 
 #main ul li {
@@ -67,21 +64,22 @@ a:hover {
 #main table, th, td {
   border-collapse: collapse;
   border: 1px solid #CCC;
-	background-color: #EEEEEE;
+	background-color: #FFF;
   padding: 3px;
+}
 
+#main table {
   font-size: 15px;
-  line-height: 20px;
+  box-shadow:1px 3px 12px #BBB;
+  margin: 20px 10px 20px 0px;
 }
 
 #main code, code * {
-  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
 }
 
 #main code {
-	border-radius: 3px;
-	border: 1px solid #CCC;
-	background-color: #EEEEEE;
+  background: #FFFFFF;
 	padding: 0px 3px;
 }
 
@@ -96,12 +94,12 @@ a:hover {
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 
-	border-radius: 3px;
-	border: 1px solid #CCC;
-	background-color: #EEEEEE;
-	padding: 20px 10px;
+  border-radius: 3px;
+  background:#FFF;
+  box-shadow:1px 3px 12px #BBB;
+  padding: 10px 15px;
 	font-size: 15px;
-  margin: 30px 5px
+  margin: 20px 10px 20px 0px;
 }
 
 #main span.line-numbers {
@@ -113,17 +111,17 @@ a:hover {
 
   top: 40px;
   left: 20px;
-  width: 175px;
+  width: 211px;
 
-  padding: 20px 20px 0 0;
+  padding: 20px;
 
   border-right: 1px solid #ccc;
 }
 
 #sidebar h2 {
   text-transform: uppercase;
-  font-size: 13px;
-  color: #333;
+  font-size: 16px;
+  color: #470000;
   letter-spacing: 1px;
   line-height: 20px;
 }
@@ -139,7 +137,7 @@ a:hover {
   line-height: 20px;
 }
 
-#sidebar a.visited:before { /* selected with JS */
+#sidebar a.visited:after { /* selected with JS */
   content: "";
   font-family: "FontAwesome";
   position: absolute;
