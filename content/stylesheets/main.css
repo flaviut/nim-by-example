@@ -139,6 +139,11 @@ a:hover {
   line-height: 20px;
 }
 
-#sidebar a:visited {
-  color: #AE6B1B;
+#sidebar a.visited:before { /* selected with JS */
+  content: "";
+  font-family: "FontAwesome";
+  position: absolute;
+  left: -3em;
+  color: #EEE;
+  text-shadow: -1px 0 #2B2B2B, 0 1px #2B2B2B, 1px 0 #2B2B2B, 0 -1px #2B2B2B
 }

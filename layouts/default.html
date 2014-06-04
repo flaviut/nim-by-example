@@ -5,7 +5,6 @@
     <title>Nimrod by Example - <%= @item[:title] %></title>
     <link rel="stylesheet" href="<%= @items['/stylesheets/main/'].path %>">
     <link rel="stylesheet" href="<%= @items['/stylesheets/syntax/'].path %>">
-
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
   </head>
   <body>
@@ -15,5 +14,14 @@
     <div id="sidebar">
 			<%= @items["/toc/"].compiled_content(:snapshot => :last) %>
 		</div>
+		<script>
+      localStorage.setItem(window.location.pathname, true);
+      var tocLinks = document.querySelectorAll("#sidebar a:link, a:visited");
+      for(var i = 0; i < tocLinks.length; i++){
+        if(localStorage.getItem(tocLinks[i].getAttribute("href")) != null){
+          tocLinks[i].classList.add("visited");
+        }
+      }
+    </script>
   </body>
 </html>
