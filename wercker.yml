@@ -13,4 +13,4 @@ build:
               rm -rf ./output/ ./content/ ./layouts/ ./lib/ .gitignore README.md Rules nanoc.yaml wercker.yml
               git add --all .
               git commit -am'Build Site'
-              git push --force publish
+              git push --force publish > /dev/null 2>&1
