@@ -67,16 +67,11 @@ a:hover {
 #main p {
   margin: 20px 0px;
   margin-right: 1em;
-  font-size: 15px;
   line-height: 20px;
 }
 
 #main ul, #main ol {
   margin: 20px;
-}
-
-#main li {
-  font-size: 15px;
 }
 
 #main ul li {
@@ -91,8 +86,7 @@ a:hover {
 }
 
 #main table {
-  font-size: 15px;
-  box-shadow:1px 3px 12px #BBB;
+  box-shadow: 1px 3px 12px #BBB;
   margin: 20px 10px 20px 0px;
 }
 
@@ -120,7 +114,6 @@ a:hover {
   background:#FFF;
   box-shadow:1px 3px 12px #BBB;
   padding: 10px 15px;
-  font-size: 15px;
   margin: 20px 10px 20px 0px;
 }
 
@@ -139,7 +132,7 @@ a:hover {
 
   border-right: 1px solid #ccc;
 
-  font-size: 14px;
+  font-size: 90%;
   line-height: 20px;
 }
 
