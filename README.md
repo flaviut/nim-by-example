@@ -1,4 +1,4 @@
-[![wercker status](https://app.wercker.com/status/cdb37877b88a0ac09b1bddb135aaf246/m "wercker status")](https://app.wercker.com/project/bykey/cdb37877b88a0ac09b1bddb135aaf246)
+[![wercker status](https://app.wercker.com/status/389477226e537a45143ea91336dca281/m "wercker status")](https://app.wercker.com/project/bykey/389477226e537a45143ea91336dca281)
 
 This repo contains the sources for the Nimrod by Example book.
 
