@@ -4,17 +4,18 @@
     <meta charset="utf-8">
     <title>Nimrod by Example - <%= @item[:title] %></title>
     <link rel="stylesheet" href="<%= @items['/stylesheets/main/'].path %>">
-    <link rel="stylesheet" href="<%= @items['/stylesheets/syntax/'].path %>">
-    <!--<link rel="stylesheet" href="<%= @items['/stylesheets/cotton_candy/'].path %>">-->
+    <link rel="stylesheet" href="<%= @items['/stylesheets/colorful/'].path %>" title="colorful">
+    <link rel="stylesheet" href="<%= @items['/stylesheets/cotton_candy/'].path %>" title="cottoncandy">
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
+    <meta http-equiv="Default-Style" content="colorful">
   </head>
   <body>
+    <div id="sidebar">
+      <%= @items["/toc/"].compiled_content(:snapshot => :last) %>
+    </div>
     <div id="main">
       <%= yield %>
     </div>
-    <div id="sidebar">
-			<%= @items["/toc/"].compiled_content(:snapshot => :last) %>
-		</div>
 		<script>
       localStorage.setItem(window.location.pathname, true);
       var tocLinks = document.querySelectorAll("#sidebar a:link, a:visited");
