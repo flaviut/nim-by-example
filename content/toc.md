@@ -3,7 +3,7 @@
 * [Getting Started](/getting_started/)
 * [Hello World](/hello_world/)
 * [Variables](/variables/page/)
-  * [Type casting and inference](/variables/type_casting_inference)
+  * [Type casting and inference](/variables/type_casting_inference/)
   * [Result](/variables/result/)
 * [Objects](/objects/)
 * [Enums](/enums/)
