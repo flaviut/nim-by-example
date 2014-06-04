@@ -10,7 +10,7 @@
 * [Case Statements](/case/)
 * [Numbers](/numbers/)
 * [For Loops & Iterators](/for_iterators/)
-* [Functions]()
+* [Procedures](/procs/)
 * [Exceptions](/exceptions/)
 * [Varargs](/varargs/)
 * [OOP Macro](/oop_macro/)
