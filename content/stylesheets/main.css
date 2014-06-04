@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "FontAwesome";
+    src: url('/fonts/fontawesomee.eot?45135880'); /* IE9 Compat Modes */
+    src: url('/fonts/fontawesomew.woff?45135880') format('woff'), /* Modern Browsers */
+         url('/fonts/fontawesomet.ttf?45135880')  format('truetype'), /* Safari, Android, iOS */
+         url('/fonts/fontawesomes.svg?45135880#fontello') format('svg'); /* Legacy iOS */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -138,7 +146,7 @@ a:hover {
 }
 
 #sidebar a.visited:after { /* selected with JS */
-  content: "";
+  content: "";
   font-family: "FontAwesome";
   position: absolute;
   left: -3em;
