@@ -122,18 +122,19 @@ a:hover {
 }
 
 #sidebar {
-  position: absolute;
-
-  top: 40px;
-  left: 20px;
+  float: left;
+  margin-top: 40px;
+  margin-left: 0px;
   width: 211px;
 
   padding: 20px;
+  padding-left: 30px;
 
   border-right: 1px solid #ccc;
 
   font-size: 90%;
   line-height: 20px;
+  box-sizing: border-box;
 }
 
 #sidebar h2 {
@@ -146,15 +147,20 @@ a:hover {
 
 #sidebar ul {
   position: relative;
-  left: 30px;
+  left: 20px;
   list-style: decimal-leading-zero;
+  list-style-position: inside;
+}
+
+#sidebar #toc-list {
+  left: 10px;
 }
 
 #sidebar a.visited:after { /* selected with JS */
   content: "";
   font-family: "fontello";
   position: absolute;
-  left: -3em;
+  left: -20px;
   color: #EEE;
   text-shadow: -1px 0 #2B2B2B, 0 1px #2B2B2B, 1px 0 #2B2B2B, 0 -1px #2B2B2B
 }
