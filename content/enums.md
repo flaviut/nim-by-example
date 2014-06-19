@@ -6,44 +6,31 @@ Enums in Nimrod are like enums in C, but are type-checked. There are no anonymou
 
 ``` nimrod
 type
-  # Note the Hungarian notation, used to avoid conflicts
   CompassDirections = enum
     cdNorth, cdEast, cdSouth, cdWest
-  # {.pure.} means it values must be prefixed with the enum's name
+
   Colors {.pure.} = enum
     Red = "FF0000", Green = (1, "00FF00"), Blue = "0000FF"
-  # Enums can have holes in them
-  # Not recommended, exists only for interoperability with C
+
   Signals = enum
     sigQuit = 3, sigAbort = 6, sigKill = 9
+```
+Notice that each element in `CompassDirections` is prepended with `cd` to avoid name conflicts since references to the enum value do not need to be qualified. The `{.pure.}` pragma that `Colors` has requires that all references to `Colors`'s values be qualified, therefore making a prefix unnecessary.
 
-# Iterates through the values
-for direction in cdNorth..cdWest:
-  # `ord()` returns the integer value of the enum
-  # `CompassDirections()` is the inverse of `ord()`
-  echo CompassDirections(ord(direction)), " ord: ", ord(direction)
+Enums can be given custom values and stringify values, as shown by `Colors` and `Signals`.
 
-# `ord` gives the integer value, even if there are holes
-echo ord(sigQuit)
+While enums can also have disjoint values, it should not be used for any other reason than compatibility with C because it breaks the idea that enums are ordinal.
 
-# Enums are ordinal and have `inc` and `dec`
+``` nimrod
+for direction in ord(low(CompassDirections))..
+                 ord(high(CompassDirections)):
+  echo CompassDirections(direction), " ord: ", direction
+
 var ordinal = low(int)
 inc ordinal
 dec ordinal
 echo high(char)
-
-when false:
-  var nonOrdinal = sigQuit
-  # `Signals` has holes and so isn't ordinal,
-  # so `inc` and `dec` don't work
-  inc nonOrdinal
-  dec nonOrdinal
-
-# The custom `$` makes it echo the hex value
-for color in Colors.Red..Colors.Blue:
-  echo color
 ```
-
 ```console
 $ nimrod c -r enums.nim
 cdNorth ord: 0
@@ -52,8 +39,25 @@ cdSouth ord: 2
 cdWest ord: 3
 3
 �
-FF0000
-00FF00
-0000FF
-
 ```
+
+Because enums are ordinals, they have the `low`, `high`, `inc`, `dec`, and `ord` methods defined, where
+
+ - `low` gives the lowest possible value
+ - `high` give the highest possible value
+ - `inc` increments
+ - `dec` decrements
+ - `ord` gives the integer value of the enum
+ - `CompassDirections` gives the enum value from an integer
+
+It is also possible to iterate through all possible values of ordinal enums, either as shown above, or `cdNorth..cdWest`, which is equivalent.
+
+
+``` nimrod
+when false:
+  var nonOrdinal = sigQuit
+  inc nonOrdinal
+  dec nonOrdinal
+```
+
+`Signals` is not an ordinal type, and so doesn't have the `inc` and `dec` procedures.
