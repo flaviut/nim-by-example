@@ -157,14 +157,14 @@ a:hover {
 }
 
 #sidebar #toc-list {
-  left: 40px;
+  left: 20px;
 }
 
 #sidebar a.visited:before { /* selected with JS */
   content: "";
   font-family: "fontello";
   position: absolute;
-  left: -45px;
+  left: -40px;
   color: #EEE;
   text-shadow: -1px 0 #2B2B2B, 0 1px #2B2B2B, 1px 0 #2B2B2B, 0 -1px #2B2B2B
 }
