@@ -48,7 +48,7 @@ Because enums are ordinals, they have the `low`, `high`, `inc`, `dec`, and `ord`
  - `inc` increments
  - `dec` decrements
  - `ord` gives the integer value of the enum
- - `CompassDirections` gives the enum value from an integer
+ - `CompassDirections` is a cast that gives an enum from an integer
 
 It is also possible to iterate through all possible values of ordinal enums, either as shown above, or `cdNorth..cdWest`, which is equivalent.
 
