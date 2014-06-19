@@ -7,7 +7,7 @@ The `result` variable is a special variable that serves as an implicit return va
 
 ``` nimrod
 proc `**`(number, power: int): int =
-  result = number
+  result = 1
   for i in 1..power:
     result *= number
 ```
