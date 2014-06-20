@@ -14,10 +14,10 @@
 #   because “*” matches zero or more characters.
 
 compile '*' do
-	if item.identifier == '/toc/'
-		filter :kramdown
-		layout 'blank'
-	elsif item[:extension] == 'md'
+  if item.identifier == '/toc/'
+    filter :kramdown
+    layout 'blank'
+  elsif item[:extension] == 'md'
     filter :kramdown, {:input => 'GFM'}
     filter :colorize_syntax, :default_colorizer => :pygmentize
     filter :code_class_simplfier
