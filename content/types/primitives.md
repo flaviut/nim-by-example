@@ -1,13 +1,14 @@
 ---
-title: Numbers
+title: Primitives
 ---
-# Numbers
+# Primitives
 
 Nimrod has several primitive types:
 
 * signed integers: `int8`, `int16`, `int32`, `int64`, and `int`, where `int` is the same size as a pointer
 * unsigned integers are similar with `u` prepended to the type
 * floating points numbers: `float32`, `float64`, and `float`, where `float` is the processor's fastest type
+* characters: `char`, and basically an alias for uint8
 
 To indicate the size of an integer literal, append `u` or `i` and the size you'd like to the end. However, this is not typically necessary.
 
