@@ -49,3 +49,18 @@ C
 Consonant
 negative
 ```
+
+Another feature of sets is that when possible, the possible types are narrowed to a range so that the following code works without requiring an else statement.
+
+``` nimrod
+let x = 2
+case (x and 3) + 7
+of 7: echo "A"
+of 8: echo "B"
+of 9: echo "C"
+of 10: echo "D"
+```
+``` console
+$ nimrod c -r ./case_stmts_1.nim
+C
+```
