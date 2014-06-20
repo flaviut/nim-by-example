@@ -21,4 +21,15 @@ proc `*` *(a, b: Dollars): Dollars {.borrow.}
 proc `+` *(a, b: Dollars): Dollars {.borrow.}
 a = 20.Dollars * 20.Dollars
 ```
-<!--- XXX Uug, {.borrow: `.`.} -->
+
+When creating a distinct type from an object type, none of its fields are carried over. If the fields are wanted, they can be brought over through an overloading of the `{.borrow.}` pragma. If they are not borrowed, they cannot be accessed.
+
+``` nimrod
+type
+  Foo = object
+    a: int
+  MyFoo {.borrow: `.`.} = distinct Foo
+
+var value: MyFoo
+echo value.a  # Works
+```
