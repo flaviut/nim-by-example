@@ -18,24 +18,33 @@
       <%= yield %>
     </div>
     <script>
-      localStorage.setItem(window.location.pathname, true);
-      var tocLinks = document.querySelectorAll("#sidebar a:link, a:visited");
-      for(var i = 0; i < tocLinks.length; i++){
-        if(localStorage.getItem(tocLinks[i].getAttribute("href")) != null){
-          tocLinks[i].classList.add("visited");
-        }
+      function setVisibleTags(){
+        var tocLinks = document.querySelectorAll("#sidebar a:link, a:visited");
+         for(var i = 0; i < tocLinks.length; i++){
+           if(localStorage.getItem(tocLinks[i].getAttribute("href")) != null){
+             tocLinks[i].classList.add("visited");
+           }
+         }
       }
-      var request = new XMLHttpRequest();
-      request.open("GET", "https://api.github.com/repos/flaviut/nimrod-by-example/stargazers", true);
-      request.onload = function (e) {
-        var starcount = JSON.parse(request.responseText).length;
-        var starcount_elem = document.getElementById("starcount");
-        starcount_elem.innerHTML = starcount;
-      };
-      request.onerror = function (e) {
-        console.error(request.statusText);
-      };
-      request.send(null);
+      function updateStarCounter(){
+        var request = new XMLHttpRequest();
+        request.open("GET", "https://api.github.com/repos/flaviut/nimrod-by-example/stargazers", true);
+         request.onload = function (e) {
+           var starcount = JSON.parse(request.responseText).length;
+           var starcount_elem = document.getElementById("starcount");
+           starcount_elem.innerHTML = starcount;
+         };
+         request.onerror = function (e) {
+           console.error(request.statusText);
+         };
+         request.send(null);
+      }
+      setTimeout(function() {
+        localStorage.setItem(window.location.pathname, true);
+        setVisibleTags();
+      }, 10000);
+      setVisibleTags()
+      updateStarCounter()
     </script>
   </body>
 </html>
