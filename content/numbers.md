@@ -23,4 +23,14 @@ let
 
 Precedence rules are the same as most other languages, but instead of `^`, `&`, `|`, `>>`, `<<`, the `xor`, `and`, `or`, `shr`, `shl` operators are used, respectively.
 
-Another difference that may be surprising is that the `/` operator returns a floating point result, even when the operands are integers. This means that `3/2` will return something like `0.33`. If integer division is needed, the `div` operator should be used.
+``` nimrod
+let
+  a: int = 2
+  b: int = 4
+echo 4/2
+```
+``` console
+$ nimrod c -r numbers2.nim
+2.0
+```
+Another difference that may be surprising is that the `/` operator returns a floating point result, even when the operands are integers.  If integer division is needed, the `div` operator should be used.
