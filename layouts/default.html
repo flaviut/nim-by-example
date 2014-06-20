@@ -39,10 +39,7 @@
          };
          request.send(null);
       }
-      window.setTimeout(function() {
-        localStorage.setItem(window.location.pathname, true);
-        setVisibleTags();
-      }, 10000);
+      localStorage.setItem(window.location.pathname, true);
       setVisibleTags()
       updateStarCounter()
     </script>
