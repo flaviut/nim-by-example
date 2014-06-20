@@ -8,7 +8,7 @@
 * [Types](/types/)
   * [Objects](/types/objects/)
   * [Enums](/types/enums/)
-  * [Distinct](/types/distinct/)
+  * [Distinct Types](/types/distinct/)
 * [If, Else, While, Block](/if_else_while/)
 * [Case Statements](/case/)
 * [Numbers](/numbers/)
