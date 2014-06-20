@@ -1,11 +1,7 @@
 ---
-title: Primitive Data Structures
+title: Strings
 ---
-# Primitive Data Structures
-
-Nimrod contains several basic builtin data structures: sequences, strings, bitsets, and arrays.
-
-## Strings
+# Strings
 
 ``` nimrod
 echo "words words words ⚑"
@@ -43,5 +39,7 @@ There are several types of strings literals:
  - Raw Strings: created by prefixing the string with an `r`. There are no escape sequences don't work, except for `"`, which can be escaped as `""`
  - Proc Strings: raw strings, but the method name that prefixes the string is called
 
-### A note about unicode
+## A note about unicode
 Unicode symbols are allowed in strings, but are not treated in any special way, so if you want count glyphs or uppercase unicode symbols, you must use the `unicode` module.
+
+Strings are generally considered to be encoded as UTF-8, so because of unicode's backwards compatibility, can be treated exactly as ASCII, with all values above 127 ignored.
