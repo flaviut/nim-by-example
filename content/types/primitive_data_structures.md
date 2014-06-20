@@ -12,11 +12,11 @@ echo "words words words ⚑"
 echo """
 <html>
   <head>
-  <head/>\n\n
+  </head>\n\n
 
   <body>
-  <body/>
-<html/> """
+  </body>
+</html> """
 
 proc re(s: string): string = s
 
@@ -37,8 +37,11 @@ words words words ⚑
 \b[a-z]++\b
 ```
 
-There are several things to note about strings:
+There are several types of strings literals:
 
  - Quoted Strings: Created by wrapping the body in triple quotes, they never interpret escape codes
  - Raw Strings: created by prefixing the string with an `r`. Escape sequences don't work, except for `"`, which can be escaped as `""`
  - Proc Strings: raw strings, but the method name that prefixes the string is called
+
+### A note about unicode
+Unicode symbols are allowed in strings, but are not treated in any special way, so if you want count glyphs or uppercase unicode symbols, you must use the `unicode` module. However, because all unicode characters are above 127, you can safely pretend you are not using unicode.
