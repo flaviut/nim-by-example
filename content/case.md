@@ -50,7 +50,7 @@ Consonant
 negative
 ```
 
-Another feature of sets is that when possible, the possible types are narrowed to a range so that the following code works without requiring an else statement.
+Another feature of case statements is that the possible values are narrowed, meaning that no `else` statement is necessary in many cases:
 
 ``` nimrod
 let x = 2
