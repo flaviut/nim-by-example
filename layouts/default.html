@@ -39,7 +39,7 @@
          };
          request.send(null);
       }
-      setTimeout(function() {
+      window.setTimeout(function() {
         localStorage.setItem(window.location.pathname, true);
         setVisibleTags();
       }, 10000);
