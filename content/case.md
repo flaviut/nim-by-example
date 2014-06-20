@@ -25,7 +25,7 @@ case 'h':
 of 'a', 'e', 'i', 'o', 'u':
   echo "Vowel"
 of '\127'..'\255':
-  echo "Maybe, but I only know English"
+  echo "Unknown"
 else:
   echo "Consonant"
 
