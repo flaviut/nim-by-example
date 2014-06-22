@@ -1,12 +1,14 @@
 ---
-title: If, Else, While, Block
+title: If, Else, While
 ---
 
-# If, Else, While, Block
+# If, Else, While
 
-Nimrod many different control flow constructs, including the standard `if`s, `else`s, and `while`s.
+Nimrod many different control flow constructs, including the standard `if`s, `else`s, and `while`s. However, Nimrod does not use an `else if` construct like many languages, it uses a more condensed `elif`.
 
-When inside a loop or block, it is possible to use `continue` or `break` any point, where `continue` skips to the next iteration and `break` ends the loop. The break statement can also receive the name of the block to break out of, so it is possible to break out of nested loops.
+When inside a loop, `continue` can be used to skip the rest of the loop body and to begin the next iteration; `break` can be used to immediately leave the loop body.
+
+Along with [its other uses](/block/), the `block` statement can be used to create a label so that it's possible to break out of nested loops.
 
 ``` nimrod
 import strutils
