@@ -4,7 +4,7 @@ title: Bitsets
 
 # Bitsets
 
-Nimrod comes with a built in way to build a set of ordinal types. In order for a type to be usable in a bitset, it must be an ordinal and <<\texttt{high(T)} < 2^{16}>>.
+Nimrod comes with a built in way to build a set of ordinal types. In order for a type to be usable in a bitset, it must be an ordinal and <<\texttt{high(T)} < 2^{16}>>. For sets of non-ordinal types, see the [sets module](http://nimrod-lang.org/sets.html), which contains hashsets.
 
 However, best practice is to keep bitset size significantly smaller since each possible element in the set consumes one bit, therefore a bitset of <<2^{16}>> elements will consume 64KiB.
 
