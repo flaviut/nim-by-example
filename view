@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+nohup nanoc view &

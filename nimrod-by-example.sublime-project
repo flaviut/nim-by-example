@@ -17,11 +17,13 @@
 	[
 		{
 			"name": "View",
-			"cmd": "nanoc view"
+			"cmd": ["./view"],
+			"working_dir": "$project_path/"
 		},
 		{
 			"name": "Compile",
-			"cmd": "nanoc"
+			"cmd": ["nanoc"],
+			"working_dir": "$project_path/"
 		}
 	]
 }
