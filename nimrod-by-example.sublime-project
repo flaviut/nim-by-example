@@ -1,0 +1,27 @@
+{
+	"folders":
+	[
+		{ "path": "content" },
+		{ "path": "layouts" },
+		{ "path": "lib" },
+		{ 
+			"path": "./",
+			"folder_exclude_patterns": ["output",
+			                            "tmp",
+			                            "content",
+			                            "layouts",
+			                            "lib"]
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "View",
+			"cmd": "nanoc view"
+		},
+		{
+			"name": "Compile",
+			"cmd": "nanoc"
+		}
+	]
+}
