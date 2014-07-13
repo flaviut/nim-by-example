@@ -114,9 +114,9 @@ a:hover {
 
   border-radius: 3px;
   background:#FFF;
-  box-shadow:1px 3px 12px #BBB;
+  box-shadow: 1px 3px 12px #BBB;
   padding: 10px 15px;
-  margin: 20px 10px 20px 0px;
+  margin: 5px 10px 10px 5px;
 }
 
 #main span.line-numbers {
