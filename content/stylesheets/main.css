@@ -35,6 +35,7 @@ a:hover {
 
 #main #gh-buttons {
   float: right;
+  margin-bottom: 22px;
 }
 
 #main #starcount {
@@ -165,7 +166,7 @@ a:hover {
   content: "";
   font-family: "fontello";
   position: absolute;
-  left: -40px;
+  left: -43px;
   color: #EEE;
   text-shadow: -1px 0 #2B2B2B, 0 1px #2B2B2B, 1px 0 #2B2B2B, 0 -1px #2B2B2B
 }

@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="<%= @items['/stylesheets/main/'].path %>">
     <link rel="stylesheet" href="<%= @items['/stylesheets/colorful/'].path %>" title="colorful">
     <link rel="stylesheet" href="<%= @items['/stylesheets/fontello/'].path %>">
+
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" async></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['«', '»']]}});</script>
+
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
     <meta http-equiv="Default-Style" content="colorful">
   </head>
@@ -16,8 +20,6 @@
     </div>
     <div id="main">
     <h1 id="gh-buttons"><a class="icon-fork" href="https://github.com/flaviut/nimrod-by-example/"></a> <a class="icon-star" href="https://github.com/flaviut/nimrod-by-example/stargazers" /><div id="starcount"></div></a></h1>
-      <%= yield %>
-    </div>
     <script>
       function setVisibleTags(){
         var tocLinks = document.querySelectorAll("#sidebar a:link, a:visited");
@@ -44,5 +46,7 @@
       setVisibleTags()
       updateStarCounter()
     </script>
+      <%= yield %>
+    </div>
   </body>
 </html>
