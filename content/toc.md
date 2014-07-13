@@ -16,7 +16,7 @@
   * [Distinct Types](/types/distinct/)
 * [Strings](/strings/)
 * [Arrays](/arrays/)
-* [Sequences](/seqs/)
+* [Seqs](/seqs/)
 * [Bitsets](/bitsets/)
 * [Procedures](/procs/)
 * [Exceptions](/exceptions/)
