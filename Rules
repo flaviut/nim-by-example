@@ -20,7 +20,6 @@ compile '*' do
   elsif item[:extension] == 'md'
     filter :kramdown, {:input => 'GFM'}
     filter :colorize_syntax, :default_colorizer => :pygmentize
-    filter :code_class_simplfier
     filter :relativize_paths, :type => :html
     layout 'default'
   elsif item[:extension] == 'css'

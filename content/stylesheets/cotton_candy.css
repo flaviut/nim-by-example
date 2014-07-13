@@ -1,8 +1,8 @@
 #main code, code * { color: #675D69; }
-.codehilite .k { color: #143A77; }
-.codehilite .kp { color: #8C5DC7; }
-.codehilite .kd { color: #8C5DC7; }
-.codehilite .mi { color: #8C5DC7; }
-.codehilite .s { color: #0060B0; }
-.codehilite .c { color: #91B9A3; }
-.codehilite .o { color: #009DE7; }
+code[class^='language-'] .k { color: #143A77; }
+code[class^='language-'] .kp { color: #8C5DC7; }
+code[class^='language-'] .kd { color: #8C5DC7; }
+code[class^='language-'] .mi { color: #8C5DC7; }
+code[class^='language-'] .s { color: #0060B0; }
+code[class^='language-'] .c { color: #91B9A3; }
+code[class^='language-'] .o { color: #009DE7; }
