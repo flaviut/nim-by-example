@@ -8,8 +8,12 @@
     <link rel="stylesheet" href="<%= @items['/stylesheets/colorful/'].path %>" title="colorful">
     <link rel="stylesheet" href="<%= @items['/stylesheets/fontello/'].path %>">
 
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['«', '»']]}});
+      MathJax.Hub.config.tex2jax.skipTags = ["script", "noscript", "style", "textarea", "annotation", "annotation-xml"];
+    </script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" async></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['«', '»']]}});</script>
 
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
     <meta http-equiv="Default-Style" content="colorful">
