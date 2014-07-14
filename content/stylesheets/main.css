@@ -66,6 +66,10 @@ a:hover {
   margin-bottom: 0.75em;
 }
 
+#main h2 {
+  margin-top: 1em;
+}
+
 #main p {
   margin: 20px 0px;
   margin-right: 1em;
