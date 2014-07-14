@@ -33,22 +33,26 @@
            }
          }
       }
+      var starcount_elem = document.getElementById("starcount");
       function updateStarCounter(){
+        if(localStorage.getItem("_watchers") != null){
+          starcount_elem.innerHTML = localStorage.getItem("_watchers");
+        }
         var request = new XMLHttpRequest();
         request.open("GET", "https://api.github.com/repos/flaviut/nimrod-by-example/stargazers", true);
          request.onload = function (e) {
            var starcount = JSON.parse(request.responseText).length;
-           var starcount_elem = document.getElementById("starcount");
            starcount_elem.innerHTML = starcount;
+           localStorage.setItem("_watchers", starcount)
          };
          request.onerror = function (e) {
            console.error(request.statusText);
          };
          request.send(null);
       }
+      updateStarCounter()
       localStorage.setItem(window.location.pathname, true);
       setVisibleTags()
-      updateStarCounter()
     </script>
       <%= yield %>
     </div>
