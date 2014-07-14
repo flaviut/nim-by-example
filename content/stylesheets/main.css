@@ -27,7 +27,6 @@ a:hover {
 #main {
   position: absolute;
 
-  top: 40px;
   left: 255px;
 
   max-width: 600px;
@@ -129,8 +128,8 @@ a:hover {
 
 #sidebar {
   float: left;
-  margin-top: 40px;
-  margin-left: 0px;
+  margin-top: 20px;
+  margin-left: 20px;
   width: 211px;
 
   padding: 20px;
