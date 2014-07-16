@@ -63,6 +63,21 @@ proc `^&*^@%`(a, b: string): string =
 assert("foo" ^&*^@% "bar" == "fr")
 ``` 
 
+## Generic Functions
 
-- operators
-- generics
+<!-- XXX Needs own section -->
+Generic functions are like C++'s templates and allow for the same statically checked duck-typing semantics as templates. 
+
+``` nimrod
+# Not really good idea for obvious reasons
+let zero = ""
+proc `+`(a, b: string): string =
+  a & b
+
+proc `*`[T, I](a: T, b: int): T =
+  result = zero
+  for i in 0..b:
+    result = result + a
+
+assert("a" * 10 == "aaaaaaaaaaa")
+```
