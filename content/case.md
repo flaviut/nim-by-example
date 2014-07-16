@@ -30,7 +30,7 @@ else:
   echo "Consonant"
 
 proc positiveOrNegative(num: int): string =
-  result = case num
+  result = case num:
     of low(int)..-1:
       "negative"
     of 0:
