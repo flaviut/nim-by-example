@@ -55,6 +55,14 @@ a:hover {
   height: 20px;
 }
 
+#main hr {
+  background: #CCC;
+  border: none;
+  margin: 1em;
+  margin-bottom: 1.3em;
+  height: 1px;
+}
+
 #main h1 {
   font-size: 40px;
   font-weight: normal;

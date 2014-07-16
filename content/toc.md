@@ -21,6 +21,7 @@
 * [Arrays](/arrays/)
 * [Seqs](/seqs/)
 * [Bitsets](/bitsets/)
+* [Generics](/generics/)
 * [Exceptions](/exceptions/)
 * [Varargs](/varargs/)
 * [OOP Macro](/oop_macro/)
