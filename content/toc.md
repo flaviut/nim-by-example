@@ -10,7 +10,7 @@
 * [For Loops & Iterators](/for_iterators/)
 * [Procs](/procs/)
 * [Methods](/methods/)
-* [Lambdas](/lambdas/)
+* [First Class Functions](/lambdas/)
 * [Blocks](/block/)
 * [Primitive Types](/primitives/)
 * [Type Aliases](/types/)
