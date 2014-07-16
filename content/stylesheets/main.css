@@ -30,6 +30,8 @@ a:hover {
   left: 255px;
 
   max-width: 600px;
+
+  margin-bottom: 50px;
 }
 
 #main #gh-buttons {
