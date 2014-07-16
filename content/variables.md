@@ -11,7 +11,7 @@ proc getAlphabet(): string =
   for letter in 'a'..'z':
     result.add(letter)
 
-# Computed at runtime
+# Computed at compilation time
 const alphabet = getAlphabet()
 
 # Mutable variables
