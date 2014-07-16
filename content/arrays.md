@@ -51,12 +51,7 @@ proc `+`[W, H](a, b: Matrix[W, H]):
     for j in 1..high(a[0]):
       result[i][j] = a[i][j] + b[i][j]
 
-proc `$`[W, H](a: Matrix[W, H]): string =
-  result = ""
-  for v in a:
-    for vx in v:
-      result.add($vx & ", ")
-    result.add("\n")
+# See `$` from the procs section
 
 echo mat1 + mat2
 ```
