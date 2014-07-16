@@ -12,7 +12,7 @@ proc `**`(number, power: int): int =
     result *= number
 ```
 
-A possible gotcha is declaring a variable called result and expecting it to have the same semantics.
+A possible gotcha is declaring a new variable called `result` and expecting it to have the same semantics.
 
 ``` nimrod
 proc unexpected(): int =

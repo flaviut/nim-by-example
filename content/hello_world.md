@@ -9,10 +9,10 @@ The code for a simple hello world program is as follows:
 echo "Hello World"
 ```
 
-To compile and execute the program, the following command should be run
+Save this text as `helloworld.nim`. To compile and execute the program, the following command should be run
 
 ``` console
-$ nimrod c -r --verbosity:0 ./helloworld.nim
+$ nimrod c -r --verbosity:0 helloworld.nim
 Hello World
 ```
 

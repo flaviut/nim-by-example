@@ -4,7 +4,7 @@ title: If, Else, While
 
 # If, Else, While
 
-Nimrod many different control flow constructs, including the standard `if`s, `else`s, and `while`s. However, Nimrod does not use an `else if` construct like many languages, it uses a more condensed `elif`.
+Nimrod has many different control flow constructs, including the standard `if`s, `else`s, and `while`s. However, Nimrod does not use an `else if` construct like many languages, it uses a more condensed `elif`.
 
 When inside a loop, `continue` can be used to skip the rest of the loop body and to begin the next iteration; `break` can be used to immediately leave the loop body.
 

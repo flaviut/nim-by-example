@@ -21,18 +21,7 @@ block:
   let b = "3"  # Probably a dumb idea
 ```
 
-Parentheses can be used as an expression, but they do not provide end of statement inference, so it is necessary to place semicolons yourself.
-
-``` nimrod
-square((
-  var result = newSeq[float]();
-  for i in 0..1000:
-  	result[i] = i;
-  result
-))
-```
-
-An interesting and unexpected side effect of this syntax is that Nimrod is suitable even for brace purists!
+Parentheses can be used as an expression, but they do not provide end of statement inference, so it is necessary to place semicolons yourself. An interesting and unexpected side effect of this syntax is that Nimrod is suitable even for brace purists!
 
 ``` nimrod
 proc square(inSeq: seq[float]): seq[float] = (
@@ -41,4 +30,11 @@ proc square(inSeq: seq[float]): seq[float] = (
     result[i] = v*v;
   )
 )
+
+square((  # A 1001 long sequence to be squared
+  var result = newSeq[float]();
+  for i in 0..1000:
+  	result.add(i);
+  result
+))
 ```
