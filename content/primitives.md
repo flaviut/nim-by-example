@@ -8,9 +8,9 @@ Nimrod has several primitive types:
 * signed integers: `int8`, `int16`, `int32`, `int64`, and `int`, where `int` is the same size as a pointer
 * unsigned integers are similar with `u` prepended to the type
 * floating points numbers: `float32`, `float64`, and `float`, where `float` is the processor's fastest type
-* characters: `char`, and basically an alias for uint8
+* characters: `char`, which is basically an alias for uint8
 
-To indicate the size of an integer literal, append `u` or `i` and the size you'd like to the end. However, this is not typically necessary.
+To indicate the size of an integer literal, append `u` or `i` and the size you'd like to the end. However, usually this is not necessary.
 
 Integers can also have `0[xX]`, `0o`, `0[Bb]` prepended to indicate a hex, octal, or binary literal, respectively. Underscores are also valid in literals, and can help with readability.
 
@@ -22,7 +22,7 @@ let
   c: uint8 = 256 # Compile time error
 ```
 
-Precedence rules are the same as most other languages, but instead of `^`, `&`, `|`, `>>`, `<<`, the `xor`, `and`, `or`, `shr`, `shl` operators are used, respectively.
+Precedence rules are the same as in most other languages, but instead of `^`, `&`, `|`, `>>`, `<<`, the `xor`, `and`, `or`, `shr`, `shl` operators are used, respectively.
 
 ``` nimrod
 let

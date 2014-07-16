@@ -31,14 +31,14 @@ else:
 
 proc positiveOrNegative(num: int): string =
   result = case num
-  of low(int)..-1:
-    "negative"
-  of 0:
-    "zero"
-  of 1..high(int):
-    "positive"
-  else:
-    "impossible"
+    of low(int)..-1:
+      "negative"
+    of 0:
+      "zero"
+    of 1..high(int):
+      "positive"
+    else:
+      "impossible"
 
 echo positiveOrNegative(-1)
 ```

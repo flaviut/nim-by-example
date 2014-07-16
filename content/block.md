@@ -24,6 +24,7 @@ block:
 Parentheses can be used as an expression, but they do not provide end of statement inference, so it is necessary to place semicolons yourself.
 
 ``` nimrod
+# This doesn't work and I don't know what it should do
 square((
   var result = newSeq[float]();
   for i in 0..1000:
