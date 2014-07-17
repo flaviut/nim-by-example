@@ -21,7 +21,6 @@
 * [Arrays](/arrays/)
 * [Seqs](/seqs/)
 * [Bitsets](/bitsets/)
-* [Exceptions](/exceptions/)
 * [Varargs](/varargs/)
 * [OOP Macro](/oop_macro/)
 {: #toc-list}
