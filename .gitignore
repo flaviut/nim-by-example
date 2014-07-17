@@ -3,4 +3,4 @@ nohup.out
 output/
 tmp/
 crash.log
-
+*.sublime-workspace
