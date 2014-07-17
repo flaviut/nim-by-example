@@ -17,7 +17,7 @@ method ageHumanYrs(this: Animal): int = this.age
 
 type Dog = ref object of Animal
 method vocalize(this: Dog): string = "woof"
-method ageHummanYrs(this: Dog): int = this.age * 7
+method ageHumanYrs(this: Dog): int = this.age * 7
 
 type Cat = ref object of Animal
 method vocalize(this: Cat): string = "meow"
