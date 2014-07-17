@@ -8,8 +8,8 @@ This is the code that we currently must write to use OOP in Nimrod:
 
 ```nimrod
 type Animal = ref object of TObject
-    name: string
-    age: int
+  name: string
+  age: int
 method vocalize(this: Animal): string = "..."
 method ageHumanYrs(this: Animal): int = this.age
 
