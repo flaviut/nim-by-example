@@ -13,6 +13,7 @@ Along with [its other uses](/block/), the `block` statement can be used to creat
 ``` nimrod
 import strutils, math
 
+randomize()
 let answer = random(10) + 1
 while true:
   echo "I have a number from 1 to 10, what is it? "
