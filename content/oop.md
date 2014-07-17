@@ -34,7 +34,7 @@ for a in animals:
 ``` console
 $ nimrod c -r oop.nim
 woof
-10
+70
 meow
 10
 ```
