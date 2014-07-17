@@ -11,10 +11,9 @@ When inside a loop, `continue` can be used to skip the rest of the loop body and
 Along with [its other uses](/block/), the `block` statement can be used to create a label so that it's possible to break out of nested loops.
 
 ``` nimrod
-import strutils
+import strutils, math
 
-let answer = 4  # Chosen by a fair dice roll,
-                # guaranteed to be random
+let answer = random(10) + 1
 while true:
   echo "I have a number from 1 to 10, what is it? "
   let guess = parseInt(stdin.readLine)
