@@ -9,7 +9,7 @@
 * [Case Statements](/case/)
 * [For Loops & Iterators](/for_iterators/)
 * [Procs](/procs/)
-* [Object Oriented Programming](/methods/)
+* [Object Oriented Programming](/oop/)
 * [First Class Functions](/procvars/)
 * [Blocks](/block/)
 * [Primitive Types](/primitives/)
