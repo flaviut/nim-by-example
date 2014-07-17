@@ -8,7 +8,7 @@ Nimrod supports three different types of variables, `let`, `var`, and `const`. A
 ``` nimrod
 proc getAlphabet(): string =
   var accm = ""
-  for letter in 'a'..'z':
+  for letter in 'a'..'z':  # see iterators
     accm.add(letter)
   return accm
 

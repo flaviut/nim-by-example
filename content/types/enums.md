@@ -19,6 +19,8 @@ Notice that each element in `CompassDirections` is prepended with `cd` to avoid 
 
 Enums can be given custom values and stringify values, as shown by `Colors` and `Signals`.
 
+## Ordinals
+
 While enums can also have disjoint values, it should not be used for any other reason than compatibility with C because it breaks the idea that enums are ordinal.
 
 ``` nimrod

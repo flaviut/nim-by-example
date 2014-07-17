@@ -35,6 +35,30 @@ c
 d
 ```
 
+## Operators
+Iterators can also be operators [in the standard way](/procs/#operators), with the name enclosed in backticks. For example, the standard library defines the slice iterator, which allows iterating through [ordinal types](/types/enums/#ordinals).
+
+``` nimrod
+# Give it a different name to avoid conflict
+iterator `...`*[T](a: T, b: T): T =
+  var res: T = T(a)
+  while res <= b:
+    yield res
+    inc res
+
+for i in 0...5:
+  echo i
+```
+``` console
+$ nimrod c -r operatoriterator.nim
+0
+1
+2
+3
+4
+5
+```
+
 ## Inline Iterators
 Inline iterators basically take the body of the for loop and inline it into the iterator. This means that they do not have any overhead from function calling, but if carelessly created may increase code size dramatically.
 
