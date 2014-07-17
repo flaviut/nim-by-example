@@ -4,7 +4,7 @@ title: Object Oriented Programming
 
 # Object Oriented Programming
 
-Object oriented programming is supported through inheritance and `methods`, which are virtual procedures. Methods work in the same was as procs, but when an method is called with an object, the method that is actually run is resolved at runtime and depends on the type of the object.
+Object oriented programming is supported through inheritance and methods, which are virtual procedures. Methods work in the same was as [procs](/procs/), including UFCS, but the runtime type of the object that a method is called with is used to determine which version to call.
 
 Inheritance is created with the `of` keyword in the type declaration of an object. A method is overridden by creating a new method with parameter types of the subtype. 
 
