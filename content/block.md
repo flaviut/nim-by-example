@@ -31,10 +31,11 @@ proc square(inSeq: seq[float]): seq[float] = (
   )
 )
 
+```
+<!-- XXX FIX
 square((  # A 1001 long sequence to be squared
   var result = newSeq[float]();
   for i in 0..1000:
-  	result.add(i);
+    result.add(i);
   result
-))
-```
+))-->
