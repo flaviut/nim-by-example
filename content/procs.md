@@ -3,14 +3,14 @@ title: Procs
 ---
 # Procs
 
-Procedures in Nimrod are declared using `proc` and require that their parameter and return types be annotated. After the types and parameters, an `=` is used to denote the start of the function body.
+Procedures in Nimrod are declared using `proc` and require that their parameter and return types be annotated. After the types and parameters, an `=` is used to denote the start of the function body. Another thing to note is that procedures have uniform function call syntax, which means that they can called as both `foo(a, b)` or `a.foo(b)`.
 
 ``` nimrod
 proc fibonacci(n: int): int =
   if n < 2:
     result = n
   else:
-    result = fibonacci(n - 1) + fibonacci(n - 2)
+    result = fibonacci(n - 1) + (n - 2).fibonacci
 ```
 
 ## Exporting symbols
