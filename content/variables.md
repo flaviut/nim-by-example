@@ -44,8 +44,8 @@ e += 1
 
 ``` console
 $ nimrod c --verbosity:2 ./variables.nim
-variables.nim(18, 2) Error: 'let' symbol requires an initialization
-    e: float
+variables.nim(22, 2) Error: 'let' symbol requires an initialization
+    f: float
     ^
 ```
 
