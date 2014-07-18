@@ -88,7 +88,7 @@ Closure iterators hold on to their state and can be resumed at any time. The `fi
 
 ``` nimrod
 proc countTo(n: int): iterator(): int =
-  return iterator (): int =
+  return iterator(): int =
     var i = 0
     while i <= n:
       yield i
@@ -100,7 +100,7 @@ echo countTo20()
 
 var output = ""
 while not finished(countTo20):
-  output.add($countTo20())
+  output.add($countTo20() & " ")
 echo output
 
 output = ""

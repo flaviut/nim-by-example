@@ -10,7 +10,7 @@ title: Main
 
 Getting started? Head over to the [installation instructions](/getting_started/)!
 
-``` nimrod
+<!--skip-->``` nimrod
 import tables, strutils
 
 var wordFrequencies = newCountTable[string]()

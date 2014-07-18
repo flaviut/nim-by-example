@@ -6,7 +6,7 @@ title: Seqs
 
 Seqs provide dynamically expandable storage, they are extended as needed.
 
-There are two ways to create seqs, with the `@` operator and with the `newSeq[T](n: int)` method. Once a seq is created, it can be modified using the `add(item: T)`, `remove(idx: int)`. The length of a seq can be found through `len: int`, and the maximum index through `high: int`. The standard `items: T` and `pairs: tuple[i: int, v: T]` iterators are also available.
+There are two ways to create seqs, with the `@` operator and with the `newSeq[T](n: int)` method. Once a seq is created, it can be modified using the `add(item: T)`, `delete(idx: int)`. The length of a seq can be found through `len: int`, and the maximum index through `high: int`. The standard `items: T` and `pairs: tuple[i: int, v: T]` iterators are also available.
 
 ``` nimrod
 var
@@ -19,7 +19,7 @@ for i, v in a:
 for i in 4..100:
   b.add(i * i)
 
-b.remove(0)  # takes «O(n)» time
+b.delete(0)  # takes «O(n)» time
 b = a[0] & b  # Same as original b
 ```
 

@@ -10,7 +10,7 @@ When inside a loop, `continue` can be used to skip the rest of the loop body and
 
 Along with [its other uses](/block/), the `block` statement can be used to create a label so that it's possible to break out of nested loops.
 
-``` nimrod
+<!--skip-->``` nimrod
 import strutils, math
 
 randomize()

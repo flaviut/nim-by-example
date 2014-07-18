@@ -17,7 +17,7 @@ Integers can also have `0[xX]`, `0o`, `0[Bb]` prepended to indicate a hex, octal
 ``` nimrod
 let
   a: int8 = 0x7F # Works
-  b: uint8 = 0x1111_1111 # Works
+  b: uint8 = 0b1111_1111 # Works
   d = 0xFF # type is int
   c: uint8 = 256 # Compile time error
 ```

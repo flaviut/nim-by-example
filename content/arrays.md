@@ -30,7 +30,7 @@ Alternate methods of indexing arrays are also allowed, the first type parameter 
 type
   PartsOfSpeech {.pure.} = enum
     Pronoun, Verb, Article, Adjective, Noun, Adverb
-let partOfSpeechExamples: array[PartsOfSpeech] = [
+let partOfSpeechExamples: array[PartsOfSpeech, string] = [
   "he", "reads", "the", "green", "book", "slowly"
 ]
 ```

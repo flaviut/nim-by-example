@@ -11,23 +11,23 @@ Nimrod also supports case statements, which are like switches in other languages
 * It is required that every possible case be covered
 
 ``` nimrod
-case "charlie"
-of "alfa":
-  echo "A"
-of "bravo":
-  echo "B"
-of "charlie":
-  echo "C"
-else:
-  echo "Unrecognized letter"
+case "charlie":
+  of "alfa":
+    echo "A"
+  of "bravo":
+    echo "B"
+  of "charlie":
+    echo "C"
+  else:
+    echo "Unrecognized letter"
 
 case 'h':
-of 'a', 'e', 'i', 'o', 'u':
-  echo "Vowel"
-of '\127'..'\255':
-  echo "Unknown"
-else:
-  echo "Consonant"
+  of 'a', 'e', 'i', 'o', 'u':
+    echo "Vowel"
+  of '\127'..'\255':
+    echo "Unknown"
+  else:
+    echo "Consonant"
 
 proc positiveOrNegative(num: int): string =
   result = case num:
@@ -54,11 +54,11 @@ Another feature of case statements is that the possible values are narrowed, mea
 
 ``` nimrod
 let x = 2
-case (x and 3) + 7
-of 7: echo "A"
-of 8: echo "B"
-of 9: echo "C"
-of 10: echo "D"
+case (x and 3) + 7:
+  of 7: echo "A"
+  of 8: echo "B"
+  of 9: echo "C"
+  of 10: echo "D"
 ```
 ``` console
 $ nimrod c -r ./case_stmts_1.nim
