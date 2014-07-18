@@ -29,7 +29,7 @@ animals.add(Cat(name: "Mitten", age: 10))
 
 for a in animals:
   echo a.vocalize()
-  echo a.age_human_yrs()
+  echo a.ageHumanYrs()
 ```
 ``` console
 $ nimrod c -r oop.nim
