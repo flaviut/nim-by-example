@@ -4,7 +4,7 @@ title: First Class Functions
 
 # First Class Functions
 
-Nimrod supports closures as well as passing functions. Two different syntaxes available for closures, proc syntax, which is identical to regular procedure syntax, and "do notation", which 
+Nimrod supports closures as well as passing functions. Two different syntaxes available for closures, proc syntax, which is identical to regular procedure syntax, and "do notation", which is a bit shorter.
 
 ``` nimrod
 import sequtils
