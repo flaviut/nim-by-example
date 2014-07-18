@@ -75,7 +75,7 @@ let zero = ""
 proc `+`(a, b: string): string =
   a & b
 
-proc `*`[T, I](a: T, b: int): T =
+proc `*`[T](a: T, b: int): T =
   result = zero
   for i in 0..b:
     result = result + a
