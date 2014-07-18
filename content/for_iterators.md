@@ -22,7 +22,7 @@ iterator items(range: TRange): int =
     inc i
 
 iterator pairs(range: TRange): tuple[a: int, b: char] =
-  for i in range:
+  for i in range:  # uses Range.items
     yield (i, char(i + ord('a')))
 
 for i, c in TRange(low: 1, high: 3):
@@ -120,6 +120,6 @@ echo output
 ```console
 $ nimrod c -r ./closure_iter.nim
 0
-12345678910111213141516171819200
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 0
 0123456789
 ```
