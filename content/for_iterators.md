@@ -84,7 +84,7 @@ $ nimrod c -r ./inline_iter.nim
 
 
 ## Closure Iterators
-Closure iterators hold on to their state and can be resumed at any time. The `finished()` function can be used to check if there are any more elements available in the iterator.
+Closure iterators hold on to their state and can be resumed at any time. The `finished()` function can be used to check if there are any more elements available in the iterator, however raw iterator usage is unintuitive and difficult to get right.
 
 ``` nimrod
 proc countTo(n: int): iterator(): int =
@@ -99,8 +99,16 @@ let countTo20 = countTo(20)
 echo countTo20()
 
 var output = ""
-while not finished(countTo20):
-  output.add($countTo20() & " ")
+# Raw iterator usage:
+while true:
+  # 1. grab an element
+  let next = countTo20()
+  # 2. Is the element bogus? Its the end of the loop, discard it
+  if finished(countTo20):
+    break
+  # 3. Loop body goes here:
+  output.add($next & " ")
+
 echo output
 
 output = ""
