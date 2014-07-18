@@ -48,19 +48,20 @@ To create an operator, the symbols that are to be used must be encased inside ``
 ``` nimrod
 proc `$`(a: array[2, array[2, int]]): string =
   result = ""
-  for y in a:
+  for v in a:
     for vx in v:
       result.add($vx & ", ")
     result.add("\n")
 
-echo [[1, 2],  # See Varargs for how 
-      [3, 4]]  # echo works
+echo([[1, 2], [3, 4]])  # See varargs for
+                        # how echo works
 
 proc `^&*^@%`(a, b: string): string =
-  ## An confusingly named useless proc
-  result = a[0] & b[high(str)]
+  ## An confusingly named useless operator
+  result = a[0] & b[high(b)]
 
 assert("foo" ^&*^@% "bar" == "fr")
+
 ``` 
 
 ## Generic Functions
