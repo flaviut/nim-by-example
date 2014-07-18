@@ -9,9 +9,12 @@ for filePath in walkFiles(markdownFilesGlob):
   let fileContents = file.readAll()
   file.close()
 
-  let sourceSegments = fileContents.findAll(re"""(?i)```\s*nimrod[\s\S]*?```""")
+  let sourceSegments = fileContents.findAll(re"""\n(?i)```\s*nimrod[\s\S]*?```""")
+  
   for match in sourceSegments:
-    let code = match.replacef(re"""(?i)```\s*nimrod[ \t]*\s([\s\S]*?)```""", "$1")
+    echo filePath
+
+    let code = match.replacef(re"""\n(?i)```\s*nimrod[ \t]*\s([\s\S]*?)```""", "$1")
     let codeHash = code.getMD5()
     if not configFilePath.readFile().contains(codeHash):  # Hasn't been verified yet
       let tempCodePath = getTempDir() / "code.nim"
@@ -27,7 +30,6 @@ for filePath in walkFiles(markdownFilesGlob):
         for line in output.splitLines():
           printableOutput.add("> " & line & "\n")
 
-      echo filePath
       stdout.write(printableCode & printableOutput)
 
       stdout.write("Everything ok? (y/n) ")
