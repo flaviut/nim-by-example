@@ -105,7 +105,7 @@ echo output
 
 output = ""
 let countTo9 = countTo(9)
-for i in countTo9:
+for i in countTo9():
   output.add($i)
 echo output
 ```
