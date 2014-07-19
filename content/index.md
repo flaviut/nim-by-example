@@ -13,7 +13,7 @@ Getting started? Head over to the [installation instructions](/getting_started/)
 <!--skip-->``` nimrod
 import tables, strutils
 
-var wordFrequencies = newCountTable[string]()
+var wordFrequencies = initCountTable[string]()
 
 for line in stdin.lines:
   for word in line.split(", "):
