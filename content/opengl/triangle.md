@@ -1,5 +1,5 @@
 ---
-title: OpenGL: Triangle
+title: OpenGL - Triangle
 ---
 # OpenGL: Triangle
 
