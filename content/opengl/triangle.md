@@ -7,7 +7,7 @@ The following code depends on the ``opengl`` and ``nim-glfw`` packages which
 can be installed via babel by executing ``babel install opengl@#head nim-glfw@#head``.
 You will need the GLFW DLL in order to run this on Windows.
 
-![Triangle Windows](https://nimrod-by-example.github.io/opengl/triangle.png)
+![Triangle Windows](https://nimrod-by-example.github.io/images/triangle.png)
 
 One thing to keep in mind when writing OpenGL code in Nimrod is that ``float``
 is actually ``float64``. But vertices must be ``float32`` so you must explicitly

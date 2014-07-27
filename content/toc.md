@@ -23,4 +23,6 @@
 * [Bitsets](/bitsets/)
 * [Varargs](/varargs/)
 * [OOP Macro](/oop_macro/)
+* OpenGL
+  * [Triangle](/opengl/triangle/)
 {: #toc-list}
