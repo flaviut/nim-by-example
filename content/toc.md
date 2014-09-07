@@ -9,7 +9,6 @@
 * [Case Statements](/case/)
 * [For Loops & Iterators](/for_iterators/)
 * [Procs](/procs/)
-* [Object Oriented Programming](/oop/)
 * [First Class Functions](/procvars/)
 * [Blocks](/block/)
 * [Primitive Types](/primitives/)
@@ -22,6 +21,7 @@
 * [Seqs](/seqs/)
 * [Bitsets](/bitsets/)
 * [Varargs](/varargs/)
+* [Object Oriented Programming](/oop/)
 * [OOP Macro](/oop_macro/)
 
 <!-- * OpenGL  * [Triangle](/opengl/triangle/)-->
