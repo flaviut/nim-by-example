@@ -2,7 +2,7 @@ box: flaviut/nimrod-by-example-build-vm@0.0.3
 build:
     steps:
         - script:
-            name: build and deploy
+            name: build
             code: |
               git remote add publish $GIT_CREDENTIALS
               git config --global user.email $GIT_EMAIL
@@ -13,4 +13,9 @@ build:
               rm -rf ./output/ ./content/ ./layouts/ ./lib/ .gitignore README.md Rules nanoc.yaml wercker.yml
               git add --all .
               git commit -am'Build Site'
+deploy:
+    steps:
+        - script:
+            name: deploy
+            code: |
               git push --force publish > /dev/null 2>&1
