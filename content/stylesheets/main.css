@@ -8,6 +8,7 @@
 
 body {
   background: #F5F7F6;
+  color: black;
   line-height: 20px;
   text-rendering: optimizelegibility;
 }
