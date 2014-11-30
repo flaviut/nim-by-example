@@ -4,7 +4,7 @@ title: Seqs
 
 # Seqs
 
-Seqs provide dynamically expandable storage, they are extended as needed.
+Seqs, abbreviated from "sequence", provide dynamically expandable storage.
 
 There are two ways to create seqs, with the `@` operator and with the `newSeq[T](n: int)` method. Once a seq is created, it can be modified using the `add(item: T)`, `delete(idx: int)`. The length of a seq can be found through `len: int`, and the maximum index through `high: int`. The standard `items: T` and `pairs: tuple[i: int, v: T]` iterators are also available.
 
