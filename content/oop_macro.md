@@ -68,7 +68,7 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
     baseName = head[2]
 
   else:
-    quit "Invalide node: " & head.lispRepr
+    quit "Invalid node: " & head.lispRepr
 
   # echo treeRepr(body)
   # --------------------
