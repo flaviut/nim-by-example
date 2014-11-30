@@ -39,9 +39,11 @@
           starcount_elem.innerHTML = localStorage.getItem("_watchers");
         }
         var request = new XMLHttpRequest();
-        request.open("GET", "https://api.github.com/repos/flaviut/nimrod-by-example/stargazers", true);
+        // horrible hack... but stargazer output is capped at 30 per request.
+        request.open("GET", "https://api.github.com/search/repositories?q=nimrod-by-example", true);
          request.onload = function (e) {
-           var starcount = JSON.parse(request.responseText).length;
+           var searchResults = JSON.parse(request.responseText);
+           var starcount = searchResults.items[0].stargazers_count;
            starcount_elem.innerHTML = starcount;
            localStorage.setItem("_watchers", starcount)
          };
