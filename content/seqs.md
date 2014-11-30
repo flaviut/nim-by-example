@@ -24,9 +24,9 @@ b = a[0] & b  # Same as original b
 ```
 
 
-## Value semantics
+## Immutability
 
-Seqs have value semantics, so
+While sequences are dynamiclly allocated, they are still immutable.
 
 ``` nimrod
 let a = @[1, 2, 3]
@@ -40,7 +40,7 @@ var b = @[1, 2, 3]
 b.add(4)
 ```
 
-will work without any problems. If wanted, a seq can be passed to a method with the `var` annotation to make it modifiable, so
+will work without any problems. If wanted, a seq can be passed to a method with the `var` or `ref` annotation to make it modifiable, so
 
 ``` nimrod
 proc foo(mySeq: var seq[int]) =
