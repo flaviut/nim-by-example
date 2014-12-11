@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Nimrod by Example - <%= @item[:title] %></title>
+    <title>Nim by Example - <%= @item[:title] %></title>
     <link rel="stylesheet" type="text/css" href="http://necolas.github.io/normalize.css/3.0.1/normalize.css">
     <link rel="stylesheet" href="<%= @items['/stylesheets/main/'].path %>">
     <link rel="stylesheet" href="<%= @items['/stylesheets/colorful/'].path %>" title="colorful">
@@ -23,7 +23,7 @@
       <%= @items["/toc/"].compiled_content(:snapshot => :last) %>
     </div>
     <div id="main">
-    <h1 id="gh-buttons"><a class="icon-fork" href="https://github.com/flaviut/nimrod-by-example/"></a> <a class="icon-star" href="https://github.com/flaviut/nimrod-by-example/stargazers" /><div id="starcount"></div></a></h1>
+    <h1 id="gh-buttons"><a class="icon-fork" href="https://github.com/flaviut/nim-by-example/"></a> <a class="icon-star" href="https://github.com/flaviut/nim-by-example/stargazers" /><div id="starcount"></div></a></h1>
     <script>
       function setVisibleTags(){
         var tocLinks = document.querySelectorAll("#sidebar a:link, a:visited");
@@ -40,7 +40,7 @@
         }
         var request = new XMLHttpRequest();
         // horrible hack... but stargazer output is capped at 30 per request.
-        request.open("GET", "https://api.github.com/search/repositories?q=nimrod-by-example", true);
+        request.open("GET", "https://api.github.com/search/repositories?q=nim-by-example", true);
          request.onload = function (e) {
            var searchResults = JSON.parse(request.responseText);
            var starcount = searchResults.items[0].stargazers_count;

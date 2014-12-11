@@ -3,7 +3,7 @@ title: Type Casting and Inference
 ---
 # Type Casting and Inference
 
-Nimrod is a statically typed language. As such, each variable has a type associated with it. As seen in the previous example these types are inferred in the `const`, `let` and `var` declarations by the compiler.
+Nim is a statically typed language. As such, each variable has a type associated with it. As seen in the previous example these types are inferred in the `const`, `let` and `var` declarations by the compiler.
 
 ```nimrod
 # These types are inferred.
@@ -15,7 +15,7 @@ x = y
 ```
 
 ```console
-$ nimrod c -r typeinference.nim
+$ nim c -r typeinference.nim
 typeinference.nim(6, 4) Error: type mismatch: got (string) but expected 'int'
 ```
 
@@ -33,6 +33,6 @@ ffi(cast[ptr array[6, char]](addr y[0]))
 ```
 
 ```console
-$ nimrod c -r typecasting.nim
+$ nim c -r typecasting.nim
 ref 002C8030 --> ['F', 'o', 'o', 'b', 'a', 'r']
 ```

@@ -3,7 +3,7 @@ title: Case Statements
 ---
 # Case Statements
 
-Nimrod also supports case statements, which are like switches in other languages. There are several things to note here:
+Nim also supports case statements, which are like switches in other languages. There are several things to note here:
 
 * You can use strings in the switch statement
 * Sets and ranges of ordinal types are also usable
@@ -44,7 +44,7 @@ echo positiveOrNegative(-1)
 ```
 
 ``` console
-$ nimrod c -r ./case_stmts.nim
+$ nim c -r ./case_stmts.nim
 C
 Consonant
 negative
@@ -61,6 +61,6 @@ case (x and 3) + 7:
   of 10: echo "D"
 ```
 ``` console
-$ nimrod c -r ./case_stmts_1.nim
+$ nim c -r ./case_stmts_1.nim
 C
 ```

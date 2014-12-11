@@ -3,7 +3,7 @@ title: Variables
 ---
 # Variables
 
-Nimrod supports three different types of variables, `let`, `var`, and `const`. As with most things, multiple variables can be declared in the same section.
+Nim supports three different types of variables, `let`, `var`, and `const`. As with most things, multiple variables can be declared in the same section.
 
 ``` nimrod
 proc getAlphabet(): string =
@@ -43,7 +43,7 @@ e += 1
 ```
 
 ``` console
-$ nimrod c --verbosity:2 ./variables.nim
+$ nim c --verbosity:2 ./variables.nim
 variables.nim(22, 2) Error: 'let' symbol requires an initialization
     f: float
     ^

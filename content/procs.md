@@ -3,7 +3,7 @@ title: Procs
 ---
 # Procs
 
-Procedures in Nimrod are declared using `proc` and require that their parameter and return types be annotated. After the types and parameters, an `=` is used to denote the start of the function body. Another thing to note is that procedures have uniform function call syntax, which means that they can called as both `foo(a, b)` or `a.foo(b)`.
+Procedures in Nim are declared using `proc` and require that their parameter and return types be annotated. After the types and parameters, an `=` is used to denote the start of the function body. Another thing to note is that procedures have uniform function call syntax, which means that they can called as both `foo(a, b)` or `a.foo(b)`.
 
 ``` nimrod
 proc fibonacci(n: int): int =
@@ -30,7 +30,7 @@ echo bar()  # will not compile
 
 ## Side effect analyses
 
-Nimrod provides support for functional programming and so includes the `{.noSideEffect.}` pragma, which statically ensures there are no side effects.
+Nim provides support for functional programming and so includes the `{.noSideEffect.}` pragma, which statically ensures there are no side effects.
 
 ``` nimrod
 proc sum(x, y: int): int {. noSideEffect .} =

@@ -9,17 +9,17 @@ for filePath in walkFiles(markdownFilesGlob):
   let fileContents = file.readAll()
   file.close()
 
-  let sourceSegments = fileContents.findAll(re"""\n(?i)```\s*nimrod[\s\S]*?```""")
+  let sourceSegments = fileContents.findAll(re"""\n(?i)```\s*nim[\s\S]*?```""")
   
   for match in sourceSegments:
     echo filePath
 
-    let code = match.replacef(re"""\n(?i)```\s*nimrod[ \t]*\s([\s\S]*?)```""", "$1")
+    let code = match.replacef(re"""\n(?i)```\s*nim[ \t]*\s([\s\S]*?)```""", "$1")
     let codeHash = code.getMD5()
     if not configFilePath.readFile().contains(codeHash):  # Hasn't been verified yet
       let tempCodePath = getTempDir() / "code.nim"
       tempCodePath.writeFile(code)
-      let (output, exitCode) = execCmdEx("nimrod c -r --verbosity:0 " & tempCodePath)
+      let (output, exitCode) = execCmdEx("nim c -r --verbosity:0 " & tempCodePath)
 
       var printableCode = ""
       for line in code.splitLines():

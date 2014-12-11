@@ -4,7 +4,7 @@ title: OOP Macro
 <!--- Thanks to fowl for creating this page, filwit for fixing some oddities -->
 
 # OOP Macro
-This is the code that we currently must write to use OOP in Nimrod:
+This is the code that we currently must write to use OOP in Nim:
 
 ```nimrod
 type Animal = ref object of TObject
@@ -47,7 +47,7 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
   # The macro is immediate so that it doesn't
   # resolve identifiers passed to it
 
-  var typeName, baseName: PNimrodNode
+  var typeName, baseName: PNimNode
 
   if head.kind == NnkIdent:
     # `head` is expression `typeName`
@@ -222,7 +222,7 @@ for a in animals:
   echo a.age_human_yrs()
 ```
 ``` console
-$ nimrod c -r oopmacro.nim
+$ nim c -r oopmacro.nim
 woof
 70
 meow

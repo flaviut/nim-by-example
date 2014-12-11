@@ -4,7 +4,7 @@ title: First Class Functions
 
 # First Class Functions
 
-Nimrod supports closures as well as passing functions. Two different syntaxes available for closures, proc syntax, which is identical to regular procedure syntax, and "do notation", which is a bit shorter.
+Nim supports closures as well as passing functions. Two different syntaxes available for closures, proc syntax, which is identical to regular procedure syntax, and "do notation", which is a bit shorter.
 
 ``` nimrod
 import sequtils
@@ -15,7 +15,7 @@ echo powersOfTwo.filter do (x: int) -> bool : x > 32
 echo powersOfTwo.filter(proc (x: int): bool = x > 32)
 ```
 ``` console
-$ nimrod c -r filterclosure.nim
+$ nim c -r filterclosure.nim
 @[64, 128, 256]
 @[64, 128, 256]
 ```

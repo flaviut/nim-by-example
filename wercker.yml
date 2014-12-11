@@ -1,4 +1,4 @@
-box: flaviut/nimrod-by-example-build-vm@0.0.3
+box: flaviut/nim-by-example-build-vm@0.0.3
 build:
     steps:
         - script:

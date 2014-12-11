@@ -2,7 +2,7 @@
 title: Enums
 ---
 # Enums
-Enums in Nimrod are like enums in C, but are type-checked. There are no anonymous enums in Nimrod.
+Enums in Nim are like enums in C, but are type-checked. There are no anonymous enums in Nim.
 
 ``` nimrod
 type
@@ -34,7 +34,7 @@ dec ordinal
 echo high(char)
 ```
 ```console
-$ nimrod c -r enums.nim
+$ nim c -r enums.nim
 cdNorth ord: 0
 cdEast ord: 1
 cdSouth ord: 2

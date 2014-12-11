@@ -32,7 +32,7 @@ for a in animals:
   echo a.ageHumanYrs()
 ```
 ``` console
-$ nimrod c -r oop.nim
+$ nim c -r oop.nim
 woof
 70
 meow

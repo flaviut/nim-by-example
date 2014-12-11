@@ -3,7 +3,7 @@ title: Primitives
 ---
 # Primitives
 
-Nimrod has several primitive types:
+Nim has several primitive types:
 
 * signed integers: `int8`, `int16`, `int32`, `int64`, and `int`, where `int` is the same size as a pointer
 * unsigned integers are similar with `u` prepended to the type
@@ -31,7 +31,7 @@ let
 echo 4/2
 ```
 ``` console
-$ nimrod c -r numbers2.nim
+$ nim c -r numbers2.nim
 2.0
 ```
 Another difference that may be surprising is that the `/` operator returns a floating point result, even when the operands are integers.  If integer division is needed, the `div` operator should be used.

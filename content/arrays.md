@@ -4,7 +4,7 @@ title: Arrays
 
 # Arrays
 
-The arrays in Nimrod are like classic C arrays, their size is specified at compile-time and cannot given or changed at runtime.
+The arrays in Nim are like classic C arrays, their size is specified at compile-time and cannot given or changed at runtime.
 
 ``` nimrod
 type
@@ -57,7 +57,7 @@ echo mat1 + mat2
 ```
 
 ``` console
-$ nimrod c -r matrix.nim
+$ nim c -r matrix.nim
 1, 1, 
 1, 1, 
 

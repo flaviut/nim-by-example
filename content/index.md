@@ -2,15 +2,15 @@
 title: Main
 ---
 
-# Nimrod by Example
+# Nim by Example
 
-[Nimrod] is a powerful statically typed language that allows the programmer expressiveness without compromising run-time performance. As a general purpose programming language, it gives the same sort of power and performance as C++, but in a nicer package and with even more powerful tools!
+[Nim] is a powerful statically typed language that allows the programmer expressiveness without compromising run-time performance. As a general purpose programming language, it gives the same sort of power and performance as C++, but in a nicer package and with even more powerful tools!
 
-[Nimrod]: http://nimrod-lang.org/
+[Nim]: http://nim-lang.org/
 
 Getting started? Head over to the [installation instructions](/getting_started/)!
 
-<!--skip-->``` nimrod
+<!--skip-->``` nim
 import tables, strutils
 
 var wordFrequencies = initCountTable[string]()

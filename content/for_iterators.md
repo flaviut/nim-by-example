@@ -3,11 +3,11 @@ title: For Loops & Iterators
 ---
 # For Loops & Iterators
 
-Nimrod has first class iterators and syntax to use them, for loops. The `continue` and `break` keywords also work inside of for loops. There are two kinds of iterator, and two special methods that for loops work with.
+Nim has first class iterators and syntax to use them, for loops. The `continue` and `break` keywords also work inside of for loops. There are two kinds of iterator, and two special methods that for loops work with.
 
 ## `items` and `pair`
 
-When iterating over an object with one item, Nimrod will call an iterator called `items` with the first parameter the type you want to iterate over. The same thing happens when iterating with two items, but in that case, the `pairs` iterator is called.
+When iterating over an object with one item, Nim will call an iterator called `items` with the first parameter the type you want to iterate over. The same thing happens when iterating with two items, but in that case, the `pairs` iterator is called.
 
 ``` nimrod
 type
@@ -29,7 +29,7 @@ for i, c in TRange(low: 1, high: 3):
   echo c
 ```
 ``` console
-$ nimrod c -r items_pair.nim
+$ nim c -r items_pair.nim
 b
 c
 d
@@ -50,7 +50,7 @@ for i in 0...5:
   echo i
 ```
 ``` console
-$ nimrod c -r operatoriterator.nim
+$ nim c -r operatoriterator.nim
 0
 1
 2
@@ -73,7 +73,7 @@ for i in countTo(5):
   echo i
 ```
 ```console
-$ nimrod c -r ./inline_iter.nim
+$ nim c -r ./inline_iter.nim
 0
 1
 2
@@ -118,7 +118,7 @@ for i in countTo9():
 echo output
 ```
 ```console
-$ nimrod c -r ./closure_iter.nim
+$ nim c -r ./closure_iter.nim
 0
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
 0123456789

@@ -21,7 +21,7 @@ block:
   let b = "3"  # shadowing is probably a dumb idea
 ```
 
-Parentheses can be used as an expression, but they do not provide end of statement inference, so it is necessary to place semicolons yourself. An interesting and unexpected side effect of this syntax is that Nimrod is suitable even for brace purists!
+Parentheses can be used as an expression, but they do not provide end of statement inference, so it is necessary to place semicolons yourself. An interesting and unexpected side effect of this syntax is that Nim is suitable even for brace purists!
 
 ``` nimrod
 proc square(inSeq: seq[float]): seq[float] = (

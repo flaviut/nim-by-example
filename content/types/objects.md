@@ -3,7 +3,7 @@ title: Objects
 ---
 # Objects
 
-In Nimrod, objects are like structs from C family languages and define a grouping of fields. They are by default traced by the garbage collector, so there is no need to explicitly free them when allocated.
+In Nim, objects are like structs from C family languages and define a grouping of fields. They are by default traced by the garbage collector, so there is no need to explicitly free them when allocated.
 
 ``` nimrod
 type

@@ -20,7 +20,7 @@ echo r" "" "
 echo re"\b[a-z]++\b"
 ```
 ``` console
-$ nimrod c -r strings.nim
+$ nim c -r strings.nim
 words words words ⚑
 <html>
   <head>

@@ -13,7 +13,7 @@ proc printThings(things: varargs[string]) =
 printThings "words", "to", "print"
 ```
 ```console
-$ nimrod c -r ./varargs1.nim
+$ nim c -r ./varargs1.nim
 words
 to
 print
@@ -36,7 +36,7 @@ printThings "thing 1", 2, @[4, 5, 6]
 ```
 
 ```console
-$ nimrod c -r ./varargs2.nim
+$ nim c -r ./varargs2.nim
 thing 1
 2
 @[4, 5, 6]
