@@ -9,7 +9,7 @@ build:
               git config --global user.email $GIT_EMAIL
               git config --global user.name $GIT_NAME
               git checkout master
-              nanoc; cat ./crash.log
+              nanoc -V
               cp -r ./output/. ./
               rm -rf ./output/ ./content/ ./layouts/ ./lib/ .gitignore README.md Rules nanoc.yaml wercker.yml
               git add --all .
