@@ -11,21 +11,15 @@ The Windows distribution comes with the MinGW compiler, which is recommended, bu
 
 On Mac and Linux, it is recommended to use either GCC or Clang.
 
-|    | i386 | amd64 |
-| -- | ---- | ----- |
-| Windows | [Download](http://nim-lang.org/download/nim_0.9.4_windows_i386_full.zip) ([w/o MinGW](http://nim-lang.org/download/nim_0.9.4_windows_i386_slim.zip))| [Download](http://nim-lang.org/download/nim_0.9.4_windows_amd64_full.zip) ([w/o MinGW](http://nim-lang.org/download/nim_0.9.4_windows_amd64_slim.zip)) |
-| Mac | NA | [Download](http://nim-lang.org/download/nim_0.9.4_macosx_amd64.zip) |
-| Linux | [Download](http://nim-lang.org/download/nim_0.9.4_linux_i386.tar.gz) | [Download](http://nim-lang.org/download/nim_0.9.4_linux_amd64.tar.gz) |
-
 Once you have downloaded the appropriate distribution and extracted the files somewhere convenient, feel free to place the `bin` directory in the path for easier access.
 
 ## Downloading from Git
 To install Nim from git, ensure that you have gcc installed on Windows, Linux, and BSDs and clang on Mac. Afterwards, run the following series of commands to download and bootstrap Nim:
 
 ```console
-$ git clone -b master git://github.com/Araq/Nim.git
-$ cd Nim
-$ git clone --depth 1 git://github.com/nim-code/csources
+$ git clone -b master git://github.com/Araq/Nimrod.git
+$ cd Nimrod
+$ git clone --depth 1 git://github.com/nimrod-code/csources
 $ cd csources
 $ sh build.sh # Replace with build.bat on windows
 $ cd ..

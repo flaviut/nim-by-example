@@ -47,7 +47,7 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
   # The macro is immediate so that it doesn't
   # resolve identifiers passed to it
 
-  var typeName, baseName: PNimNode
+  var typeName, baseName: PNimrodNode
 
   if head.kind == NnkIdent:
     # `head` is expression `typeName`
