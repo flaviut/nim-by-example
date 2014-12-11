@@ -4,6 +4,7 @@ build:
         - script:
             name: build
             code: |
+              source /home/ubuntu/.rvm/scripts/rvm
               git remote add publish $GIT_CREDENTIALS
               git config --global user.email $GIT_EMAIL
               git config --global user.name $GIT_NAME
