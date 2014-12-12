@@ -10,7 +10,7 @@ title: Main
 
 Getting started? Head over to the [installation instructions](/getting_started/)!
 
-<!--skip-->``` nim
+``` nim
 import tables, strutils
 
 var wordFrequencies = initCountTable[string]()
