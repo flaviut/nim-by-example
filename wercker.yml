@@ -6,9 +6,10 @@ build:
             code: |
               source /home/ubuntu/.rvm/scripts/rvm
               git remote add publish $GIT_CREDENTIALS
-              pygmentize -L
+              git config --global user.email "you@example.com"
+              git config --global user.name "Your Name"
               git checkout master
-              nanoc -Vd
+              nanoc
               cp -r ./output/. ./
               rm -rf ./output/ ./content/ ./layouts/ ./lib/ .gitignore README.md Rules nanoc.yaml wercker.yml
               git add --all .
