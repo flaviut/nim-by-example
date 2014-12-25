@@ -49,14 +49,14 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
 
   var typeName, baseName: PNimrodNode
 
-  if head.kind == NnkIdent:
+  if head.kind == nnkIdent:
     # `head` is expression `typeName`
     # echo head.treeRepr
     # --------------------
     # Ident !"Animal"
     typeName = head
 
-  elif head.kind == NnkInfix and $head[0] == "of":
+  elif head.kind == nnkInfix and $head[0] == "of":
     # `head` is expression `typeName of baseClass`
     # echo head.treeRepr
     # --------------------
@@ -116,14 +116,14 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
   for node in body.children:
     case node.kind:
 
-      of NnkMethodDef, NnkProcDef:
+      of nnkMethodDef, nnkProcDef:
         # inject `this: T` into the arguments
         let p = copyNimTree(node.params)
         p.insert(1, newIdentDefs(ident"this", typeName))
         node.params = p
         result.add(node)
 
-      of NnkVarSection:
+      of nnkVarSection:
         # variables get turned into fields of the type.
         for n in node.children:
           recList.add(n)
