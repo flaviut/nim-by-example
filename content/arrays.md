@@ -18,7 +18,7 @@ The size of the array is encoded in its type and cannot be accidentally lost. Th
 ``` nimrod
 proc zip[I, T](a, b: array[I, T]):
                array[I, tuple[a, b: T]] =
-  for i in low(A)..high(A):
+  for i in low(a)..high(a):
     result[i] = (a[i], b[i])
 
 let nameAndAddresses = names.zip(addresses)
