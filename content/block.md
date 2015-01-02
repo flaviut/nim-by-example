@@ -21,7 +21,9 @@ block:
   let b = "3"  # shadowing is probably a dumb idea
 ```
 
-Parentheses can be used as an expression, but they do not provide end of statement inference, so it is necessary to place semicolons yourself. An interesting and unexpected side effect of this syntax is that Nim is suitable even for brace purists!
+Parentheses can be used as an expression, but they do not provide end of statement inference, so it is necessary to place semicolons yourself. An interesting and unexpected side effect of this syntax is that Nim is suitable even for die-hard brace purists!
+
+While possible, it doesn't mean it's a good idea. Most Nim code does not use parentheses in that way, and it would not be seen as idiomatic.
 
 ``` nimrod
 proc square(inSeq: seq[float]): seq[float] = (
@@ -32,6 +34,7 @@ proc square(inSeq: seq[float]): seq[float] = (
 )
 
 ```
+
 <!-- XXX FIX
 square((  # A 1001 long sequence to be squared
   var result = newSeq[float]();
