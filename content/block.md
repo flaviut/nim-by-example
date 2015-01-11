@@ -4,9 +4,22 @@ title: Blocks
 
 # Blocks
 
-There are two ways to introduce a block, with the `block: ` statement or with `()`s.
+Blocks can be introduced in two different ways: by indenting statements or with `()`s.
 
-The block statement can also be labeled, making it useful for breaking out of loops and is useful for general scoping as well. 
+The first way ist to use indenting, e.g. using `if-elif-else`, `while`, `for` statements, or the `block`  statement.
+
+``` nimrod
+if true:
+  echo "Nimrod is great!"
+
+while false:
+  echo "This line is never output!"
+
+block:
+  echo "This line, on the other hand, is always output"
+```
+
+The `block` statement can also be labeled, making it useful for breaking out of loops and is useful for general scoping as well. 
 
 ``` nimrod
 block outer:
