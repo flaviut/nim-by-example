@@ -7,7 +7,7 @@ title: OOP Macro
 This is the code that we currently must write to use OOP in Nim:
 
 ```nimrod
-type Animal = ref object of TObject
+type Animal = ref object of RootObj
   name: string
   age: int
 method vocalize(this: Animal): string = "..."
@@ -24,7 +24,7 @@ method vocalize(this: Cat): string = "meow"
 All these typedefs and `this: T` parameters are repetitive, so it'd be good to write a macro to mask them. Something like this would be best:
 
 ```nimrod
-class Animal of TObject:
+class Animal of RootObj:
   var name: string
   var age: int
   method vocalize: string = "..."
@@ -63,7 +63,7 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
     # Infix
     #   Ident !"of"
     #   Ident !"Animal"
-    #   Ident !"TObject"
+    #   Ident !"RootObj"
     typeName = head[1]
     baseName = head[2]
 
@@ -175,7 +175,7 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
   #           ObjectTy
   #             Empty
   #             OfInherit
-  #               Ident !"TObject"
+  #               Ident !"RootObj"
   #             Empty   <= We want to replace this
   #   MethodDef
   #   ...
@@ -186,7 +186,7 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
   # echo repr(result)
   # Output:
   #  type
-  #    Animal = ref object of TObject
+  #    Animal = ref object of RootObj
   #      name: string
   #      age: int
   #
@@ -198,7 +198,7 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
 
 # ---
 
-class Animal of TObject:
+class Animal of RootObj:
   var name: string
   var age: int
   method vocalize: string = "..."

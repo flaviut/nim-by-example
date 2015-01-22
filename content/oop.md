@@ -9,7 +9,7 @@ Object oriented programming is supported through inheritance and methods, which 
 Inheritance is created with the `of` keyword in the type declaration of an object. A method is overridden by creating a new method with parameter types of the subtype. 
 
 ``` nimrod
-type Animal = ref object of TObject
+type Animal = ref object of RootObj
   name: string
   age: int
 method vocalize(this: Animal): string = "..."
