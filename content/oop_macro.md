@@ -156,17 +156,29 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
     case node.kind:
       of nnkMethodDef, nnkProcDef:
         # inject `this: T` into the arguments
-        node.params.insert(1, newIdentDefs(ident(obj_reference), typeName))
-        result.add(node)
+        let n = copyNimTree(node)
+        n.params.insert(1, newIdentDefs(ident(obj_reference), typeName))
 
         # Copy the proc or method for inheritance
         # ie: procName_ClassName()
         let n2 = copyNimTree(node)
+        n2.params.insert(1, newIdentDefs(ident(obj_reference), typeName))
         let proc_name = $(n2.name.toStrLit())
         let type_name = $(typeName.toStrLit())
         let new_name = ident(proc_name & type_name)
         n2.name = new_name
         result.add(n2)
+
+        # simply call the class method from here
+        # proc procName=
+        #    procName_ClassName()
+        var p: seq[PNimrodNode] = @[]
+        for i in 1..n.params.len-1:
+            p.add(n.params[i][0])
+        n.body = newStmtList(newCall(proc_name & type_name, p))
+
+        result.add(n)
+
       of nnkVarSection:
         # variables get turned into fields of the type.
         for n in node.children:
