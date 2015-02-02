@@ -4,7 +4,7 @@ title: Arrays
 
 # Arrays
 
-The arrays in Nim are like classic C arrays, their size is specified at compile-time and cannot given or changed at runtime.
+The arrays in Nim are like classic C arrays, their size is specified at compile-time and cannot be given or changed at runtime.
 
 ``` nimrod
 type
