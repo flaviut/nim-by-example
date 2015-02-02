@@ -20,7 +20,7 @@ $ nim c -r filterclosure.nim
 @[64, 128, 256]
 ```
 
-Existing procedures can also be passed as functions, but only if they are annotated with the `{.procvar.}` pragma.
+Existing procedures can also be passed as functions, but only if they are annotated with the `{.procvar.}` pragma. This is because there may be default parameters, which must be specially handled by the compiler.
 
 ``` nimrod
 proc greaterThan32(x: int): bool {.procvar.} = x > 32
