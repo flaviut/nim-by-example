@@ -156,7 +156,7 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
   result.insert(0,
     if baseName == nil:
       quote do:
-        type `typeName` = ref object
+        type `typeName` = ref object of RootObj
     else:
       quote do:
         type `typeName` = ref object of `baseName`
