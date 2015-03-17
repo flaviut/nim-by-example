@@ -23,6 +23,7 @@
 * [Varargs](/varargs/)
 * [Object Oriented Programming](/oop/)
 * [OOP Macro](/oop_macro/)
+* [Templates in macros](/templates_in_macros/)
 
 <!-- * OpenGL  * [Triangle](/opengl/triangle/)-->
 {: #toc-list}
