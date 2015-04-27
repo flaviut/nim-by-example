@@ -115,6 +115,10 @@ a:hover {
   padding: 0px 3px;
 }
 
+pre {
+  overflow: visible;
+}
+
 #main pre code { /* Block Code */
   display: block;
   word-wrap: break-word;
