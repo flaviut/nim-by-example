@@ -7,7 +7,7 @@ When installing Nim, you have two options: downloading a copy directly from git,
 ## Downloading a Nim Distribution
 To get started with Nim, head over to the [downloads page](http://nim-lang.org/download.html) and download the version you'd like.
 
-The Windows distribution comes with the MinGW compiler, which is recommended, but if you'd like to use your own compiler, download the version without MinGW.
+The Windows distribution comes with the MinGW compiler, which is recommended, but if you'd like to use your own compiler, download the version without MinGW. If you get an error like `Error: unhandled exception: The system cannot find the file specified.`, then make sure that the C compiler is on your path.
 
 On Mac and Linux, it is recommended to use either GCC or Clang.
 
