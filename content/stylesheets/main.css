@@ -190,3 +190,11 @@ a:hover {
   #sidebar ul { text-indent: -5px; }
   #sidebar #toc-list { left: 25px; }
 }
+
+.hyphenate {
+    text-align:justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+}
