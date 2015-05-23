@@ -6,7 +6,7 @@ title: Blocks
 
 Blocks can be introduced in two different ways: by indenting statements or with `()`s.
 
-The first way ist to use indenting, e.g. using `if-elif-else`, `while`, `for` statements, or the `block`  statement.
+The first way is to use indenting, e.g. using `if-elif-else`, `while`, `for` statements, or the `block`  statement.
 
 ``` nimrod
 if true:
