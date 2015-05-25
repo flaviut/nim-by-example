@@ -24,5 +24,4 @@
 * [Object Oriented Programming](/oop/)
 * [OOP Macro](/oop_macro/)
 
-<!-- * OpenGL  * [Triangle](/opengl/triangle/)-->
 {: #toc-list}
