@@ -38,3 +38,19 @@ woof
 meow
 10
 ```
+
+## Testing subtypes
+
+It is also possible to check if an object is of a given subtype with the `of` keyword. For example,
+
+``` nimrod
+echo(animals[0] of Dog)
+echo(animals[0] of Cat)
+echo(animals[0] of Animal)
+```
+``` console
+$ nim c -r of_op.nim
+true
+false
+true
+```
