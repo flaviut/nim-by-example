@@ -17,9 +17,9 @@ Once you have downloaded the appropriate distribution and extracted the files so
 To install Nim from git, ensure that you have gcc installed on Windows, Linux, and BSDs and clang on Mac. Afterwards, run the following series of commands to download and bootstrap Nim:
 
 ```console
-$ git clone -b master git://github.com/Araq/Nimrod.git
-$ cd Nimrod
-$ git clone --depth 1 git://github.com/nimrod-code/csources
+$ git clone -b master git://github.com/Araq/Nim.git
+$ cd Nim
+$ git clone --depth 1 git://github.com/nim-code/csources
 $ cd csources
 $ sh build.sh # Replace with build.bat on windows
 $ cd ..

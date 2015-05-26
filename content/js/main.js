@@ -7,7 +7,7 @@ function setVisibleTags(){
    }
 }
 
-var isMobile = window.matchMedia("only screen and (max-width: 720px)").matches;
+var isMobile = window.screen.width < 720;
 if (localStorage.getItem("openside") === null) {
   window.sidebarExpanded = !isMobile;
 } else {
