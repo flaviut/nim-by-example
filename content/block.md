@@ -10,7 +10,7 @@ The first way is to use indenting, e.g. using `if-elif-else`, `while`, `for` sta
 
 ``` nimrod
 if true:
-  echo "Nimrod is great!"
+  echo "Nim is great!"
 
 while false:
   echo "This line is never output!"
