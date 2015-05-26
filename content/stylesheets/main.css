@@ -2,6 +2,7 @@ body {
   background: #F5F7F6;
   color: #000000;
   margin: 0; padding: 0;
+  max-width: 720px;
 
   text-rendering: optimizelegibility;
 
@@ -59,7 +60,6 @@ body {
 
 article {
   margin: 15px;
-  max-width: 720px;
 
   transition: max-width 1s;
 }
