@@ -2,29 +2,46 @@ function setVisibleTags(){
   var tocLinks = document.querySelectorAll("#sidebar a:link, a:visited");
    for(var i = 0; i < tocLinks.length; i++){
      if(localStorage.getItem(tocLinks[i].getAttribute("href")) != null){
-       tocLinks[i].classList.add("visited");
+       tocLinks[i].parentNode.classList.add("visited");
      }
    }
 }
-var starcount_elem = document.getElementById("starcount");
-function updateStarCounter(){
-  if(localStorage.getItem("_watchers") != null){
-    starcount_elem.innerHTML = localStorage.getItem("_watchers");
-  }
-  var request = new XMLHttpRequest();
-  // horrible hack... but stargazer output is capped at 30 per request.
-  request.open("GET", "https://api.github.com/search/repositories?q=nim-by-example", true);
-   request.onload = function (e) {
-     var searchResults = JSON.parse(request.responseText);
-     var starcount = searchResults.items[0].stargazers_count;
-     starcount_elem.innerHTML = starcount;
-     localStorage.setItem("_watchers", starcount)
-   };
-   request.onerror = function (e) {
-     console.error(request.statusText);
-   };
-   request.send(null);
+
+var isMobile = window.matchMedia("only screen and (max-width: 720px)").matches;
+if (localStorage.getItem("openside") === null) {
+  window.sidebarExpanded = !isMobile;
+} else {
+  window.sidebarExpanded = (localStorage.getItem("openside") === "true");
 }
-updateStarCounter()
+
+function updateSidebar(notransition) {
+  if (notransition) {
+    document.querySelectorAll("#sidebar")[0].classList.add("notransition");
+    document.querySelectorAll("article")[0].classList.add("notransition");
+  }
+  localStorage.setItem("openside", window.sidebarExpanded);
+  if (!window.sidebarExpanded) {
+    document.querySelectorAll("#sidebar")[0].classList.add("collapsed");
+    document.querySelectorAll("article")[0].classList.add("expanded");
+  } else {
+    document.querySelectorAll("#sidebar")[0].classList.remove("collapsed");
+    document.querySelectorAll("article")[0].classList.remove("expanded");
+  }
+  if (notransition) {
+    setTimeout(function(){
+      document.querySelectorAll("#sidebar")[0].classList.remove("notransition");
+      document.querySelectorAll("article")[0].classList.remove("notransition");
+    }, 100);
+  }
+}
+
+function sidebarClick() {
+  window.sidebarExpanded = !window.sidebarExpanded;
+  updateSidebar(false);
+}
+
 localStorage.setItem(window.location.pathname, true);
-setVisibleTags()
+window.onload = function(){
+  updateSidebar(true);
+  setVisibleTags();
+}
