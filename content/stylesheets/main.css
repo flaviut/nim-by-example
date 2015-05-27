@@ -107,3 +107,14 @@ footer a:hover { color: #999; }
   -ms-transition: none !important;
   transition: none !important;
 }
+
+
+@media screen and (min-width: 925px) {
+  body { margin: 0 auto; }
+  body #sidebar.collapsed, body #sidebar { margin-left: -205px; }
+  body article.expanded, body article { max-width: none; width: none; min-width: none; }
+}
+
+@media screen and (max-width: 1200px) {
+  body { margin-right: 0; }
+}
