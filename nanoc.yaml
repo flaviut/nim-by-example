@@ -60,3 +60,14 @@ data_sources:
 
     # The default encoding for all files in `content/` and `layouts/`.
     encoding: utf-8
+
+
+debug: false
+
+scripts:
+  - main
+
+stylesheets:
+  - normalize
+  - colorful
+  - main

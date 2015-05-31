@@ -19,7 +19,7 @@ for i, v in a:
 for i in 4..100:
   b.add(i * i)
 
-b.delete(0)  # takes «O(n)» time
+b.delete(0)  # takes O(n) time
 b = a[0] & b  # Same as original b
 ```
 
