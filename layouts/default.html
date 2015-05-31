@@ -11,7 +11,9 @@
       <script async src="/assets/js/<%= file %>"></script>
       <% end %>
     <% else %>
-      <link rel="stylesheet" type="text/css" href="/assets/css/all.css">
+      <style>
+        <%= @items["/assets/css/all/"].compiled_content() %>
+      </style>
       <script async src="/assets/js/all.js"></script>
     <% end %>
     <script>
