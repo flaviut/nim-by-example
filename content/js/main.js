@@ -34,10 +34,14 @@ function sidebarClick() {
 }
 
 function getNextPrev() {
-  // thanks iznogoodd from #nim @ freenode.net
   var links = document.querySelectorAll('#sidebar a[href]');
-
   var nav = {prev: null, next: null};
+  
+  if(!document.querySelector("#sidebar a[href='"+window.location.pathname+"']")){
+    nav.next = links.item(1) && links.item(1).getAttribute('href');
+    return nav;
+  }
+  
   for(var i = 0; i < links.length; i++){
     var item = links.item(i);
     if(item && item.getAttribute('href') === window.location.pathname){
