@@ -58,6 +58,18 @@ function updateNextPrevButtons() {
   if (nav.next != null) { next.classList.remove("disabled"); next.href = nav.next; }
 }
 
+var darkmodeOn = (localStorage.getItem("darkmode") === "true");
+function toggleDarkMode() {
+  darkmodeOn = !darkmodeOn;
+  document.getElementsByTagName("body")[0].classList.toggle("darkmode");
+  localStorage.setItem("darkmode", darkmodeOn);
+}
+
+function initDarkMode() {
+  if (darkmodeOn)
+    document.getElementsByTagName("body")[0].classList.add("darkmode");
+}
+
 
 var isMobile = window.screen.width < 720;
 if (localStorage.getItem("openside") === null) {
@@ -69,6 +81,7 @@ if (localStorage.getItem("openside") === null) {
 localStorage.setItem(window.location.pathname, true);
 window.onload = function(){
   updateSidebar(true);
+  initDarkMode();
   setVisibleTags();
   updateNextPrevButtons();
 }
