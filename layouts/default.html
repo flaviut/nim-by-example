@@ -41,6 +41,11 @@
       <%= yield %>
     </article>
 
+    <div id=nextprev>
+      <a id=arrow-prev class="text-icon disabled" href="https://please-enable-js/">↽</a>
+      <a id=arrow-next class="text-icon disabled" href="https://please-enable-js/">⇁</a>
+    </div>
+
     <footer>
       <%= @items["/footer/"].compiled_content(snapshot: :last) %>
     </footer>

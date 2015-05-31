@@ -7,13 +7,6 @@ function setVisibleTags(){
    }
 }
 
-var isMobile = window.screen.width < 720;
-if (localStorage.getItem("openside") === null) {
-  window.sidebarExpanded = !isMobile;
-} else {
-  window.sidebarExpanded = (localStorage.getItem("openside") === "true");
-}
-
 function updateSidebar(notransition) {
   if (notransition) {
     document.querySelectorAll("#sidebar")[0].classList.add("notransition");
@@ -40,8 +33,42 @@ function sidebarClick() {
   updateSidebar(false);
 }
 
+function getNextPrev() {
+  // thanks iznogoodd from #nim @ freenode.net
+  var links = document.querySelectorAll('#sidebar a[href]');
+
+  var nav = {prev: null, next: null};
+  for(var i = 0; i < links.length; i++){
+    var item = links.item(i);
+    if(item && item.getAttribute('href') === window.location.pathname){
+      nav.prev = links.item(i - 1) && links.item(i - 1).getAttribute('href');
+      nav.next = links.item(i + 1) && links.item(i + 1).getAttribute('href');
+      return nav;
+    }
+  }
+}
+
+function updateNextPrevButtons() {
+  var nav = getNextPrev();
+
+  var prev = document.getElementById("arrow-prev");
+  var next = document.getElementById("arrow-next");
+
+  if (nav.prev != null) { prev.classList.remove("disabled"); prev.href = nav.prev; }
+  if (nav.next != null) { next.classList.remove("disabled"); next.href = nav.next; }
+}
+
+
+var isMobile = window.screen.width < 720;
+if (localStorage.getItem("openside") === null) {
+  window.sidebarExpanded = !isMobile;
+} else {
+  window.sidebarExpanded = (localStorage.getItem("openside") === "true");
+}
+
 localStorage.setItem(window.location.pathname, true);
 window.onload = function(){
   updateSidebar(true);
   setVisibleTags();
+  updateNextPrevButtons();
 }

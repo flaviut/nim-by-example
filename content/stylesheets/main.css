@@ -58,6 +58,16 @@ body {
 .nav-toggle span { margin-top: 9.5px; }
 
 
+#nextprev {
+  overflow: hidden;
+  padding: .5em 1em;
+}
+
+.text-icon { font-size: 5em; }
+#arrow-prev { float: left; }
+#arrow-next { float: right; }
+
+
 article {
   margin: 15px;
 
@@ -69,6 +79,9 @@ article.expanded { max-width: 680px; }
 a { text-decoration: none; }
 a:link, a:visited { color: #B45D47; }
 a:hover { color: #FE3B3B; }
+
+a.disabled, a:link.disabled, a:visited.disabled { color: #999; pointer-events: none; }
+a:hover.disabled { color: #888; }
 
 
 pre, code { font-family: Monaco, Menlo, Consolas, "Courier New", monospace; }
