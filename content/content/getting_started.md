@@ -19,7 +19,7 @@ To install Nim from git, ensure that you have gcc installed on Windows, Linux, a
 ```console
 $ git clone -b master git://github.com/Araq/Nim.git
 $ cd Nim
-$ git clone --depth 1 git://github.com/nim-code/csources
+$ git clone --depth 1 git://github.com/nim-lang/csources
 $ cd csources
 $ sh build.sh # Replace with build.bat on windows
 $ cd ..
