@@ -26,7 +26,7 @@ let joe = Animal(name : "Joe",
                  species : "H. sapiens",
                  age : 23)
 
-assert not carl.dead
+assert(not carl.dead)
 for i in 0..10:
   carl.sleep()
 assert carl.dead
@@ -54,9 +54,9 @@ You might ask whether there is a more concise way of initializing  reference typ
 
 ``` nimrod
 type
-  PAnimal* = ref Animal
+  AnimalRef* = ref Animal
 
-let spot = PAnimal(name: "Spot",
+let spot = AnimalRef(name: "Spot",
                    species: "C. lupus",
                    age: 1)
 ```

@@ -1,10 +1,13 @@
 import md5, re, os, strutils, osproc
 
 let
-  markdownFilesGlob = getCurrentDir() / "content" / "*.md"
+  markdownFilesGlob = getCurrentDir() / "content" / "content"
   configFilePath = getCurrentDir() / "validcodehashes.txt"
 
-for filePath in walkFiles(markdownFilesGlob):
+for filePath in walkDirRec(markdownFilesGlob):
+  if filePath.splitFile.ext != ".md":
+    continue
+
   let file = open(filePath, fmRead)
   let fileContents = file.readAll()
   file.close()
