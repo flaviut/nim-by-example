@@ -26,7 +26,7 @@ b = a[0] & b  # Same as original b
 
 ## Immutability
 
-While sequences are dynamiclly allocated, they are still immutable.
+While sequences are dynamically allocated, they are still immutable.
 
 ``` nimrod
 let a = @[1, 2, 3]
