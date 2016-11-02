@@ -5,9 +5,9 @@ build:
             name: build
             code: |
               source /home/ubuntu/.rvm/scripts/rvm
-              git remote add publish $GIT_CREDENTIALS
-              git config --global user.email "you@example.com"
-              git config --global user.name "Your Name"
+              git remote add publish 'git@github.com:nim-by-example/nim-by-example.github.io.git'
+              git config --global user.email 'nim-by-example.github.io'
+              git config --global user.name 'Builder'
               git checkout master
               nanoc
               cp -r ./output/. ./
@@ -19,4 +19,8 @@ deploy:
         - script:
             name: deploy
             code: |
-              git push --force publish > /dev/null 2>&1
+              mkdir ~/.ssh/
+              echo 'github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==' > ~/.ssh/known_hosts
+              echo "$GIT_CREDENTIALS" > ~/.ssh/id_rsa
+              chmod 0600 ~/.ssh/id_rsa
+              git push --force publish
