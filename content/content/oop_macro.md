@@ -43,7 +43,7 @@ To get that nice notation, we can use a macro:
 ```nimrod
 import macros
 
-macro class*(head: expr, body: stmt): stmt {.immediate.} =
+macro class*(head, body: untyped): untyped =
   # The macro is immediate so that it doesn't
   # resolve identifiers passed to it
 
@@ -154,33 +154,37 @@ macro class*(head: expr, body: stmt): stmt {.immediate.} =
   #             Empty
 
   result.insert(0,
-    if baseName == nil:
-      quote do:
-        type `typeName` = ref object of RootObj
-    else:
-      quote do:
-        type `typeName` = ref object of `baseName`
+    newNimNode(nnkTypeSection).add(
+      newNimNode(nnkTypeDef).add(
+        newIdentNode($typeName),
+        newEmptyNode(),
+        newNimNode(nnkRefTy).add(
+          newNimNode(nnkObjectTy).add(
+            newEmptyNode(),
+            newNimNode(nnkOfInherit).add(
+              if baseName == nil: newIdentNode("RootObj")
+              else: newIdentNode($baseName)),
+            newEmptyNode()))))
   )
   # Inspect the tree structure:
   #
   # echo result.treeRepr
   # --------------------
   # StmtList
-  #   StmtList
-  #     TypeSection
-  #       TypeDef
-  #         Ident !"Animal"
-  #         Empty
-  #         RefTy
-  #           ObjectTy
-  #             Empty
-  #             OfInherit
-  #               Ident !"RootObj"
-  #             Empty   <= We want to replace this
-  #   MethodDef
-  #   ...
+  #   TypeSection
+  #     TypeDef
+  #       Ident !"Animal"
+  #       Empty
+  #       RefTy
+  #         ObjectTy
+  #           Empty
+  #           OfInherit
+  #             Ident !"RootObj"
+  #           Empty   <= We want to replace this
+  # MethodDef
+  # ...
 
-  result[0][0][0][2][0][2] = recList
+  result[0][0][2][0][2] = recList
 
   # Lets inspect the human-readable version of the output
   # echo repr(result)
