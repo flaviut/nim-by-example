@@ -43,7 +43,7 @@ To get that nice notation, we can use a macro:
 ```nimrod
 import macros
 
-macro class*(head, body: untyped): untyped =
+macro class*(head, body): untyped =
   # The macro is immediate so that it doesn't
   # resolve identifiers passed to it
 
@@ -119,7 +119,7 @@ macro class*(head, body: untyped): untyped =
       of nnkMethodDef, nnkProcDef:
         # inject `this: T` into the arguments
         let p = copyNimTree(node.params)
-        p.insert(1, newIdentDefs(ident"this", typeName))
+        p.insert(1, newIdentDefs(ident("this"), typeName))
         node.params = p
         result.add(node)
 
@@ -156,14 +156,14 @@ macro class*(head, body: untyped): untyped =
   result.insert(0,
     newNimNode(nnkTypeSection).add(
       newNimNode(nnkTypeDef).add(
-        newIdentNode($typeName),
+        newIdentNode(typeName.ident),
         newEmptyNode(),
         newNimNode(nnkRefTy).add(
           newNimNode(nnkObjectTy).add(
             newEmptyNode(),
             newNimNode(nnkOfInherit).add(
               if baseName == nil: newIdentNode("RootObj")
-              else: newIdentNode($baseName)),
+              else: newIdentNode(baseName.ident)),
             newEmptyNode()))))
   )
   # Inspect the tree structure:
