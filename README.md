@@ -1,4 +1,4 @@
-[![wercker status](https://app.wercker.com/status/389477226e537a45143ea91336dca281/m "wercker status")](https://app.wercker.com/project/bykey/389477226e537a45143ea91336dca281)
+[![wercker status](https://app.wercker.com/status/8d96ab89960da21d87a545a25acae54c/m/master "wercker status")](https://app.wercker.com/project/byKey/8d96ab89960da21d87a545a25acae54c)
 
 This repo contains the sources for the Nim by Example book.
 
