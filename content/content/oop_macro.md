@@ -145,7 +145,7 @@ macro class*(head, body: untyped): untyped =
       of nnkMethodDef, nnkProcDef:
         # inject `this: T` into the arguments
         let p = copyNimTree(node.params)
-        p.insert(1, newIdentDefs(ident"this", typeName))
+        p.insert(1, newIdentDefs(ident("this"), typeName))
         node.params = p
         result.add(node)
 
