@@ -43,9 +43,9 @@ To get that nice notation, we can use a macro:
 ```nimrod
 import macros
 
-macro class*(head, body): untyped =
-  # The macro is immediate so that it doesn't
-  # resolve identifiers passed to it
+macro class*(head, body: untyped): untyped =
+  # The macro is immediate, since all its parameters are untyped.
+  # This means, it doesn't resolve identifiers passed to it.
 
   var typeName, baseName: NimNode
 
@@ -55,6 +55,7 @@ macro class*(head, body): untyped =
     # --------------------
     # Ident !"Animal"
     typeName = head
+    baseName = ident("RootObj")
 
   elif head.kind == nnkInfix and $head[0] == "of":
     # `head` is expression `typeName of baseClass`
@@ -69,6 +70,34 @@ macro class*(head, body): untyped =
 
   else:
     quit "Invalid node: " & head.lispRepr
+
+  # The following prints out the AST structure:
+  #
+  # import macros
+  # dumptree:
+  #   type X = ref object of Y
+  #     z: int
+  # --------------------
+  # StmtList
+  #   TypeSection
+  #     TypeDef
+  #       Ident !"X"
+  #       Empty
+  #       RefTy
+  #         ObjectTy
+  #           Empty
+  #           OfInherit
+  #             Ident !"Y"
+  #           RecList
+  #             IdentDefs
+  #               Ident !"z"
+  #               Ident !"int"
+  #               Empty
+
+  # create a type section in the result
+  result =
+    quote do:
+      type `typeName` = ref object of `baseName`
 
   # echo treeRepr(body)
   # --------------------
@@ -105,9 +134,6 @@ macro class*(head, body): untyped =
   #         Ident !"this"
   #         Ident !"age"
 
-  # create a new stmtList for the result
-  result = newStmtList()
-
   # var declarations will be turned into object fields
   var recList = newNimNode(nnkRecList)
 
@@ -119,7 +145,7 @@ macro class*(head, body): untyped =
       of nnkMethodDef, nnkProcDef:
         # inject `this: T` into the arguments
         let p = copyNimTree(node.params)
-        p.insert(1, newIdentDefs(ident("this"), typeName))
+        p.insert(1, newIdentDefs(ident"this", typeName))
         node.params = p
         result.add(node)
 
@@ -131,41 +157,6 @@ macro class*(head, body): untyped =
       else:
         result.add(node)
 
-  # The following prints out the AST structure:
-  #
-  # import macros
-  # dumptree:
-  #   type X = ref object of Y
-  #     z: int
-  # --------------------
-  # TypeSection
-  #   TypeDef
-  #     Ident !"X"
-  #     Empty
-  #     RefTy
-  #       ObjectTy
-  #         Empty
-  #         OfInherit
-  #           Ident !"Y"
-  #         RecList
-  #           IdentDefs
-  #             Ident !"z"
-  #             Ident !"int"
-  #             Empty
-
-  result.insert(0,
-    newNimNode(nnkTypeSection).add(
-      newNimNode(nnkTypeDef).add(
-        newIdentNode(typeName.ident),
-        newEmptyNode(),
-        newNimNode(nnkRefTy).add(
-          newNimNode(nnkObjectTy).add(
-            newEmptyNode(),
-            newNimNode(nnkOfInherit).add(
-              if baseName == nil: newIdentNode("RootObj")
-              else: newIdentNode(baseName.ident)),
-            newEmptyNode()))))
-  )
   # Inspect the tree structure:
   #
   # echo result.treeRepr
@@ -194,10 +185,10 @@ macro class*(head, body): untyped =
   #      name: string
   #      age: int
   #
-  #  method vocalize(this: Animal): string =
+  #  method vocalize(this: Animal): string {.base.} =
   #    "..."
   #
-  #  method age_human_yrs(this: Animal): int =
+  #  method age_human_yrs(this: Animal): int {.base.} =
   #    this.age
 
 # ---
@@ -205,8 +196,8 @@ macro class*(head, body): untyped =
 class Animal of RootObj:
   var name: string
   var age: int
-  method vocalize: string = "..."
-  method age_human_yrs: int = this.age # `this` is injected
+  method vocalize: string {.base.} = "..." # use `base` pragma to annonate base methods
+  method age_human_yrs: int {.base.} = this.age # `this` is injected
 
 class Dog of Animal:
   method vocalize: string = "woof"
