@@ -223,3 +223,86 @@ woof
 meow
 10
 ```
+## Initialisation of Objects
+If we try to add a constructor proc to a class:
+
+```nimrod
+import oopmacro
+
+class Animal of RootObj:
+  var name: string
+  var age: int
+  method vocalize: string {.base.} = "..."
+
+class Rabbit of Animal:
+  proc newRabbit(name: string, age: int): Rabbit = # good practise!
+    result = Rabbit(name: name, age: age)
+  method vocalize: string = "Meep"
+
+let r = newRabbit("Fluffy", 3)
+```
+We will run into the following error:
+
+``` console
+$ nim c -r oopmacro2.nim
+oopmacro2.nim(13, 18) Error: type mismatch: got (string, int literal(3))
+but expected one of: 
+proc newRabbit(self: Rabbit; name: string; age: int): Rabbit
+```
+
+Fortunately we can also use a macro as a pragma:
+
+```nimrod
+import oopmacro
+
+macro init*(p: untyped): untyped =
+  # echo p.treeRepr
+  # --------------------
+  # ProcDef
+  # Ident !"newPerson"
+  # Empty
+  # Empty
+  # FormalParams
+  #   Ident !"Person"
+  #   IdentDefs       <= This is unwanted
+  #     Ident !"self"
+  #     Ident !"Person"
+  #     Empty
+  #   IdentDefs
+  #     Ident !"name"
+  #     Ident !"string"
+  #     Empty
+  #   IdentDefs
+  #     Ident !"age"
+  #     Ident !"int"
+  #     Empty
+  # ...
+
+  # remove self from the construction proc
+  if $p.params[1][0] == "self":
+    del(p.params, 1)
+  result = p
+
+# ---
+
+class Animal of RootObj:
+  var name: string
+  var age: int
+  method vocalize: string {.base.} = "..." 
+
+class Rabbit of Animal:
+  proc newRabbit(name: string, age: int): Rabbit {.init.} =
+    result = Rabbit(name: name, age: age)
+  method vocalize: string = "meep"
+
+# ---
+
+let r = newRabbit("Fluffy", 3)
+echo r.vocalize()
+```
+It works because the most external macro `class` accepts `untyped` arguments, meaning that the ast of `body` is passed to it, before any semantic check is done. The evaluation of the `init` macro is done afterwards.
+
+``` console
+$ nim c -r oopmacro2.nim
+meep
+```
