@@ -224,7 +224,7 @@ meow
 10
 ```
 ## Initialisation of Objects
-If we try to add construction proc to a class:
+If we try to add a construction proc to a class:
 
 ```nimrod
 import oopmacro
@@ -250,7 +250,7 @@ but expected one of:
 proc newRabbit(self: Rabbit; name: string; age: int): Rabbit
 ```
 
-We can also use a macro as a pragma:
+Fortunately we can also use a macro as a pragma:
 
 ```nimrod
 import oopmacro
