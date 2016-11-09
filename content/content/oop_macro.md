@@ -241,7 +241,7 @@ class Rabbit of Animal:
 
 let r = newRabbit("Fluffy", 3)
 ```
-we will run into the following error:
+We will run into the following error:
 
 ``` console
 Error: type mismatch: got (string, int literal(3))
@@ -249,8 +249,7 @@ but expected one of:
 proc newRabbit(self: Person; name: string; age: int): Rabbit
 ```
 
-This happens because class macro injects this 
-We can counter this
+This happens because the class macro, we previously created, inserts `this: T` into the parameters of procedures. We can counter this, by creating an `init` macro to use as 
 
 ```nimrod
 import oopmacro
