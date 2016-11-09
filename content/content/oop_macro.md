@@ -300,6 +300,7 @@ class Rabbit of Animal:
 let r = newRabbit("Fluffy", 3)
 echo r.vocalize()
 ```
+It works because the most external macro `class` accepts `untyped` arguments, meaning that the ast of `body` is passed to the macro, before any semantic check is done. The evaluation of the `init` macro is done afterwards.
 
 ``` console
 $ nim c -r oopmacro2.nim
