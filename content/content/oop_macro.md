@@ -247,7 +247,7 @@ We will run into the following error:
 $ nim c -r oopmacro2.nim
 oopmacro2.nim(13, 18) Error: type mismatch: got (string, int literal(3))
 but expected one of: 
-proc newRabbit(self: Rabbit; name: string; age: int): Rabbit
+proc newRabbit(this: Rabbit; name: string; age: int): Rabbit
 ```
 
 Fortunately we can also use a macro as a pragma:
@@ -265,7 +265,7 @@ macro init*(p: untyped): untyped =
   # FormalParams
   #   Ident !"Person"
   #   IdentDefs       <= This is unwanted
-  #     Ident !"self"
+  #     Ident !"this"
   #     Ident !"Person"
   #     Empty
   #   IdentDefs
@@ -279,7 +279,7 @@ macro init*(p: untyped): untyped =
   # ...
 
   # remove self from the construction proc
-  if $p.params[1][0] == "self":
+  if $p.params[1][0] == "this":
     del(p.params, 1)
   result = p
 
