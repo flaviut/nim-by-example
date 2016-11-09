@@ -223,7 +223,7 @@ woof
 meow
 10
 ```
-
+## Initialisation of Objects
 If we try to add construction proc to a class:
 
 ```nimrod
@@ -249,7 +249,7 @@ but expected one of:
 proc newRabbit(self: Person; name: string; age: int): Rabbit
 ```
 
-This happens because the class macro, we previously created, inserts `this: T` into the parameters of procedures. We can counter this, by creating an `init` macro to use as 
+We can also use a macro as a pragma:
 
 ```nimrod
 import oopmacro
@@ -282,6 +282,8 @@ macro init*(p: untyped): untyped =
     del(p.params, 1)
   result = p
 
+# ---
+
 class Animal of RootObj:
   var name: string
   var age: int
@@ -291,6 +293,8 @@ class Rabbit of Animal:
   proc newRabbit(name: string, age: int): Rabbit {.init.} =
     result = Rabbit(name: name, age: age)
   method vocalize: string = "meep"
+
+# ---
 
 let r = newRabbit("Fluffy", 3)
 echo r.vocalize()
