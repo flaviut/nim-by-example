@@ -224,7 +224,7 @@ meow
 10
 ```
 ## Initialisation of Objects
-If we try to add a construction proc to a class:
+If we try to add a constructor proc to a class:
 
 ```nimrod
 import oopmacro
