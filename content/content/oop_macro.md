@@ -247,7 +247,7 @@ We will run into the following error:
 $ nim c -r oopmacro2.nim
 oopmacro2.nim(13, 18) Error: type mismatch: got (string, int literal(3))
 but expected one of: 
-proc newRabbit(self: Person; name: string; age: int): Rabbit
+proc newRabbit(self: Rabbit; name: string; age: int): Rabbit
 ```
 
 We can also use a macro as a pragma:
