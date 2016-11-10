@@ -149,7 +149,7 @@ macro class*(head, body: untyped): untyped =
         # make sure it is not the ctor proc
         if node.name.basename != ctorName:
           # inject `this: T` into the arguments
-          node.params.insert(1, newIdentDefs(ident("self"), typeName))
+          node.params.insert(1, newIdentDefs(ident("this"), typeName))
         result.add(node)
 
       of nnkVarSection:
