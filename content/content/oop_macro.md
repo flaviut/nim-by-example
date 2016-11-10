@@ -55,7 +55,7 @@ macro class*(head, body: untyped): untyped =
     # --------------------
     # Ident !"Animal"
     typeName = head
-    baseName = ident("RootObj")
+    baseName = newIdentNode("RootObj")
 
   elif head.kind == nnkInfix and $head[0] == "of":
     # `head` is expression `typeName of baseClass`
@@ -137,16 +137,19 @@ macro class*(head, body: untyped): untyped =
   # var declarations will be turned into object fields
   var recList = newNimNode(nnkRecList)
 
+  # expected name of constructor
+  let ctorName = newIdentNode("new" & $typeName)
+
   # Iterate over the statements, adding `this: T`
   # to the parameters of functions
   for node in body.children:
     case node.kind:
 
       of nnkMethodDef, nnkProcDef:
-        # inject `this: T` into the arguments
-        let p = copyNimTree(node.params)
-        p.insert(1, newIdentDefs(ident("this"), typeName))
-        node.params = p
+        # make sure it is not the ctor proc
+        if node.name.basename != ctorName:
+          # inject `this: T` into the arguments
+          node.params.insert(1, newIdentDefs(ident("self"), typeName))
         result.add(node)
 
       of nnkVarSection:
@@ -206,6 +209,11 @@ class Dog of Animal:
 class Cat of Animal:
   method vocalize: string = "meow"
 
+class Rabbit of Animal:
+  proc newRabbit(name: string, age: int): Rabbit =
+    result = Rabbit(name: name, age: age)
+  method vocalize: string = "meep"
+
 # ---
 
 var animals: seq[Animal] = @[]
@@ -215,6 +223,9 @@ animals.add(Cat(name: "Mitten", age: 10))
 for a in animals:
   echo a.vocalize()
   echo a.age_human_yrs()
+
+let r = newRabbit("Fluffy", 3)
+echo r.vocalize()
 ```
 ``` console
 $ nim c -r oopmacro.nim
@@ -222,4 +233,5 @@ woof
 70
 meow
 10
+meep
 ```
