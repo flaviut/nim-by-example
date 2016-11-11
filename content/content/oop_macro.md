@@ -141,12 +141,13 @@ macro class*(head, body: untyped): untyped =
   let ctorName = newIdentNode("new" & $typeName)
 
   # Iterate over the statements, adding `this: T`
-  # to the parameters of functions
+  # to the parameters of functions, unless the
+  # function is a constructor
   for node in body.children:
     case node.kind:
 
       of nnkMethodDef, nnkProcDef:
-        # make sure it is not the ctor proc
+        # make sure it is not the constructor
         if node.name.basename != ctorName:
           # inject `this: T` into the arguments
           node.params.insert(1, newIdentDefs(ident("this"), typeName))
@@ -226,6 +227,7 @@ for a in animals:
 
 let r = newRabbit("Fluffy", 3)
 echo r.vocalize()
+echo r.age_human_yrs()
 ```
 ``` console
 $ nim c -r oopmacro.nim
@@ -234,4 +236,5 @@ woof
 meow
 10
 meep
+3
 ```
