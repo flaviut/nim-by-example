@@ -61,7 +61,7 @@ foo(thisSeq)
 assert thisSeq[9] == 999
 ```
 
-Making a copy of the sequence that you can modify is almost as easy:
+You can copy a sequence passed as "argument by value" and modify the copy:
 
 ``` nimrod
 def do_something(mySeq: seq[int]) =
