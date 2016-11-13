@@ -26,7 +26,7 @@ b = a[0] & b  # Same as original b
 
 ## Immutability
 
-While sequences are dynamically allocated, they are still immutable.
+Sequences are dynamiclly allocated (i.e. allocated on the heap, not the stack), but they are immutable unless marked as `var`. That means
 
 ``` nimrod
 let a = @[1, 2, 3]
@@ -40,7 +40,16 @@ var b = @[1, 2, 3]
 b.add(4)
 ```
 
-will work without any problems. If wanted, a seq can be passed to a method with the `var` or `ref` annotation to make it modifiable, so
+will work without any problems. Sequences passed as "argument by value" are not modifiable. For example, the following will fail to compile.
+
+``` nimrod
+def do_something(mySeq: seq[int]) =
+  mySeq[0] = 2  # this is a compile-time error
+var testSeq = [1, 2, 3]
+do_something(testSeq)
+```
+
+`seq` arguments can be mutable if they are passed as "argument by reference", ie. the parameter is annotated with the `var` or `ref`:
 
 ``` nimrod
 proc foo(mySeq: var seq[int]) =
@@ -50,4 +59,16 @@ var thisSeq = newSeq[int](10)
 foo(thisSeq)
 
 assert thisSeq[9] == 999
+```
+
+You can copy a sequence passed as "argument by value" and modify the copy:
+
+``` nimrod
+def do_something(mySeq: seq[int]) =
+  var varMySeq = mySeq  # copy the seq
+  varMySeq[0] = 999
+  assert varMySeq[0] == 999
+var testSeq = [1, 2, 3]
+do_something(testSeq)
+assert testSeq[0] == 1
 ```
