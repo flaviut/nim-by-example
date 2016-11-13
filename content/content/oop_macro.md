@@ -194,6 +194,16 @@ macro class*(head, body: untyped): untyped =
   #
   #  method age_human_yrs(this: Animal): int {.base.} =
   #    this.age
+  # ...
+  #
+  # type
+  #   Rabbit = ref object of Animal
+  #
+  # proc newRabbit(name: string; age: int): Rabbit =
+  #   result = Rabbit(name: name, age: age)
+  #
+  # method vocalize(this: Rabbit): string =
+  #   "meep"
 
 # ---
 
