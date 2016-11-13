@@ -40,7 +40,7 @@ var b = @[1, 2, 3]
 b.add(4)
 ```
 
-will work without any problems. Sequences passed as parameters are not by default modifiable. For example, the following will fail to compile.
+will work without any problems. Sequences passed as "argument by value" are not modifiable. For example, the following will fail to compile.
 
 ``` nimrod
 def do_something(mySeq: seq[int]) =
@@ -49,7 +49,7 @@ var testSeq = [1, 2, 3]
 do_something(testSeq)
 ```
 
-If wanted, a seq can be passed to a method with the `var` or `ref` annotation to make it modifiable, so
+`seq` arguments can be mutable if they are passed as "argument by reference", ie. the parameter is annotated with the `var` or `ref`:
 
 ``` nimrod
 proc foo(mySeq: var seq[int]) =
