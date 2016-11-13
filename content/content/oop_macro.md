@@ -49,15 +49,10 @@ macro class*(head, body: untyped): untyped =
 
   var typeName, baseName: NimNode
 
-  if head.kind == nnkIdent:
-    # `head` is expression `typeName`
-    # echo head.treeRepr
-    # --------------------
-    # Ident !"Animal"
-    typeName = head
-    baseName = ident("RootObj")
+  # flag if object should be exported
+  var exported: bool
 
-  elif head.kind == nnkInfix and $head[0] == "of":
+  if head.kind == nnkInfix and head[0].ident == !"of":
     # `head` is expression `typeName of baseClass`
     # echo head.treeRepr
     # --------------------
@@ -67,6 +62,21 @@ macro class*(head, body: untyped): untyped =
     #   Ident !"RootObj"
     typeName = head[1]
     baseName = head[2]
+
+  elif head.kind == nnkInfix and head[0].ident == !"*" and
+       head[2].kind == nnkPrefix and head[2][0].ident == !"of":
+    # `head` is expression `typeName* of baseClass`
+    # echo head.treeRepr
+    # --------------------
+    # Infix
+    #   Ident !"*"
+    #   Ident !"Animal"
+    #   Prefix
+    #     Ident !"of"
+    #     Ident !"RootObj"
+    typeName = head[1]
+    baseName = head[2][1]
+    exported = true
 
   else:
     quit "Invalid node: " & head.lispRepr
@@ -96,8 +106,13 @@ macro class*(head, body: untyped): untyped =
 
   # create a type section in the result
   result =
-    quote do:
-      type `typeName` = ref object of `baseName`
+    if exported:
+      # mark `typeName` with an asterisk
+      quote do:
+        type `typeName`* = ref object of `baseName`
+    else:
+      quote do:
+        type `typeName` = ref object of `baseName`
 
   # echo treeRepr(body)
   # --------------------
