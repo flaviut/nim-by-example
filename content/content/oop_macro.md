@@ -62,6 +62,7 @@ macro class*(head, body: untyped): untyped =
     #   Ident !"RootObj"
     typeName = head[1]
     baseName = head[2]
+    exported = false
 
   elif head.kind == nnkInfix and head[0].ident == !"*" and
        head[2].kind == nnkPrefix and head[2][0].ident == !"of":
@@ -179,7 +180,9 @@ macro class*(head, body: untyped): untyped =
   # StmtList
   #   TypeSection
   #     TypeDef
-  #       Ident !"Animal"
+  #       Postfix
+  #         Ident !"*"
+  #         Ident !"Animal"
   #       Empty
   #       RefTy
   #         ObjectTy
@@ -187,7 +190,7 @@ macro class*(head, body: untyped): untyped =
   #           OfInherit
   #             Ident !"RootObj"
   #           Empty   <= We want to replace this
-  # MethodDef
+  #   MethodDef
   # ...
 
   result[0][0][2][0][2] = recList
@@ -196,9 +199,9 @@ macro class*(head, body: untyped): untyped =
   # echo repr(result)
   # Output:
   #  type
-  #    Animal = ref object of RootObj
-  #      name: string
-  #      age: int
+  #    Animal* = ref object of RootObj
+  #      name*: string
+  #      age*: int
   #
   #  method vocalize(this: Animal): string {.base.} =
   #    "..."
@@ -208,24 +211,34 @@ macro class*(head, body: untyped): untyped =
 
 # ---
 
-class Animal of RootObj:
-  var name: string
-  var age: int
+class Animal* of RootObj:
+  var name*: string
+  var age*: int
   method vocalize: string {.base.} = "..." # use `base` pragma to annonate base methods
   method age_human_yrs: int {.base.} = this.age # `this` is injected
 
 class Dog of Animal:
+  proc newDog(name: string, age: int): Dog =
+    result = Dog(name: name, age: age)
   method vocalize: string = "woof"
   method age_human_yrs: int = this.age * 7
 
 class Cat of Animal:
+  proc newCat(name: string, age: int): Cat =
+    result = Cat(name: name, age: age)
   method vocalize: string = "meow"
+
+class Rabbit of Animal:
+  proc newRabbit(name: string, age: int): Rabbit =
+    result = Rabbit(name: name, age: age)
+  method vocalize: string = "meep"
 
 # ---
 
 var animals: seq[Animal] = @[]
-animals.add(Dog(name: "Sparky", age: 10))
-animals.add(Cat(name: "Mitten", age: 10))
+animals.add(newDog("Sparky", 10))
+animals.add(newCat("Mitten", 10))
+animals.add(newRabbit("Fluffy", 3))
 
 for a in animals:
   echo a.vocalize()
@@ -237,4 +250,6 @@ woof
 70
 meow
 10
+meep
+3
 ```
