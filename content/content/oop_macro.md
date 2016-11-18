@@ -153,16 +153,20 @@ macro class*(head, body: untyped): untyped =
   # var declarations will be turned into object fields
   var recList = newNimNode(nnkRecList)
 
+  # expected name of constructor
+  let ctorName = newIdentNode("new" & $typeName)
+
   # Iterate over the statements, adding `this: T`
-  # to the parameters of functions
+  # to the parameters of functions, unless the
+  # function is a constructor
   for node in body.children:
     case node.kind:
 
       of nnkMethodDef, nnkProcDef:
-        # inject `this: T` into the arguments
-        let p = copyNimTree(node.params)
-        p.insert(1, newIdentDefs(ident("this"), typeName))
-        node.params = p
+        # make sure it is not the constructor
+        if node.name.basename != ctorName:
+          # inject `this: T` into the arguments
+          node.params.insert(1, newIdentDefs(ident("this"), typeName))
         result.add(node)
 
       of nnkVarSection:
@@ -208,6 +212,16 @@ macro class*(head, body: untyped): untyped =
   #
   #  method age_human_yrs(this: Animal): int {.base.} =
   #    this.age
+  # ...
+  #
+  # type
+  #   Rabbit = ref object of Animal
+  #
+  # proc newRabbit(name: string; age: int): Rabbit =
+  #   result = Rabbit(name: name, age: age)
+  #
+  # method vocalize(this: Rabbit): string =
+  #   "meep"
 
 # ---
 
