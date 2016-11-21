@@ -148,7 +148,7 @@ macro class*(head, body: untyped): untyped =
 
   template markAsBase: untyped =
     # find out if user already annotated method with the base pragma
-    let exists = findChild(node.pragma, it.ident == !"base")
+    let exists = findChild(node.pragma, it.kind == nnkIdent and it.ident == !"base")
     # add base pragma for methods belonging to a base class
     if baseName.ident == !"RootObj" and exists.isNil:
       node.addPragma(ident("base"))
