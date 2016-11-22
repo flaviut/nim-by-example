@@ -155,26 +155,37 @@ macro class*(head, body: untyped): untyped =
   # expected name of constructor
   let ctorName = newIdentNode("new" & $typeName)
 
+  template injectSelf: untyped =
+    # make sure it is not the ctor proc
+    if node.name.basename != ctorName:
+      # inject `this: T` into the arguments
+      node.params.insert(1, newIdentDefs(ident("this"), typeName))
+
+  template markAsBase: untyped =
+    # find out if user already annotated method with the base pragma
+    let exists = findChild(node.pragma, it.kind == nnkIdent and it.ident == !"base")
+    # add base pragma for methods belonging to a base class
+    if baseName.ident == !"RootObj" and exists.isNil:
+      node.addPragma(ident("base"))
+
   # Iterate over the statements, adding `this: T`
   # to the parameters of functions, unless the
   # function is a constructor
   for node in body.children:
-    case node.kind:
-
-      of nnkMethodDef, nnkProcDef:
-        # make sure it is not the constructor
-        if node.name.basename != ctorName:
-          # inject `this: T` into the arguments
-          node.params.insert(1, newIdentDefs(ident("this"), typeName))
-        result.add(node)
-
-      of nnkVarSection:
-        # variables get turned into fields of the type.
-        for n in node.children:
-          recList.add(n)
-
-      else:
-        result.add(node)
+    case node.kind
+    of nnkMethodDef:
+      injectSelf()
+      markAsBase()
+      result.add(node)
+    of nnkProcDef:
+      injectSelf()
+      result.add(node)
+    of nnkVarSection:
+      # variables get turned into fields of the type.
+      for n in node.children:
+        recList.add(n)
+    else:
+      result.add(node)
 
   # Inspect the tree structure:
   #
@@ -225,8 +236,8 @@ macro class*(head, body: untyped): untyped =
 class Animal of RootObj:
   var name: string
   var age: int
-  method vocalize: string {.base.} = "..." # use `base` pragma to annonate base methods
-  method age_human_yrs: int {.base.} = this.age # `this` is injected
+  method vocalize: string = "..." # `base` pragma is added for the methods of base class
+  method age_human_yrs: int = this.age # `this` is injected
 
 class Dog of Animal:
   method vocalize: string = "woof"
