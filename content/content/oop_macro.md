@@ -162,10 +162,13 @@ macro class*(head, body: untyped): untyped =
     case node.kind:
 
       of nnkMethodDef, nnkProcDef:
-        # make sure it is not the constructor
+        # check if it is not the ctor proc
         if node.name.basename != ctorName:
           # inject `this: T` into the arguments
           node.params.insert(1, newIdentDefs(ident("this"), typeName))
+        else:
+          # specify the return type of the ctor proc
+          node.params[0] = typeName
         result.add(node)
 
       of nnkVarSection:
@@ -236,7 +239,7 @@ class Cat of Animal:
   method vocalize: string = "meow"
 
 class Rabbit of Animal:
-  proc newRabbit(name: string, age: int): Rabbit =
+  proc newRabbit(name: string, age: int) = # the constructor doesn't need a return type
     result = Rabbit(name: name, age: age)
   method vocalize: string = "meep"
 
