@@ -162,13 +162,13 @@ macro class*(head, body: untyped): untyped =
     case node.kind:
 
       of nnkMethodDef, nnkProcDef:
-        # check if it is not the ctor proc
-        if node.name.basename != ctorName:
-          # inject `this: T` into the arguments
-          node.params.insert(1, newIdentDefs(ident("this"), typeName))
-        else:
+        # check if it is the ctor proc
+        if node.name.kind != nnkAccQuoted and node.name.basename == ctorName:
           # specify the return type of the ctor proc
           node.params[0] = typeName
+        else:
+          # inject `self: T` into the arguments
+          node.params.insert(1, newIdentDefs(ident("self"), typeName))
         result.add(node)
 
       of nnkVarSection:
@@ -230,18 +230,22 @@ class Animal of RootObj:
   var age: int
   method vocalize: string {.base.} = "..." # use `base` pragma to annonate base methods
   method age_human_yrs: int {.base.} = this.age # `this` is injected
+  proc `$`: string = "animal:" & this.name & ":" & $this.age
 
 class Dog of Animal:
   method vocalize: string = "woof"
   method age_human_yrs: int = this.age * 7
+  proc `$`: string = "dog:" & this.name & ":" & $this.age
 
 class Cat of Animal:
   method vocalize: string = "meow"
+  proc `$`: string = "cat:" & this.name & ":" & $this.age
 
 class Rabbit of Animal:
   proc newRabbit(name: string, age: int) = # the constructor doesn't need a return type
     result = Rabbit(name: name, age: age)
   method vocalize: string = "meep"
+  proc `$`: string = "rabbit:" & this.name & ":" & $this.age
 
 # ---
 
@@ -256,6 +260,7 @@ for a in animals:
 let r = newRabbit("Fluffy", 3)
 echo r.vocalize()
 echo r.age_human_yrs()
+echo r
 ```
 ``` console
 $ nim c -r oopmacro.nim
@@ -265,4 +270,5 @@ meow
 10
 meep
 3
+rabbit:Fluffy:3
 ```
