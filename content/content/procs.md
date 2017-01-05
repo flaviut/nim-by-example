@@ -70,13 +70,13 @@ assert("foo" ^&*^@% "bar" == "fr")
 Generic functions are like C++'s templates and allow for the same statically checked duck-typing semantics as templates. 
 
 ``` nimrod
-# Not really good idea for obvious reasons
-let zero = ""
+# String concatenation should be performed via the `&` operator,
+# but the second proc relies on the `+` operator working for strings. 
 proc `+`(a, b: string): string =
   a & b
 
 proc `*`[T](a: T, b: int): T =
-  result = zero
+  result = ""
   for i in 0..b:
     result = result + a  # calls `+` from line 3
 
