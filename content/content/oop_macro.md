@@ -105,12 +105,12 @@ macro class*(head, body: untyped): untyped =
   #               Empty
 
   # create a type section in the result
-  result =
-    if exported:
-      # mark `typeName` with an asterisk
+  if exported:
+    result =
       quote do:
         type `typeName`* = ref object of `baseName`
-    else:
+  else:
+    result =
       quote do:
         type `typeName` = ref object of `baseName`
 
@@ -167,8 +167,8 @@ macro class*(head, body: untyped): untyped =
           # specify the return type of the ctor proc
           node.params[0] = typeName
         else:
-          # inject `self: T` into the arguments
-          node.params.insert(1, newIdentDefs(ident("self"), typeName))
+          # inject `this: T` into the arguments
+          node.params.insert(1, newIdentDefs(ident("this"), typeName))
         result.add(node)
 
       of nnkVarSection:
