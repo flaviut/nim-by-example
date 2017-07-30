@@ -43,10 +43,10 @@ b.add(4)
 will work without any problems. Sequences passed as "argument by value" are not modifiable. For example, the following will fail to compile.
 
 ``` nimrod
-def do_something(mySeq: seq[int]) =
+proc doSomething(mySeq: seq[int]) =
   mySeq[0] = 2  # this is a compile-time error
-var testSeq = [1, 2, 3]
-do_something(testSeq)
+var testSeq = @[1, 2, 3]
+doSomething(testSeq)
 ```
 
 `seq` arguments can be mutable if they are passed as "argument by reference", ie. the parameter is annotated with the `var` or `ref`:
@@ -64,11 +64,11 @@ assert thisSeq[9] == 999
 You can copy a sequence passed as "argument by value" and modify the copy:
 
 ``` nimrod
-def do_something(mySeq: seq[int]) =
+proc doSomething(mySeq: seq[int]) =
   var varMySeq = mySeq  # copy the seq
   varMySeq[0] = 999
   assert varMySeq[0] == 999
-var testSeq = [1, 2, 3]
-do_something(testSeq)
+var testSeq = @[1, 2, 3]
+doSomething(testSeq)
 assert testSeq[0] == 1
 ```

@@ -12,8 +12,8 @@ Inheritance is created with the `of` keyword in the type declaration of an objec
 type Animal = ref object of RootObj
   name: string
   age: int
-method vocalize(this: Animal): string = "..."
-method ageHumanYrs(this: Animal): int = this.age
+method vocalize(this: Animal): string {.base.} = "..."
+method ageHumanYrs(this: Animal): int {.base.} = this.age
 
 type Dog = ref object of Animal
 method vocalize(this: Dog): string = "woof"
