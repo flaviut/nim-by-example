@@ -79,7 +79,7 @@ macro class*(head, body: untyped): untyped =
     exported = true
 
   else:
-    quit "Invalid node: " & head.lispRepr
+    error "Invalid node: " & head.lispRepr
 
   # The following prints out the AST structure:
   #
@@ -105,14 +105,16 @@ macro class*(head, body: untyped): untyped =
   #               Empty
 
   # create a type section in the result
-  result =
-    if exported:
-      # mark `typeName` with an asterisk
-      quote do:
-        type `typeName`* = ref object of `baseName`
-    else:
-      quote do:
-        type `typeName` = ref object of `baseName`
+  template typeDecl(a, b): untyped =
+    type a = ref object of b
+
+  template typeDeclPub(a, b): untyped =
+    type a* = ref object of b
+
+  if exported:
+    result = getAst(typeDeclPub(typeName, baseName))
+  else:
+    result = getAst(typeDecl(typeName, baseName))
 
   # echo treeRepr(body)
   # --------------------
@@ -146,7 +148,7 @@ macro class*(head, body: untyped): untyped =
   #     Empty
   #     StmtList
   #       DotExpr
-  #         Ident !"this"
+  #         Ident !"self"
   #         Ident !"age"
 
   # var declarations will be turned into object fields
@@ -155,29 +157,29 @@ macro class*(head, body: untyped): untyped =
   # expected name of constructor
   let ctorName = newIdentNode("new" & $typeName)
 
-  # Iterate over the statements, adding `this: T`
+  # Iterate over the statements, adding `self: T`
   # to the parameters of functions, unless the
   # function is a constructor
   for node in body.children:
     case node.kind:
 
-      of nnkMethodDef, nnkProcDef:
-        # check if it is the ctor proc
-        if node.name.kind != nnkAccQuoted and node.name.basename == ctorName:
-          # specify the return type of the ctor proc
-          node.params[0] = typeName
-        else:
-          # inject `self: T` into the arguments
-          node.params.insert(1, newIdentDefs(ident("self"), typeName))
-        result.add(node)
-
-      of nnkVarSection:
-        # variables get turned into fields of the type.
-        for n in node.children:
-          recList.add(n)
-
+    of nnkMethodDef, nnkProcDef:
+      # check if it is the ctor proc
+      if node.name.kind != nnkAccQuoted and node.name.basename == ctorName:
+        # specify the return type of the ctor proc
+        node.params[0] = typeName
       else:
-        result.add(node)
+        # inject `self: T` into the arguments
+        node.params.insert(1, newIdentDefs(ident("self"), typeName))
+      result.add(node)
+
+    of nnkVarSection:
+      # variables get turned into fields of the type.
+      for n in node.children:
+        recList.add(n)
+
+    else:
+      result.add(node)
 
   # Inspect the tree structure:
   #
@@ -207,11 +209,11 @@ macro class*(head, body: untyped): untyped =
   #      name: string
   #      age: int
   #
-  #  method vocalize(this: Animal): string {.base.} =
+  #  method vocalize(self: Animal): string {.base.} =
   #    "..."
   #
-  #  method age_human_yrs(this: Animal): int {.base.} =
-  #    this.age
+  #  method age_human_yrs(self: Animal): int {.base.} =
+  #    self.age
   # ...
   #
   # type
@@ -220,7 +222,7 @@ macro class*(head, body: untyped): untyped =
   # proc newRabbit(name: string; age: int): Rabbit =
   #   result = Rabbit(name: name, age: age)
   #
-  # method vocalize(this: Rabbit): string =
+  # method vocalize(self: Rabbit): string =
   #   "meep"
 
 # ---
@@ -229,23 +231,23 @@ class Animal of RootObj:
   var name: string
   var age: int
   method vocalize: string {.base.} = "..." # use `base` pragma to annonate base methods
-  method age_human_yrs: int {.base.} = this.age # `this` is injected
-  proc `$`: string = "animal:" & this.name & ":" & $this.age
+  method age_human_yrs: int {.base.} = self.age # `self` is injected
+  proc `$`: string = "animal:" & self.name & ":" & $self.age
 
 class Dog of Animal:
   method vocalize: string = "woof"
-  method age_human_yrs: int = this.age * 7
-  proc `$`: string = "dog:" & this.name & ":" & $this.age
+  method age_human_yrs: int = self.age * 7
+  proc `$`: string = "dog:" & self.name & ":" & $self.age
 
 class Cat of Animal:
   method vocalize: string = "meow"
-  proc `$`: string = "cat:" & this.name & ":" & $this.age
+  proc `$`: string = "cat:" & self.name & ":" & $self.age
 
 class Rabbit of Animal:
   proc newRabbit(name: string, age: int) = # the constructor doesn't need a return type
     result = Rabbit(name: name, age: age)
   method vocalize: string = "meep"
-  proc `$`: string = "rabbit:" & this.name & ":" & $this.age
+  proc `$`: string = "rabbit:" & self.name & ":" & $self.age
 
 # ---
 
