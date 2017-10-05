@@ -115,9 +115,9 @@ macro class*(head, body: untyped): untyped =
     type a* = ref object of b
 
   if isExported:
-    result.insert(0, getAst(typeDeclPub(typeName, baseName)))
+    result.add getAst(typeDeclPub(typeName, baseName))
   else:
-    result.insert(0, getAst(typeDecl(typeName, baseName)))
+    result.add getAst(typeDecl(typeName, baseName))
 
   # echo treeRepr(body)
   # --------------------
