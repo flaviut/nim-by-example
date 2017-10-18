@@ -48,7 +48,7 @@ mittens.age = 6
 mittens.sleep()
 ```
 
-`mittens` is a reference to an object allocated on the heap. The value of `mittens` cannot be changed, so `mittens` can never point to anything else, but the value that `mittens` is pointing at can and is changed from the default initialization value of zeros. It's mutability also means that `mittens` can be passed to functions that require a variable parameter.
+`mittens` is a reference to an object allocated on the heap. The value of `mittens` cannot be changed, so `mittens` can never point to anything else, but the value that `mittens` is pointing at can and is changed from the default initialization value of zeros. Its mutability also means that `mittens` can be passed to functions that require a variable parameter.
 
 You might ask whether there is a more concise way of initializing  reference types, and there is if you give the reference type a name:
 
