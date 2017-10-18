@@ -230,7 +230,7 @@ macro class*(head, body: untyped): untyped =
 class Animal of RootObj:
   var name: string
   var age: int
-  method vocalize: string {.base.} = "..." # use `base` pragma to annonate base methods
+  method vocalize: string {.base.} = "..." # use `base` pragma to annotate base methods
   method age_human_yrs: int {.base.} = self.age # `self` is injected
   proc `$`: string = "animal:" & self.name & ":" & $self.age
 

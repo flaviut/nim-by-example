@@ -26,7 +26,7 @@ b = a[0] & b  # Same as original b
 
 ## Immutability
 
-Sequences are dynamiclly allocated (i.e. allocated on the heap, not the stack), but they are immutable unless marked as `var`. That means
+Sequences are dynamically allocated (i.e. allocated on the heap, not the stack), but they are immutable unless marked as `var`. That means
 
 ``` nimrod
 let a = @[1, 2, 3]
