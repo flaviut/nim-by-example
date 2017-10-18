@@ -45,7 +45,7 @@ Strings can also almost be thought of as `seq[char]` with respect to assignment 
 
 [seqs]: /seqs/#immutability
 
-## A note about unicode
-Unicode symbols are allowed in strings, but are not treated in any special way, so if you want count glyphs or uppercase unicode symbols, you must use the `unicode` module.
+## A note about Unicode
+Unicode symbols are allowed in strings, but are not treated in any special way, so if you want count glyphs or uppercase Unicode symbols, you must use the `unicode` module.
 
-Strings are generally considered to be encoded as UTF-8, so because of unicode's backwards compatibility, can be treated exactly as ASCII, with all values above 127 ignored.
+Strings are generally considered to be encoded as UTF-8, so because of Unicode's backwards compatibility, can be treated exactly as ASCII, with all values above 127 ignored.
