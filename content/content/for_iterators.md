@@ -5,7 +5,7 @@ title: For Loops & Iterators
 
 Nim has first class iterators and syntax to use them, for loops. The `continue` and `break` keywords also work inside of for loops. There are two kinds of iterator, and two special methods that for loops work with.
 
-## `items` and `pair`
+## `items` and `pairs`
 
 When iterating over an object with one item, Nim will call an iterator called `items` with the first parameter the type you want to iterate over. The same thing happens when iterating with two items, but in that case, the `pairs` iterator is called.
 
