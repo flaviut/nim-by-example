@@ -17,6 +17,11 @@
       <script async src="/assets/js/all.js"></script>
     <% end %>
 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['«', '»']]}});
+      MathJax.Hub.config.tex2jax.skipTags = ["script", "noscript", "style", "textarea", "annotation", "annotation-xml"];
+    </script>
+    <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML'></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58002512-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
