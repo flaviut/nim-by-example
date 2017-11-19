@@ -52,7 +52,7 @@ macro class*(head, body: untyped): untyped =
   # flag if object should be exported
   var isExported: bool
 
-  if head.kind == nnkInfix and eqIdent(head[0], "of"):
+  if head.kind == nnkInfix and $head[0] == "of":
     # `head` is expression `typeName of baseClass`
     # echo head.treeRepr
     # --------------------
