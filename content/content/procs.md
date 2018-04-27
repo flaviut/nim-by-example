@@ -77,8 +77,8 @@ proc `+`(a, b: string): string =
 
 proc `*`[T](a: T, b: int): T =
   result = zero
-  for i in 0..b:
+  for i in 0..b-1:
     result = result + a  # calls `+` from line 3
 
-assert("a" * 10 == "aaaaaaaaaaa")
+assert("a" * 10 == "aaaaaaaaaa")
 ```
