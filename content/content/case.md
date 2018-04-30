@@ -49,18 +49,3 @@ C
 Consonant
 negative
 ```
-
-Another feature of case statements is that the possible values are narrowed, meaning that no `else` statement is necessary in many cases:
-
-``` nimrod
-let x = 2
-case (x and 0b11) + 7:
-  of 7: echo "A"
-  of 8: echo "B"
-  of 9: echo "C"
-  of 10: echo "D"
-```
-``` console
-$ nim c -r ./case_stmts_1.nim
-C
-```
