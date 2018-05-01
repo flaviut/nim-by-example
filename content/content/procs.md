@@ -70,15 +70,104 @@ assert("foo" ^&*^@% "bar" == "fr")
 Generic functions are like C++'s templates and allow for the same statically checked duck-typing semantics as templates. 
 
 ``` nimrod
-# Not really good idea for obvious reasons
-let zero = ""
-proc `+`(a, b: string): string =
-  a & b
+# Treesort, but in Nim
 
-proc `*`[T](a: T, b: int): T =
-  result = zero
-  for i in 0..b-1:
-    result = result + a  # calls `+` from line 3
+# Tree Node
+# Nodes in a tree represented with a ref object type. Left
+# and right with point to subtrees, leaves, or nil. 
+type TNode*[T] = ref object
+    data: T
+    left, right: TNode[T]
 
-assert("a" * 10 == "aaaaaaaaaa")
+# TNode ctor
+# Constructs a new TNode object.
+proc newNode*[T](data: T): TNode[T] = 
+    new(result)
+    result.data = data
+
+# insertSub
+# Inserts a given node as a left or right child of a parent.
+proc insertSub*[T](node: var TNode[T], data: T): void = 
+    if (data < node.data):
+        if (node.left == nil):
+            node.left = newNode(data)
+            #echo "Inserted: " & $data
+        else:
+            insert(node.left, data)
+    else:
+        if (node.right == nil):
+            node.right = newNode(data)
+            #echo "Inserted: " & $data
+        else:
+            insert(node.right, data)
+
+# insert
+# Sets a given node as root if root is nil, or as a subtree
+# otherwise.
+proc insert*[T](root: var TNode[T], data: T): void =
+    #echo "Inserting: " & $data
+    if (root == nil):
+        root = newNode(data)
+        #echo "Inserted: " & $data
+    else:
+        root.insertSub(data)
+
+# inorderTraverseCopy
+# Performs an inorder traversal of a given tree and copies 
+# the values into a sequence.
+proc inorderTraverseCopy*[T](node: TNode[T]): seq[T] = 
+    if (node == nil): 
+        @[]
+    else: 
+        inorderTraverseCopy(node.left) & @[node.data] & inorderTraverseCopy(node.right)
+
+# treesort
+# Takes a range which it inserts into a tree, which then is
+# traversed inorder and returns a sequence of values returned
+# from the traversal, which is a sorted sequence.
+proc treesort*[T](range: var seq[T]): seq[T] = 
+    var root: TNode[T]
+    for i in range.low()..range.high():
+        root.insert(range[i])
+
+    result = newSeq[T](range.len())
+    result = inorderTraverseCopy(root)
+
+
+proc main(): void = 
+    echo "********** Treesort Demo **********"
+
+    var range = @[2, 5, 4, 6, 8, 1, 3, 7, 0, 9]
+    echo "Range to sort: " & $range
+
+    range = treesort(range)
+
+    echo "Range sorted: " & $range & "\n"
+
+    echo "Ints are cool, but what about floats?"
+    var range2 = @[49.2, 49.4, 49.6, 49.3, 49.05, 49.1, 45.5]
+    echo "Range to sort: " & $range2
+
+    range2 = treesort(range2)
+
+    echo "Range sorted: " & $range2 & "\n"
+
+    echo "Numbers are neat, but will it work for chars?"
+    var rangeChar = @['d', 'r', 'f', 'y', 'e', 't', 'm', 'k']
+    echo "Range to sort: " & $rangeChar
+
+    rangeChar = treesort(rangeChar)
+
+    echo "Range sorted: " & $rangeChar & "\n"
+
+    echo "Strings even!"
+    var rangeString = @["Paul", "Percy", "Buttermilk", "Nutmeg", "Hamsters"]
+    echo "Range to sort: " & $rangeString
+
+    rangeString = treesort(rangeString)
+
+    echo "Range sorted: " & $rangeString & "\n"
+
+
+main()
 ```
