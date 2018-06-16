@@ -21,3 +21,5 @@ for line in stdin.lines:
 
 echo "The most frequent word is '", wordFrequencies.largest, "'"
 ```
+
+The example above waits on standard input. To use it, type in multiple words and then press Ctrl+D in your terminal.
