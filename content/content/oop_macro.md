@@ -50,9 +50,9 @@ macro class*(head, body: untyped): untyped =
   var typeName, baseName: NimNode
 
   # flag if object should be exported
-  var exported: bool
+  var isExported: bool
 
-  if head.kind == nnkInfix and head[0].ident == !"of":
+  if head.kind == nnkInfix and $head[0] == "of":
     # `head` is expression `typeName of baseClass`
     # echo head.treeRepr
     # --------------------
@@ -63,8 +63,8 @@ macro class*(head, body: untyped): untyped =
     typeName = head[1]
     baseName = head[2]
 
-  elif head.kind == nnkInfix and head[0].ident == !"*" and
-       head[2].kind == nnkPrefix and head[2][0].ident == !"of":
+  elif head.kind == nnkInfix and $head[0] == "*" and
+       head[2].kind == nnkPrefix and $head[2][0] == "of":
     # `head` is expression `typeName* of baseClass`
     # echo head.treeRepr
     # --------------------
@@ -76,7 +76,7 @@ macro class*(head, body: untyped): untyped =
     #     Ident !"RootObj"
     typeName = head[1]
     baseName = head[2][1]
-    exported = true
+    isExported = true
 
   else:
     error "Invalid node: " & head.lispRepr
@@ -104,6 +104,9 @@ macro class*(head, body: untyped): untyped =
   #               Ident !"int"
   #               Empty
 
+  # create a new stmtList for the result
+  result = newStmtList()
+
   # create a type section in the result
   template typeDecl(a, b): untyped =
     type a = ref object of b
@@ -111,10 +114,10 @@ macro class*(head, body: untyped): untyped =
   template typeDeclPub(a, b): untyped =
     type a* = ref object of b
 
-  if exported:
-    result = getAst(typeDeclPub(typeName, baseName))
+  if isExported:
+    result.add getAst(typeDeclPub(typeName, baseName))
   else:
-    result = getAst(typeDecl(typeName, baseName))
+    result.add getAst(typeDecl(typeName, baseName))
 
   # echo treeRepr(body)
   # --------------------
@@ -196,10 +199,10 @@ macro class*(head, body: untyped): untyped =
   #           OfInherit
   #             Ident !"RootObj"
   #           Empty   <= We want to replace this
-  # MethodDef
+  #   MethodDef
   # ...
 
-  result[0][0][2][0][2] = recList
+  result[0][2][0][2] = recList
 
   # Lets inspect the human-readable version of the output
   # echo repr(result)
