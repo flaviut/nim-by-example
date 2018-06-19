@@ -202,7 +202,7 @@ macro class*(head, body: untyped): untyped =
   #   MethodDef
   # ...
 
-  result[0][2][0][2] = recList
+  result[0][0][2][0][2] = recList
 
   # Lets inspect the human-readable version of the output
   # echo repr(result)
