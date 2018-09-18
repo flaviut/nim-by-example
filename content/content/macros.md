@@ -1,9 +1,22 @@
 ---
-title: OOP Macro
+title: Macros
+redirect_from:
+  - /oop_macro
 ---
 <!--- Thanks to fowl for creating this page, filwit for fixing some oddities -->
 
-# OOP Macro
+# Macros
+
+Nim's syntax is incredibly versatile, and macros can be used to rewrite the
+abstract syntax tree of a program. The general process for writing a macro
+consists of two steps that are repeated until the desired results are achieved:
+
+1. Dump and examine the AST
+2. Modify the AST to match the desired shape
+
+The example shown here describes how to create new class syntax in Nim, purely
+through a library.
+
 This is the code that we currently must write to use OOP in Nim:
 
 ```nimrod
@@ -21,7 +34,8 @@ type Cat = ref object of Animal
 method vocalize(this: Cat): string = "meow"
 ```
 
-All these typedefs and `this: T` parameters are repetitive, so it'd be good to write a macro to mask them. Something like this would be best:
+All these typedefs and `this: T` parameters are repetitive, so it'd be good to
+write a macro to mask them. Something like this would be nice:
 
 ```nimrod
 class Animal of RootObj:
