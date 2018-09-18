@@ -12,61 +12,80 @@
 #   “content/about.html”). To select all children, grandchildren, … of an
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
+require 'nanoc-redirector'
+
+compile '/assets/**/all*' do
+  filter :erb
+end
 
 compile '/assets/css/*' do
-  filter :erb
-  filter :rainpress if File.basename(item[:content_filename], ".*") == 'all'
+  unless @config[:debug]
+    filter :rainpress
+  end
 end
 
 compile '/assets/js/*' do
-  filter :erb
-  :uglify_js if File.basename(item[:content_filename], ".*") == 'all'
+  unless @config[:debug]
+    filter :uglify_js
+  end
 end
 
-compile '/content/*' do
-  if item.identifier.to_s == '/content/toc/'
-    filter :kramdown
-    layout 'blank'
-  elsif item.identifier.to_s == '/content/footer/'
-    layout 'blank'
-  elsif item[:extension] == 'md'
-    filter :kramdown, {:input => 'GFM'}
-    filter :colorize_syntax, :default_colorizer => :pygmentize
-    filter :relativize_paths, :type => :html
-    layout 'default'
-  else
-    filter :erb
-    layout 'default'
-  end
+compile '/content/toc*' do
+  filter :kramdown
+  layout '/blank.*'
+end
+
+compile '/content/footer*' do
+  layout '/blank.*'
+end
+
+compile '/content/**/*.md' do
+  filter :kramdown, {:input => 'GFM'}
+  filter :colorize_syntax, :default_colorizer => :pygmentize
+  filter :relativize_paths, :type => :html
+  layout '/default.*'
+end
+
+compile '/content/**/*' do
+  filter :erb
+  layout '/default.*'
 end
 
 route '/assets/css/*' do
   # if not debug mode, only let all.css through
   unless @config[:debug] 
-    item.identifier.to_s.chop + '.css' if File.basename(item[:content_filename], ".*") == 'all' 
+    item.identifier.without_ext + '.css' if File.basename(item[:content_filename], ".*") == 'all' 
   else
-    item.identifier.to_s.chop + '.css'
+    item.identifier.without_ext + '.css'
   end
 end
 
 route '/assets/js/*' do
   # if not debug mode, only let all.js through
   unless @config[:debug]
-    item.identifier.to_s.chop + '.js' if File.basename(item[:content_filename], ".*") == 'all'
+    item.identifier.without_ext + '.js' if File.basename(item[:content_filename], ".*") == 'all'
   else
-    item.identifier.to_s.chop + '.js'
+    item.identifier.without_ext + '.js'
   end
 end
 
 
-route '/content/*' do
+route '/content/**/*' do
   if item.binary?
     # Write item with identifier /foo/ to /foo.ext
-    item.identifier.to_s.sub("/content", "").chop + '.' + item[:extension]
+    '/' + item.identifier.without_ext.to_s.sub("/content", "") + '.' + item[:extension]
+  elsif item.identifier =~ /.*index.*/i
+    '/index.html'
   else
     # Write item with identifier /foo/ to /foo/index.html
-    item.identifier.to_s.sub("/content", "") + 'index.html'
+    item.identifier.without_ext.to_s.sub("/content", "") + '/index.html'
   end
 end
 
-layout '*', :erb
+postprocess do
+  @items.each do |item|
+    NanocRedirector::RedirectFrom.process(item, item.path)
+  end
+end
+
+layout '**/*', :erb

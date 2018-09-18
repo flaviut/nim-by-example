@@ -29,7 +29,7 @@ prune:
   # .git, .svn etc.
   exclude: [ '.git', '.hg', '.svn', 'CVS' ]
 
-string_pattern_type: legacy
+string_pattern_type: glob
 
 # The data sources where nanoc loads its data from. This is an array of
 # hashes; each array element represents a single data source. By default,
@@ -40,7 +40,7 @@ data_sources:
     # The type is the identifier of the data source. By default, this will be
     # `filesystem_unified`.
     type: filesystem_unified
-    identifier_type: legacy
+    identifier_type: full
     encoding: utf-c8
 
     # The path where items should be mounted (comparable to mount points in

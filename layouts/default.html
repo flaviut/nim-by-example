@@ -11,9 +11,7 @@
       <script async src="/assets/js/<%= file %>"></script>
       <% end %>
     <% else %>
-      <style>
-        <%= @items["/assets/css/all/"].compiled_content() %>
-      </style>
+      <link rel="stylesheet" type="text/css" href="/assets/css/all.css">
       <script async src="/assets/js/all.js"></script>
     <% end %>
 
@@ -41,7 +39,7 @@
     <div id="sidebar">
       <div class="abs-hamburger"><div class="nav-toggle" onclick="javascript:sidebarClick();"><span></span></div></div>
       <nav>
-        <%= @items["/content/toc/"].compiled_content(snapshot: :last) %>
+        <%= @items["/content/toc.md"].compiled_content(snapshot: :last) %>
       </nav>
     </div>
 
@@ -55,7 +53,7 @@
     </div>
 
     <footer>
-      <%= @items["/content/footer/"].compiled_content(snapshot: :last) %>
+      <%= @items["/content/footer.md"].compiled_content %>
     </footer>
   </body>
 </html>

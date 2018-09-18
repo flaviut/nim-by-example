@@ -20,6 +20,6 @@
 * [Bitsets](/bitsets/)
 * [Varargs](/varargs/)
 * [Object Oriented Programming](/oop/)
-* [OOP Macro](/oop_macro/)
+* [Macros](/macros/)
 
 {: #toc-list}

@@ -1,7 +1,7 @@
 def all_js(files)
   js_arr = []
   for file in files
-    item = @items.find{|i| i.identifier == "/assets/js/#{file}/"}
+    item = @items.find{|i| i.identifier == "/assets/js/#{file}.js"}
     puts "File #{file} doesn't exist!" unless item
     js_arr << item.compiled_content
   end
@@ -11,7 +11,7 @@ end
 def all_css(files)
   css_arr = []
   for file in files
-    item = @items.find{|i| i.identifier == "/assets/css/#{file}/"}
+    item = @items.find{|i| i.identifier == "/assets/css/#{file}.css"}
     puts "File #{file} doesn't exist!" unless item
     css_arr << item.compiled_content
   end
