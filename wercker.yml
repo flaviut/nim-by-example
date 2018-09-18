@@ -1,4 +1,4 @@
-box: flaviut/nim-by-example-build-vm:0.1.3
+box: flaviut/nim-by-example-build-vm:0.1.4
 build:
     steps:
         - script:
