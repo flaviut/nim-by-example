@@ -1,0 +1,60 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
+    adsf (1.4.1)
+      rack (>= 1.0.0, < 3.0.0)
+    colored (1.2)
+    concurrent-ruby (1.0.5)
+    cri (2.15.1)
+      colored (~> 1.2)
+    ddmemoize (1.0.0)
+      ddmetrics (~> 1.0)
+      ref (~> 2.0)
+    ddmetrics (1.0.1)
+    ddplugin (1.0.2)
+    execjs (2.7.0)
+    hamster (3.0.0)
+      concurrent-ruby (~> 1.0)
+    kramdown (1.17.0)
+    mini_portile2 (2.3.0)
+    nanoc (4.9.5)
+      addressable (~> 2.5)
+      cri (~> 2.15)
+      ddmemoize (~> 1.0)
+      ddmetrics (~> 1.0)
+      ddplugin (~> 1.0)
+      hamster (~> 3.0)
+      parallel (~> 1.12)
+      ref (~> 2.0)
+      slow_enumerator_tools (~> 1.0)
+      tomlrb (~> 1.2)
+    nanoc-redirector (0.3.0)
+      nanoc (~> 4.9.0)
+    nokogiri (1.8.4)
+      mini_portile2 (~> 2.3.0)
+    parallel (1.12.1)
+    public_suffix (3.0.3)
+    rack (2.0.5)
+    rainpress (1.0.1)
+    ref (2.0.0)
+    slow_enumerator_tools (1.1.0)
+    tomlrb (1.2.7)
+    uglifier (4.1.19)
+      execjs (>= 0.3.0, < 3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  adsf!
+  kramdown!
+  nanoc!
+  nanoc-redirector!
+  nokogiri!
+  rainpress!
+  uglifier!
+
+BUNDLED WITH
+   1.16.4
