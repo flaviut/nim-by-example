@@ -20,29 +20,29 @@ This is the code that we currently must write to use OOP in Nim:
 type Animal = ref object of RootObj
   name: string
   age: int
-method vocalize(this: Animal): string {.base.} = "..."
-method ageHumanYrs(this: Animal): int {.base.} = this.age
+method vocalize(self: Animal): string {.base.} = "..."
+method ageHumanYrs(self: Animal): int {.base.} = self.age
 
 type Dog = ref object of Animal
-method vocalize(this: Dog): string = "woof"
-method ageHumanYrs(this: Dog): int = this.age * 7
+method vocalize(self: Dog): string = "woof"
+method ageHumanYrs(self: Dog): int = self.age * 7
 
 type Cat = ref object of Animal
-method vocalize(this: Cat): string = "meow"
+method vocalize(self: Cat): string = "meow"
 ```
 
-All these typedefs and `this: T` parameters are repetitive, so it'd be good to write a macro to mask them. Something like this would be nice:
+All these typedefs and `self: T` parameters are repetitive, so it'd be good to write a macro to mask them. Something like this would be nice:
 
 ```nimrod
 class Animal of RootObj:
   var name: string
   var age: int
   method vocalize: string = "..."
-  method age_human_yrs: int = this.age # `this` is injected
+  method age_human_yrs: int = self.age  # `self` is injected
 
 class Dog of Animal:
   method vocalize: string = "woof"
-  method age_human_yrs: int = this.age * 7
+  method age_human_yrs: int = self.age * 7
 
 class Cat of Animal:
   method vocalize: string = "meow"
