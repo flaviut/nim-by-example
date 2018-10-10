@@ -26,20 +26,27 @@ $ nim c -r filterclosure.nim
 @[64, 128, 256]
 ```
 
-The stdlib also makes a [third option availible by using macros][lib-sugar]:
+The stdlib also makes a [third option available by using macros][lib-sugar]:
 
 [lib-sugar]: https://nim-lang.org/docs/sugar.html
 
 ``` nimrod
 import sugar
 
+# sugar provides a "->" macro that simplifies writing type
+# declarations, e.x. (char) -> char
 proc map(str: string, fun: (char) -> char): string =
   for c in str:
     result &= fun(c)
 
+# sugar also provides a "=>" macro for the actual lambda
+# value
 echo "foo".map((c) => char(ord(c) + 1))
+# the following code is exactly equvilent:
+echo "foo".map(proc (c: char): char = char(ord(c) + 1))
 ```
 ``` console
-$ nim c -r sugarlambda.nim\ 
+$ nim c -r sugarlambda.nim
+gpp
 gpp
 ```
