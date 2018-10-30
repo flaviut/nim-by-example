@@ -45,6 +45,27 @@ Strings can also almost be thought of as `seq[char]` with respect to assignment 
 
 [seqs]: /seqs/#immutability
 
+The `strutils` module provides procs for handling strings.
+
+``` nimrod
+import strutils
+
+var a = "hello welcome,friend"
+
+# The split proc takes a sequence of characters and splits a string based on them
+echo a.split({' ', ','})
+
+# The contains proc determines whether a string contains a substring or character
+echo a.contains("hello")
+
+```
+
+``` console
+$ nim c -r strutils.nim
+@["hello", "welcome", "friend"]
+true
+```
+
 ## A note about Unicode
 Unicode symbols are allowed in strings, but are not treated in any special way, so if you want count glyphs or uppercase Unicode symbols, you must use the `unicode` module.
 
