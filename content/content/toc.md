@@ -1,5 +1,6 @@
 * [Getting Started](/getting_started/)
 * [Hello World](/hello_world/)
+* [Comments](/comments/)
 * [Variables](/variables/)
   * [Result](/variables/result/)
   * [Type Casting and Inference](/variables/type_casting_inference/)
