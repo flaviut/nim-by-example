@@ -19,6 +19,7 @@
 * [Arrays](/arrays/)
 * [Seqs](/seqs/)
 * [Bitsets](/bitsets/)
+* [Files](/files/)
 * [Varargs](/varargs/)
 * [Object Oriented Programming](/oop/)
 * [Macros](/macros/)
