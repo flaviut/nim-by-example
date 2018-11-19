@@ -20,6 +20,7 @@
 * [Seqs](/seqs/)
 * [Bitsets](/bitsets/)
 * [Files](/files/)
+* [JSON](/json/)
 * [Varargs](/varargs/)
 * [Object Oriented Programming](/oop/)
 * [Macros](/macros/)
