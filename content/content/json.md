@@ -7,9 +7,7 @@ Nim's `json` module allows you to work with JSON data.
 
 ## Converting Data Into JSON
 
-The `json` module provides the `%*` operator which is used to create JSON 
-objects. Note the use of the `$` operator to convert the JsonObject to its 
-string representation.
+The `json` module provides the `%*` operator which is used to create JSON objects. Note the use of the `$` operator to convert the JsonObject to its string representation.
 
 ``` nimrod
 import json
@@ -42,12 +40,9 @@ let eight = parsedArray[1].getInt()
 echo eight
 ```
 
-The `parseJson` method takes in a string representing a JSON object or array and 
-transforms it into a `JsonNode`. We can access the fields of a JsonNode object 
-using the `[]` syntax.
+The `parseJson` method takes in a string representing a JSON object or array and transforms it into a `JsonNode`. We can access the fields of a JsonNode object using the `[]` syntax.
 
-The procs `getInt`, `getFloat`, `getStr` and `getBool` are used for converting 
-JsonNode's into Nim data types.
+The procs `getInt`, `getFloat`, `getStr` and `getBool` are used for converting JsonNode's into Nim data types.
 
 ## Parsing JSON into a Nim Object
 
