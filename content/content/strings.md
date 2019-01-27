@@ -2,6 +2,17 @@
 title: Strings
 ---
 # Strings
+In Nim, the string represents a sequence of characters. It’s a list of characters terminated by '\0'. There usage is very similar to python
+
+``` nimrod
+var greeting = "Hello World"
+# Note: indexing starts from 0
+echo greeting[5 .. ^1]  # this is transformed by the compiler to this expression. Output: World
+echo greeting[5 .. (len(greeting)-1)] # Output: world
+echo greeting[5 .. ^(greeting.len-greeting.high)] #Output : world
+echo greeting.high  # output: 10
+echo greeting.substr(5) # output World
+```
 
 ``` nimrod
 echo "words words words ⚑"
