@@ -7,7 +7,6 @@ The `result` variable is a special variable that serves as an implicit return va
 
 ``` nimrod
 proc getAlphabet(): string =
-  result = ""
   for letter in 'a'..'z':
     result.add(letter)
 ```
