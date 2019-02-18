@@ -34,7 +34,7 @@ assert carl.dead
 
 Object types are declared in a type section, as usual. They can be exported, and individual fields can also be exported. Fields can be safely exported without violating encapsulation because call syntax is equivalent between them.
 
-Initially, `carl` is created on the stack and initialized to zeros, so its value is `[name = nil, species = nil, age = 0]`. It is mutable, so that means that the contents of `carl` can be changed. This also means it can be passed to functions that require a variable parameter, like `sleep()`, which can modify its value.
+Initially, `carl` is created on the stack and initialized to zeros resp. empty string, so its value is `[name = "", species = "", age = 0]`. It is mutable, so that means that the contents of `carl` can be changed. This also means it can be passed to functions that require a variable parameter, like `sleep()`, which can modify its value.
 
 `joe` is also created on the stack, but it's contents are immutable and can not be changed. Attempting to do so, say through `joe.age = 57`, will fail with an error at compile time.
 
