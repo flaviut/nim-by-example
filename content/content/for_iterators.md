@@ -103,7 +103,7 @@ var output = ""
 while true:
   # 1. grab an element
   let next = countTo20()
-  # 2. Is the element bogus? Its the end of the loop, discard it
+  # 2. Is the element bogus? It's the end of the loop, discard it
   if finished(countTo20):
     break
   # 3. Loop body goes here:
