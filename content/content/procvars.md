@@ -24,6 +24,7 @@ echo powersOfTwo.filter(greaterThan32)
 $ nim c -r filterclosure.nim
 @[64, 128, 256]
 @[64, 128, 256]
+@[64, 128, 256]
 ```
 
 The stdlib also makes a [third option available by using macros][lib-sugar]:
