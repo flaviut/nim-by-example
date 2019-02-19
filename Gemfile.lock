@@ -1,13 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.5.2)
+    addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     adsf (1.4.1)
       rack (>= 1.0.0, < 3.0.0)
     colored (1.2)
-    concurrent-ruby (1.0.5)
-    cri (2.15.1)
+    concurrent-ruby (1.1.4)
+    cri (2.15.3)
       colored (~> 1.2)
     ddmemoize (1.0.0)
       ddmetrics (~> 1.0)
@@ -17,31 +17,35 @@ GEM
     execjs (2.7.0)
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
-    kramdown (1.17.0)
-    mini_portile2 (2.3.0)
-    nanoc (4.9.5)
+    json_schema (0.20.1)
+    kramdown (2.1.0)
+    kramdown-parser-gfm (1.0.1)
+      kramdown (~> 2.0)
+    mini_portile2 (2.4.0)
+    nanoc (4.9.9)
       addressable (~> 2.5)
       cri (~> 2.15)
       ddmemoize (~> 1.0)
       ddmetrics (~> 1.0)
       ddplugin (~> 1.0)
       hamster (~> 3.0)
+      json_schema (~> 0.19)
       parallel (~> 1.12)
       ref (~> 2.0)
       slow_enumerator_tools (~> 1.0)
       tomlrb (~> 1.2)
     nanoc-redirector (0.3.0)
       nanoc (~> 4.9.0)
-    nokogiri (1.8.4)
-      mini_portile2 (~> 2.3.0)
-    parallel (1.12.1)
+    nokogiri (1.10.1)
+      mini_portile2 (~> 2.4.0)
+    parallel (1.13.0)
     public_suffix (3.0.3)
-    rack (2.0.5)
+    rack (2.0.6)
     rainpress (1.0.1)
     ref (2.0.0)
     slow_enumerator_tools (1.1.0)
-    tomlrb (1.2.7)
-    uglifier (4.1.19)
+    tomlrb (1.2.8)
+    uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
 
 PLATFORMS
@@ -50,6 +54,7 @@ PLATFORMS
 DEPENDENCIES
   adsf!
   kramdown!
+  kramdown-parser-gfm!
   nanoc!
   nanoc-redirector!
   nokogiri!
@@ -57,4 +62,4 @@ DEPENDENCIES
   uglifier!
 
 BUNDLED WITH
-   1.16.4
+   2.0.1
