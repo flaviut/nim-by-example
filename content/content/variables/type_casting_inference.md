@@ -21,7 +21,7 @@ typeinference.nim(6, 4) Error: type mismatch: got (string) but expected 'int'
 
 You may optionally specify the type after a colon (`:`). In some cases the compiler will expect you to explicitly cast types, for which multiple ways are available:
 
- - type conversion, whose safety checked by the compiler
+ - type conversion, which is safety checked by the compiler
  - annotating the variable type
  - the `cast` keyword, which is unsafe and should be used only where you know what you are doing, such as in interfacing with C
 
