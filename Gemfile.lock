@@ -36,7 +36,7 @@ GEM
       tomlrb (~> 1.2)
     nanoc-redirector (0.3.0)
       nanoc (~> 4.9.0)
-    nokogiri (1.10.1)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     parallel (1.13.0)
     public_suffix (3.0.3)
