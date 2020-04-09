@@ -41,7 +41,19 @@ There are several types of string literals:
 
 Strings are null-terminated, so that `cstring("foo")` requires zero copying. However, you should be careful that the lifetime of the cstring does not exceed the lifetime of the string it is based upon.
 
-Strings can also almost be thought of as `seq[char]` with respect to assignment semantics. See [seqs][]
+Strings can also almost be thought of as `seq[char]` with respect to assignment semantics. See [seqs][] for the possible manipulations, for example:
+
+``` nimrod
+echo "abc"[0]
+echo "abcdefg"[0 .. 4]
+echo "abcdefg"[0 .. ^2]
+```
+``` console
+$ nim c -r strindex.nim
+a
+abcde
+abcdef
+```
 
 [seqs]: /seqs/#immutability
 
