@@ -12,10 +12,28 @@ type
   Colors {.pure.} = enum
     Red = "FF0000", Green = (1, "00FF00"), Blue = "0000FF"
 
+  OtherColors {.pure.} = enum
+    Red = 0xFF0000, Orange = 0xFFA500, Yellow = 0xFFFF00
+
   Signals = enum
     sigQuit = 3, sigAbort = 6, sigKill = 9
+
+# echo Red  # Error: ambiguous identifier: 'Red'
+echo Colors.Red
+echo OtherColors.Red
+echo OtherColors.Orange, " ", Orange
 ```
-Notice that each element in `CompassDirections` is prepended with `cd` to avoid name conflicts since references to the enum value do not need to be qualified. The `{.pure.}` pragma that `Colors` has requires that all references to `Colors`'s values be qualified, therefore making a prefix unnecessary.
+
+```console
+$ nim c -r enumdefs.nim
+FF0000
+Red
+Orange Orange
+```
+
+Notice that each element in `CompassDirections` is prepended with `cd` to avoid name conflicts since references to the enum value do not need to be qualified.
+
+The `{.pure.}` pragma that `Colors` and `OtherColors` have requires that all ambigious references to the enums' values be qualified. This mean that `Orange` can be referred to without `OtherColors.Orange` (although `OtherColors.Orange` is still allowed).
 
 Enums can be given custom values and stringify values, as shown by `Colors` and `Signals`.
 
