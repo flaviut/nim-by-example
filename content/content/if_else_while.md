@@ -14,7 +14,7 @@ Along with [its other uses](/block/), the `block` statement can be used to creat
 import strutils, random
 
 randomize()
-let answer = random(10) + 1
+let answer = rand(10)
 while true:
   echo "I have a number from 1 to 10, what is it? "
   let guess = parseInt(stdin.readLine)
