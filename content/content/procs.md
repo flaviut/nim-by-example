@@ -16,7 +16,7 @@ proc fibonacci(n: int): int =
 ## Exporting symbols
 
 <!-- XXX Move into module topic -->
-Encapsulation is also supported, not by conventions such as perpending the name with underscores but by annotating a procedure with `*`, which exports it and makes it available for use by modules.
+Encapsulation is also supported, not by conventions such as prepending the name with underscores but by annotating a procedure with `*`, which exports it and makes it available for use by modules.
 
 ``` nimrod
 # module1:
