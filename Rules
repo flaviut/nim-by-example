@@ -14,6 +14,10 @@
 #   because “*” matches zero or more characters.
 require 'nanoc-redirector'
 
+
+compile '/assets/img/*' do
+end
+
 compile '/assets/**/all*' do
   filter :erb
 end
