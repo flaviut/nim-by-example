@@ -7,3 +7,5 @@ crash.log
 nimcache/
 testexamples
 testexamples.exe
+.bundle
+vendor
