@@ -55,6 +55,11 @@ compile '/content/**/*' do
   layout '/default.*'
 end
 
+route '/assets/img/*' do
+  # if not debug mode, only let all.css through
+  item.identifier + ""
+end
+
 route '/assets/css/*' do
   # if not debug mode, only let all.css through
   unless @config[:debug] 
