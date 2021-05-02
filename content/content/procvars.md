@@ -43,7 +43,7 @@ proc map(str: string, fun: (char) -> char): string =
 # sugar also provides a "=>" macro for the actual lambda
 # value
 echo "foo".map((c) => char(ord(c) + 1))
-# the following code is exactly equvilent:
+# the following code is exactly equivalent:
 echo "foo".map(proc (c: char): char = char(ord(c) + 1))
 ```
 ``` console
