@@ -24,12 +24,15 @@ echo entireFile  # prints the entire file
 We can also read the lines of a file by opening a `File` object and using the `readLine` proc to read individual lines.
 
 ``` nimrod
-let f = open("kittens.txt")
-# Close the file object when you are done with it
-defer: f.close()
+proc readKittens() =
+  let f = open("kittens.txt")
+  # Close the file object when you are done with it
+  defer: f.close()
 
-let firstLine = f.readLine()
-echo firstLine  # prints Spitfire
+  let firstLine = f.readLine()
+  echo firstLine  # prints Spitfire
+
+readKittens()
 ```
 
 ## Writing to a File
@@ -46,13 +49,16 @@ This will create a file on the system named `cats.txt` containing "Cats are very
 We can also write a file line by line using a `File` object and the `writeLine` proc.
 
 ``` nimrod
-let lines = ["Play", "Eat", "Sleep"]
-# The fmWrite constant specifies that we are opening the file for writing.
-let f = open("catactivities.txt", fmWrite)
-defer: f.close()
+proc writeCatActivities() =
+  let lines = ["Play", "Eat", "Sleep"]
+  # The fmWrite constant specifies that we are opening the file for writing.
+  let f = open("catactivities.txt", fmWrite)
+  defer: f.close()
 
-for line in lines:
-  f.writeLine(line)
+  for line in lines:
+    f.writeLine(line)
+
+writeCatActivities()
 ```
 
 After running this program there should be a file called `catactivities.txt` with the following contents.
