@@ -7,4 +7,5 @@ source 'https://rubygems.org' do
     gem 'uglifier'
     gem 'nanoc-redirector'
     gem 'adsf'
+    gem 'webrick' # https://nanoc.app/doc/installation/#ruby-3-x
 end
