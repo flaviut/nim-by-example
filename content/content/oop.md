@@ -12,15 +12,15 @@ Inheritance is created with the `of` keyword in the type declaration of an objec
 type Animal = ref object of RootObj
   name: string
   age: int
-method vocalize(this: Animal): string {.base.} = "..."
-method ageHumanYrs(this: Animal): int {.base.} = this.age
+method vocalize(self: Animal): string {.base.} = "..."
+method ageHumanYrs(self: Animal): int {.base.} = self.age
 
 type Dog = ref object of Animal
-method vocalize(this: Dog): string = "woof"
-method ageHumanYrs(this: Dog): int = this.age * 7
+method vocalize(self: Dog): string = "woof"
+method ageHumanYrs(self: Dog): int = self.age * 7
 
 type Cat = ref object of Animal
-method vocalize(this: Cat): string = "meow"
+method vocalize(self: Cat): string = "meow"
 
 
 var animals: seq[Animal] = @[]
