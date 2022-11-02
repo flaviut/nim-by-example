@@ -70,15 +70,13 @@ assert("foo" ^&*^@% "bar" == "fr")
 Generic functions are like C++'s templates and allow for the same statically checked duck-typing semantics as templates. 
 
 ``` nimrod
-# Not really good idea for obvious reasons
-let zero = ""
 proc `+`(a, b: string): string =
   a & b
 
 proc `*`[T](a: T, b: int): T =
-  result = zero
+  result = default(T)
   for i in 0..b-1:
-    result = result + a  # calls `+` from line 3
+    result = result + a  # calls `+` from line 2
 
 assert("a" * 10 == "aaaaaaaaaa")
 ```
