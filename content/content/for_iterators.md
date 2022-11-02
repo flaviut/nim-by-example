@@ -41,7 +41,7 @@ Iterators can also be operators [in the standard way](/procs/#operators), with t
 ``` nimrod
 # Give it a different name to avoid conflict
 iterator `...`*[T](a: T, b: T): T =
-  var res: T = T(a)
+  var res: T = a
   while res <= b:
     yield res
     inc res
