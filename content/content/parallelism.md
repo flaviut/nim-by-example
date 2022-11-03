@@ -52,9 +52,3 @@ You can also do the following:
 2. Return data from `spawn` calls.
 
 Details for both of these can be found in [the `experimental` module's manual page](https://nim-lang.org/docs/manual_experimental.html#parallel-amp-spawn).
-
-Apart from these options, Nim also has:
-1. [OpenMP support using the `||` operator.](https://rosettacode.org/wiki/Concurrent_computing#Nim).
-2. [Coroutines](https://nim-lang.org/docs/coro.html).
-
-However, both of these are not ready yet for general usuage.

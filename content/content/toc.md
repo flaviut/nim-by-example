@@ -23,6 +23,9 @@
 * [JSON](/json/)
 * [Varargs](/varargs/)
 * [Object Oriented Programming](/oop/)
+* [Parallelism](/parallelism/)
+* [Channels](/channels/)
+* [Concurrency](/concurrency/)
 * [Macros](/macros/)
 
 {: #toc-list}
