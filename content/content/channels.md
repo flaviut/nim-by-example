@@ -60,16 +60,16 @@ sync()
 Note that all messages are deep copied when sent.
 
 Channels can be used in a non-blocking way as follows:
-```
-while True:
+``` nimrod
+while true:
   let tried = commChan.tryRecv()
   if tried.dataAvailable:
     echo tried.msg
 ```
 
 When a channel is opened, it can be set with a max number of items:
-```
-# create a channel to tranfer ints
+``` nimrod
+# create a channel to transfer ints
 var chan Channel[int]
 # allow max of 10 items in channel
 chan.open(10)
