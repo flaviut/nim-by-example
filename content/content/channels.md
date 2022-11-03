@@ -27,14 +27,14 @@ proc recvMsg() =
   let msg: string = commChan.recv()
   echo "Received message: " & msg
 
-# very important: channels need to be opened, before they can be used
+# very important: channels must be opened before they can be used
 commChan.open()
 createThread(sender, sendMsg)
 createThread(recver, recvMsg)
 joinThreads(sender, recver)
 ```
 
-Usually, channels are created as global variables. See the [documentation](https://nim-lang.org/docs/channels_builtin.html#example-passing-channels-safely), if you wish to manually allocate shared memory for channels.
+Usually, channels are created as global variables. That means you must [follow a certain procedure](https://nim-lang.org/docs/channels_builtin.html#example-passing-channels-safely) if you wish to manually allocate shared memory for channels.
 
 The same example, using the higher level `spawn`:
 

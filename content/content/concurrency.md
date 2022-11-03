@@ -4,7 +4,7 @@ title: Concurrency
 
 # Concurrency
 
-Concurrency is provided in Nim, using `async`/`await` syntax. This feature is powered by the `asyncdispatch` [module](https://nim-lang.org/docs/asyncdispatch.html).
+Concurrency is provided in Nim, using `async`/`await` syntax. This feature is powered by [the `asyncdispatch` module](https://nim-lang.org/docs/asyncdispatch.html).
 
 Note that, concurrency is not [parallelism](/parallelism/). All the examples here are async functions that run on a single thread. This is mainly useful for IO intensive tasks.
 
@@ -46,12 +46,12 @@ runForever()
 ```
 which blocks, waiting indefinitely for all asynchronous functions.
 
-Refer to the [docs](https://nim-lang.org/docs/asyncdispatch.html) for more info. See also, [this blog post](https://peterme.net/asynchronous-programming-in-nim.html).
+You may also find [Peter's article on async programming](https://peterme.net/asynchronous-programming-in-nim.html) helpful.
 
 ## Higher Async modules
 
 The underlying `asyncdispatch` modules is used by several higher level modules:
 
-1. [asyncfile](https://nim-lang.org/docs/asyncfile.html) for async file operations.
-2. [asyncnet](https://nim-lang.org/docs/asyncnet.html) for async networking operations.
-3. [asynchttpserver](https://nim-lang.org/docs/asynchttpserver.html) for an async http server.
+1. [`asyncfile`](https://nim-lang.org/docs/asyncfile.html) for async file operations.
+2. [`asyncnet`](https://nim-lang.org/docs/asyncnet.html) for async networking operations.
+3. [`asynchttpserver`](https://nim-lang.org/docs/asynchttpserver.html) for an async http server.
