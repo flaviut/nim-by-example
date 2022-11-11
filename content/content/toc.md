@@ -22,6 +22,7 @@
 * [Files](/files/)
 * [JSON](/json/)
 * [Varargs](/varargs/)
+* [String Formatting](/string_formatting/)
 * [Object Oriented Programming](/oop/)
 * [Parallelism](/parallelism/)
 * [Channels](/channels/)
