@@ -75,7 +75,7 @@ the error message is a lot clearer:
 Error: 'self.name' cannot be assigned to
 ```
 
-The reason for this is, that arguments to `proc`s are immutable. This is simply solved by marking mutable arguments using `var` as shown below:
+This happens because arguments to `proc` are immutable by default. The error can be fixed by marking the argument as mutable using `var`:
 
 ``` nimrod
 proc incAge(self: var Animal) =
@@ -87,7 +87,7 @@ proc setName(self: var Animal, name: string) =
 
 Now, everything works.
 
-Note that this problem does not occur with `ref` objects, so the following works correctly:
+Note that `ref` objects can be mutated, and the following works correctly:
 ``` nimrod
 type Animal = ref object
   name: string
@@ -101,7 +101,7 @@ Why is this? This is because self is just a pointer and is not being mutated. If
 
 ## Inheritance
 
-Nim supports inheritance and dynamically dispatched methods, which are virtual procedures. Methods work in the same way as [procs](/procs/), including UFCS, but the runtime type of the object that a method is called with is used to determine which version to call.
+Nim supports inheritance and dynamically dispatched (also known as "virtual") methods. Methods work in the same way as [procs](/procs/), including UFCS, but the runtime type of the object that a method is called with is used to determine which version to call.
 
 Inheritance is created with the `of` keyword in the type declaration of an object. Note that base objects that are going to be inherited have to inherit from RootObj since an object type with no ancestors are implicitly `final`.
 
