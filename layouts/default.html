@@ -15,16 +15,6 @@
       <script async src="/assets/js/all.js"></script>
     <% end %>
 
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-58002512-1', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
-
     <title>Nim by Example - <%= @item[:title] %></title>
     <link rel="icon" type="image/png" href="/assets/img/logo_bw.png">
 
@@ -53,5 +43,7 @@
     <footer>
       <%= @items["/content/footer.md"].compiled_content %>
     </footer>
+
+    <script data-goatcounter="https://wuosgy.goatcounter.com/count"> (function(){window.goatcounter=window.goatcounter||{};var f=document.querySelector("script[data-goatcounter]");if(f&&f.dataset.goatcounterSettings){try{var p=JSON.parse(f.dataset.goatcounterSettings)}catch(a){console.error("invalid JSON in data-goatcounter-settings: "+a)}for(var h in p)-1<"no_onload no_events allow_local allow_frame path title referrer event".split(" ").indexOf(h)&&(window.goatcounter[h]=p[h])}var q=encodeURIComponent,k=function(a){return null===a||void 0===a||"function"===typeof a}, l=function(a){console&&"warn"in console&&console.warn("goatcounter: "+a)};f=function(a){null===document.body?document.addEventListener("DOMContentLoaded",function(){a()},!1):a()};var t=function(a){a=a||{};var b=window,c=document;a={p:void 0===a.path?goatcounter.path:a.path,r:void 0===a.referrer?goatcounter.referrer:a.referrer,t:void 0===a.title?goatcounter.title:a.title,e:!(!a.event&&!goatcounter.event),s:[window.screen.width,window.screen.height,window.devicePixelRatio||1],b:b.callPhantom||b._phantom|| b.phantom?150:b.__nightmare?151:c.__selenium_unwrapped||c.__webdriver_evaluate||c.__driver_evaluate?152:navigator.webdriver?153:0,q:location.search};if("function"===typeof a.r)var d=a.r;if("function"===typeof a.t)var r=a.t;if("function"===typeof a.p)var g=a.p;k(a.r)&&(a.r=document.referrer);k(a.t)&&(a.t=document.title);if(k(a.p)){b=location;if(c=document.querySelector('link[rel="canonical"][href]')){var m=document.createElement("a");m.href=c.href;m.hostname.replace(/^www\./,"")===location.hostname.replace(/^www\./, "")&&(b=m)}a.p=b.pathname+b.search||"/"}d&&(a.r=d(a.r));r&&(a.t=r(a.t));g&&(a.p=g(a.p));if(null!==a.p){a.rnd=Math.random().toString(36).substr(2,5);d=(d=document.querySelector("script[data-goatcounter]"))&&d.dataset.goatcounter?d.dataset.goatcounter:goatcounter.endpoint||window.counter;if(!d)return l("no endpoint found");g=[];for(e in a)""!==a[e]&&null!==a[e]&&void 0!==a[e]&&!1!==a[e]&&g.push(q(e)+"="+q(a[e]));var e="?"+g.join("&");return d+e}},n=function(a){var b="visibilityState"in document&&"prerender"=== document.visibilityState?"visibilityState":goatcounter.allow_frame||location===parent.location?!goatcounter.allow_local&&location.hostname.match(/(localhost$|^127\.|^10\.|^172\.(1[6-9]|2[0-9]|3[0-1])\.|^192\.168\.|^0\.0\.0\.0$)/)?"localhost":goatcounter.allow_local||"file:"!==location.protocol?localStorage&&"t"===localStorage.getItem("skipgc")?"disabled with #toggle-goatcounter":!1:"localfile":"frame";if(b)return l("not counting because of: "+b);a=t(a);if(!a)return l("not counting because path callback returned null"); var c=document.createElement("img");c.src=a;c.style.position="absolute";c.style.bottom="0px";c.style.width="1px";c.style.height="1px";c.loading="eager";c.setAttribute("alt","");c.setAttribute("aria-hidden","true");c.addEventListener("load",function(){c&&c.parentNode&&c.parentNode.removeChild(c)},!1);document.body.appendChild(c)},u=function(){if(document.querySelectorAll){var a=function(b){return function(){n({event:!0,path:b.dataset.goatcounterClick||b.name||b.id||"",title:b.dataset.goatcounterTitle|| b.title||(b.innerHTML||"").substr(0,200)||"",referrer:b.dataset.goatcounterReferrer||b.dataset.goatcounterReferral||""})}};Array.prototype.slice.call(document.querySelectorAll("*[data-goatcounter-click]")).forEach(function(b){if(!b.dataset.goatcounterBound){var c=a(b);b.addEventListener("click",c,!1);b.addEventListener("auxclick",c,!1);b.dataset.goatcounterBound="true"}})}};"#toggle-goatcounter"===location.hash&&("t"===localStorage.getItem("skipgc")?localStorage.removeItem("skipgc","t"):localStorage.setItem("skipgc", "t"));goatcounter.no_onload||f(function(){if("visibilityState"in document&&"visible"!==document.visibilityState){var a=function(b){"visible"===document.visibilityState&&(document.removeEventListener("visibilitychange",a),n())};document.addEventListener("visibilitychange",a)}else n();goatcounter.no_events||u()})})();</script>
   </body>
 </html>
