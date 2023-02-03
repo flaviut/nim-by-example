@@ -4,9 +4,9 @@ title: Bitsets
 
 # Bitsets
 
-Nim comes with a built in way to build a set of ordinal types. In order for a type to be usable in a bitset, it must be an ordinal and <<\texttt{high(T)} < 2^{16}>>. For sets of non-ordinal types, see the [sets module](http://nim-lang.org/docs/sets.html), which contains hashsets.
+Nim comes with a built in way to build a set of ordinal types. In order for a type to be usable in a bitset, it must be an ordinal and <code>high(T) &lt; 2<sup>16</sup></code>. For sets of non-ordinal types, see the [sets module](http://nim-lang.org/docs/sets.html), which contains hashsets.
 
-However, best practice is to keep bitset size significantly smaller since each possible element in the set consumes one bit, therefore a bitset of <<2^{16}>> elements will consume 65,536 bits (i.e. 8,192 bytes, or 8KiB).
+However, best practice is to keep bitset size significantly smaller since each possible element in the set consumes one bit, therefore a bitset of 2<sup>16</sup> elements will consume 65,536 bits (i.e. 8,192 bytes, or 8KiB).
 
 Bitsets have all the useful operations of mathematical sets:
 
