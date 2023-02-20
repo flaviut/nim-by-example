@@ -93,4 +93,4 @@ echo &"hello {apple}" # hello (name: "apple", color: "red")
 echo &"hello {$apple}" # hello Fruit("apple", "red")
 ```
 
-Note that the third approach formats object types (and other types) using an in-built representation and you need to use the `$` operator if you want to coerce it to a format of your choosing.
+Note that the first line in the last section formats object types (and other types) using an in-built representation and you need to use the `$` operator—as in the second line of the last section—if you want to coerce it to a format of your choosing.
