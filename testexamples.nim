@@ -12,12 +12,12 @@ for filePath in walkDirRec(markdownFilesGlob):
   let fileContents = file.readAll()
   file.close()
 
-  let sourceSegments = fileContents.findAll(re"""\n(?i)```\s*nimrod[\s\S]*?```""")
+  let sourceSegments = fileContents.findAll(re"""\n(?i)```\s*nim[\s\S]*?```""")
   
   for match in sourceSegments:
     echo filePath
 
-    let code = match.replacef(re"""\n(?i)```\s*nimrod[ \t]*\s([\s\S]*?)```""", "$1")
+    let code = match.replacef(re"""\n(?i)```\s*nim[ \t]*\s([\s\S]*?)```""", "$1")
     let codeHash = code.getMD5()
     if not configFilePath.readFile().contains(codeHash):  # Hasn't been verified yet
       let tempCodePath = getTempDir() / "code.nim"

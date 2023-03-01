@@ -16,7 +16,7 @@ The example shown here describes how to create new class syntax in Nim, purely t
 
 This is the code that we currently must write to use OOP in Nim:
 
-```nimrod
+```nim
 type Animal = ref object of RootObj
   name: string
   age: int
@@ -33,7 +33,7 @@ method vocalize(self: Cat): string = "meow"
 
 All these typedefs and `self: T` parameters are repetitive, so it'd be good to write a macro to mask them. Something like this would be nice:
 
-```nimrod
+```nim
 class Animal of RootObj:
   var name: string
   var age: int
@@ -50,7 +50,7 @@ class Cat of Animal:
 
 To get that nice notation, we can use a macro:
 
-```nimrod
+```nim
 import macros
 
 macro class*(head, body: untyped): untyped =

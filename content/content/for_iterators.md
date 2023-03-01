@@ -9,7 +9,7 @@ Nim has first class iterators and syntax to use them, for loops. The `continue` 
 
 When iterating over an object with one item, Nim will call an iterator called `items` with the first parameter the type you want to iterate over. The same thing happens when iterating with two items, but in that case, the `pairs` iterator is called.
 
-``` nimrod
+``` nim
 type
   CustomRange = object
     low: int
@@ -38,7 +38,7 @@ d
 ## Operators
 Iterators can also be operators [in the standard way](/procs/#operators), with the name enclosed in backticks. For example, the standard library defines the slice iterator, which allows iterating through [ordinal types](/types/enums/#ordinals).
 
-``` nimrod
+``` nim
 # Give it a different name to avoid conflict
 iterator `...`*[T](a: T, b: T): T =
   var res: T = a
@@ -62,7 +62,7 @@ $ nim c -r operatoriterator.nim
 ## Inline Iterators
 Inline iterators basically take the body of the for loop and inline it into the iterator. This means that they do not have any overhead from function calling, but if carelessly created may increase code size dramatically.
 
-``` nimrod
+``` nim
 iterator countTo(n: int): int =
   var i = 0
   while i <= n:
@@ -86,7 +86,7 @@ $ nim c -r ./inline_iter.nim
 ## Closure Iterators
 Closure iterators hold on to their state and can be resumed at any time. The `finished()` function can be used to check if there are any more elements available in the iterator, however raw iterator usage is unintuitive and difficult to get right.
 
-``` nimrod
+``` nim
 proc countTo(n: int): iterator(): int =
   return iterator(): int =
     var i = 0

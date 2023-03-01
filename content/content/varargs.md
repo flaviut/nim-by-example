@@ -5,7 +5,7 @@ title: Varargs
 
 Standard varargs simply allows you to pass multiple parameters to your function.
 
-``` nimrod
+``` nim
 proc printThings(things: varargs[string]) =
   for thing in things:
     echo thing
@@ -21,13 +21,13 @@ print
 
 However, trying to run
 
-``` nimrod
+``` nim
 printThings 1, "string", @[1, 2, 3]
 ```
 
 will fail to compile because the compiler won't coerce anything into strings. Luckily enough, there is a tool to fix this, the coercing varargs:
 
-``` nimrod
+``` nim
 proc printThings(things: varargs[string, `$`]) =
   for thing in things:
     echo thing

@@ -6,12 +6,12 @@ title: String Formatting
 
 The `&` operator can be used for simple string concatenation:
 
-``` nimrod
+``` nim
 let msg = "hello" & "world"
 ```
 The `strutils` module provides string interpolation from a format string using the [`%` operator](https://nim-lang.org/docs/strutils.html#%25%2Cstring%2CopenArray%5Bstring%5D).
 
-``` nimrod
+``` nim
 import std/strutils
 
 # numbered arguments
@@ -24,7 +24,7 @@ echo "$first $second" % ["first", "hello", "second", "world"]
 
 Alternatively, you can use the functionality provided by the [`strformat` module](https://nim-lang.org/docs/strformat.html).
 
-``` nimrod
+``` nim
 import std/strformat
 
 let
@@ -40,7 +40,7 @@ The `fmt` and `&` operators have [a slight difference in usuage](https://nim-lan
 
 We have seen 3 different string formatting options above. How do you format non-string built-in types?
 
-``` nimrod
+``` nim
 import std/strutils, std/strformat
 
 let 
@@ -67,7 +67,7 @@ That is, the first two methods expect string arguments, the third works with any
 
 The `$` operator is Nim's version of the string or toString function. You can create string representations for object types as shown below.
 
-``` nimrod
+``` nim
 import std/strutils, std/strformat
 
 type Fruit = object

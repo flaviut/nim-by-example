@@ -9,7 +9,7 @@ Concurrency is provided in Nim, using `async`/`await` syntax. This feature is po
 Note that, concurrency is not [parallelism](/parallelism/). All the examples here are async functions that run on a single thread. This is mainly useful for IO intensive tasks.
 
 A general example looks like this:
-``` nimrod
+``` nim
 import asyncdispatch
 
 proc ioManager(id: string) {.async.} =
@@ -41,7 +41,7 @@ Async functions are tagged with the `{.async.}` pragma. These functions can now 
 In the example above, we have used `waitFor` on 2 async functions, so the execution blocks until both functions are run to completion.
 
 An alternative option is:
-``` nimrod
+``` nim
 runForever()
 ```
 which blocks, waiting indefinitely for all asynchronous functions.

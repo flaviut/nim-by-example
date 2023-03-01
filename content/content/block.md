@@ -8,7 +8,7 @@ Blocks can be introduced in two different ways: by indenting statements or with 
 
 The first way is to use indenting, e.g. using `if-elif-else`, `while`, `for` statements, or the `block`  statement.
 
-``` nimrod
+``` nim
 if true:
   echo "Nim is great!"
 
@@ -21,7 +21,7 @@ block:
 
 The `block` statement can also be labeled, making it useful for breaking out of loops and is useful for general scoping as well. 
 
-``` nimrod
+``` nim
 block outer:
   for i in 0..2000:
     for j in 0..2000:
@@ -38,7 +38,7 @@ Parentheses can be used as an expression, but they do not provide end of stateme
 
 While possible, it doesn't mean it's a good idea. Most Nim code does not use parentheses in that way, and it would not be seen as idiomatic.
 
-``` nimrod
+``` nim
 proc square(inSeq: seq[float]): seq[float] = (
   result = newSeq[float](len(inSeq));
   for i, v in inSeq: (

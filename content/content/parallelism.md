@@ -15,7 +15,7 @@ This is needed for all the different ways shown below.
 
 ## Threads
 
-``` nimrod
+``` nim
 proc sayHi(num: int) {.thread.} =
   echo "Hi from " & $num
 
@@ -32,7 +32,7 @@ It is recommended that functions used with threads be marked using the `{.thread
 
 Instead of using threads directly, you can use the higher level abstraction provided by `std/threadpool`.
 
-``` nimrod
+``` nim
 import threadpool
 
 proc sayHi(num: int) {.thread.} =

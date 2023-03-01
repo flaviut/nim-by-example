@@ -5,7 +5,7 @@ title: Hello World
 
 The code for a simple hello world program is as follows:
 
-``` nimrod
+``` nim
 echo "Hello World"
 ```
 

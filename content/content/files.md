@@ -15,7 +15,7 @@ Motor
 
 We can use the `readFile` proc to read the entire file into memory.
 
-``` nimrod
+``` nim
 # This will read the entire file into the string entireFile
 let entireFile = readFile("kittens.txt")
 echo entireFile  # prints the entire file
@@ -23,7 +23,7 @@ echo entireFile  # prints the entire file
 
 We can also read the lines of a file by opening a `File` object and using the `readLine` proc to read individual lines.
 
-``` nimrod
+``` nim
 proc readKittens() =
   let f = open("kittens.txt")
   # Close the file object when you are done with it
@@ -39,7 +39,7 @@ readKittens()
 
 We can write a string to a file using the `writeFile` proc.
 
-``` nimrod
+``` nim
 let text = "Cats are very cool!"
 writeFile("cats.txt", text)
 ```
@@ -48,7 +48,7 @@ This will create a file on the system named `cats.txt` containing "Cats are very
 
 We can also write a file line by line using a `File` object and the `writeLine` proc.
 
-``` nimrod
+``` nim
 proc writeCatActivities() =
   let lines = ["Play", "Eat", "Sleep"]
   # The fmWrite constant specifies that we are opening the file for writing.

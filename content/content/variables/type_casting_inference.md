@@ -5,7 +5,7 @@ title: Type Casting and Inference
 
 Nim is a statically typed language. As such, each variable has a type associated with it. As seen in the previous example these types are inferred in the `const`, `let` and `var` declarations by the compiler.
 
-```nimrod
+```nim
 # These types are inferred.
 var x = 5 # int
 var y = "foo" # string
@@ -25,7 +25,7 @@ You may optionally specify the type after a colon (`:`). In some cases the compi
  - annotating the variable type
  - the `cast` keyword, which is unsafe and should be used only where you know what you are doing, such as in interfacing with C
 
-```nimrod
+```nim
 var x = int(1.0 / 3) # type conversion
 
 var y: seq[int] = @[] # empty seq needs type specification
