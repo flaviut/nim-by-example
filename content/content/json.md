@@ -9,7 +9,7 @@ Nim's `json` module allows you to work with JSON data.
 
 The `json` module provides the `%*` operator which is used to create JSON objects. Note the use of the `$` operator to convert the JsonObject to its string representation.
 
-``` nimrod
+``` nim
 import json
 
 let element = "Hydrogen"
@@ -22,7 +22,7 @@ echo $jsonObject
 
 ## Parsing and accessing JSON
 
-``` nimrod
+``` nim
 import json
 
 # We start with a string representation of a JSON object
@@ -48,7 +48,7 @@ The procs `getInt`, `getFloat`, `getStr` and `getBool` are used for converting J
 
 In some cases you may want to convert from a JSON string directly to an object.
 
-``` nimrod
+``` nim
 import json
 
 # First we'll define our types

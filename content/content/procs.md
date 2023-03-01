@@ -5,7 +5,7 @@ title: Procs
 
 Procedures in Nim are declared using `proc` and require that their parameter and return types be annotated. After the types and parameters, an `=` is used to denote the start of the function body. Another thing to note is that procedures have uniform function call syntax, which means that they can called as both `foo(a, b)` or `a.foo(b)`.
 
-``` nimrod
+``` nim
 proc fibonacci(n: int): int =
   if n < 2:
     result = n
@@ -18,7 +18,7 @@ proc fibonacci(n: int): int =
 <!-- XXX Move into module topic -->
 Encapsulation is also supported, not by conventions such as prepending the name with underscores but by annotating a procedure with `*`, which exports it and makes it available for use by modules.
 
-``` nimrod
+``` nim
 # module1:
 proc foo*(): int = 2
 proc bar(): int = 3
@@ -32,7 +32,7 @@ echo bar()  # will not compile
 
 Nim provides support for functional programming and so includes the `{.noSideEffect.}` pragma, which statically ensures there are no side effects.
 
-``` nimrod
+``` nim
 proc sum(x, y: int): int {. noSideEffect .} =
   x + y
 
@@ -45,7 +45,7 @@ proc minus(x, y: int): int {. noSideEffect .} =
 
 To create an operator, the symbols that are to be used must be encased inside `` ` ``s to signify they are operators.
 
-``` nimrod
+``` nim
 proc `$`(a: array[2, array[2, int]]): string =
   result = ""
   for v in a:
@@ -69,7 +69,7 @@ assert("foo" ^&*^@% "bar" == "fr")
 <!-- XXX Needs own section -->
 Generic functions are like C++'s templates and allow for the same statically checked duck-typing semantics as templates. 
 
-``` nimrod
+``` nim
 proc `+`(a, b: string): string =
   a & b
 

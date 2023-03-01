@@ -8,7 +8,7 @@ title: Object Oriented Programming
 
 Member functions, typically known as methods in OOP terminology, can be implemented directly using `proc`s, thanks to the Uniform Call Syntax.
 
-``` nimrod
+``` nim
 type Animal = object
   name: string
   age: int
@@ -25,7 +25,7 @@ speak(sparky, "Hi")
 
 As you might have guessed, the method call syntax is not restricted to object types.
 
-``` nimrod
+``` nim
 proc double(num: int):int =
   return num*2
   
@@ -38,7 +38,7 @@ double(10)
 
 Now, when using UFCS to think about `proc`s as member functions, there is an important point to keep in mind about mutability. Consider this example.
 
-``` nimrod
+``` nim
 type Animal = object
   name: string
   age: int
@@ -66,7 +66,7 @@ expression: self.age += 1
 ```
 
 If you try something simpler:
-``` nimrod
+``` nim
 proc setName(self: Animal, name: string) =
   self.name = name
 ```
@@ -77,7 +77,7 @@ Error: 'self.name' cannot be assigned to
 
 This happens because arguments to `proc` are immutable by default. The error can be fixed by marking the argument as mutable using `var`:
 
-``` nimrod
+``` nim
 proc incAge(self: var Animal) =
   self.age += 1
 
@@ -88,7 +88,7 @@ proc setName(self: var Animal, name: string) =
 Now, everything works.
 
 Note that `ref` objects can be mutated, and the following works correctly:
-``` nimrod
+``` nim
 type Animal = ref object
   name: string
   age: int
@@ -107,7 +107,7 @@ Inheritance is created with the `of` keyword in the type declaration of an objec
 
 A method is overridden by creating a new method with parameter types of the subtype.
 
-``` nimrod
+``` nim
 type Animal = ref object of RootObj
   name: string
   age: int
@@ -148,7 +148,7 @@ As [discussed in this blog](https://matthiashager.com/proc-method-nim), use `met
 
 It is also possible to check if an object is of a given subtype with the `of` keyword. For example,
 
-``` nimrod
+``` nim
 echo(animals[0] of Dog)
 echo(animals[0] of Cat)
 echo(animals[0] of Animal)

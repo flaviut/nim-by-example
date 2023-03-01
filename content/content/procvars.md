@@ -9,7 +9,7 @@ Nim supports closures as well as passing functions. Two different syntaxes avail
 - proc syntax, which is identical to regular procedure syntax
 - "do notation", which is a bit shorter
 
-``` nimrod
+``` nim
 import sequtils
 
 let powersOfTwo = @[1, 2, 4, 8, 16, 32, 64, 128, 256]
@@ -31,7 +31,7 @@ The stdlib also makes a [third option available by using macros][lib-sugar]:
 
 [lib-sugar]: https://nim-lang.org/docs/sugar.html
 
-``` nimrod
+``` nim
 import sugar
 
 # sugar provides a "->" macro that simplifies writing type

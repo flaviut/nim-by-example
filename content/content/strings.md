@@ -3,7 +3,7 @@ title: Strings
 ---
 # Strings
 
-``` nimrod
+``` nim
 echo "words words words ⚑"
 echo """
 <html>
@@ -43,7 +43,7 @@ Strings are null-terminated, so that `cstring("foo")` requires zero copying. How
 
 Strings can also almost be thought of as `seq[char]` with respect to assignment semantics. See [seqs][] for the possible manipulations, for example:
 
-``` nimrod
+``` nim
 echo "abc"[0]
 echo "abcdefg"[0 .. 4]
 echo "abcdefg"[0 .. ^2]
@@ -59,7 +59,7 @@ abcdef
 
 The `strutils` module provides procs for handling strings.
 
-``` nimrod
+``` nim
 import strutils
 
 var a = "hello welcome,friend"

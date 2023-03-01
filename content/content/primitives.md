@@ -14,7 +14,7 @@ To indicate the size of an integer literal, append `u` or `i` and the size you'd
 
 Integers can also have `0[xX]`, `0o`, `0[Bb]` prepended to indicate a hex, octal, or binary literal, respectively. Underscores are also valid in literals, and can help with readability.
 
-``` nimrod
+``` nim
 let
   a: int8 = 0x7F # Works
   b: uint8 = 0b1111_1111 # Works
@@ -24,7 +24,7 @@ let
 
 Precedence rules are the same as in most other languages, but instead of `^`, `&`, `|`, `>>`, `<<`, the `xor`, `and`, `or`, `shr`, `shl` operators are used, respectively.
 
-``` nimrod
+``` nim
 let
   a: int = 2
   b: int = 4

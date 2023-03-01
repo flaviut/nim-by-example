@@ -10,7 +10,7 @@ Nim also supports case statements, which are like switches in other languages. T
 * case statements, like most things, are actually expressions
 * It is required that every possible case be covered
 
-``` nimrod
+``` nim
 case "charlie":
   of "alfa":
     echo "A"

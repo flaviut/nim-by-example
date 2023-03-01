@@ -4,7 +4,7 @@ title: Enums
 # Enums
 Enums in Nim are like enums in C, but are type-checked. There are no anonymous enums in Nim.
 
-``` nimrod
+``` nim
 type
   CompassDirections = enum
     cdNorth, cdEast, cdSouth, cdWest
@@ -41,7 +41,7 @@ Enums can be given custom values and stringify values, as shown by `Colors` and 
 
 While enums can also have disjoint values, it should not be used for any other reason than compatibility with C because it breaks the idea that enums are ordinal.
 
-``` nimrod
+``` nim
 for direction in ord(low(CompassDirections))..
                  ord(high(CompassDirections)):
   echo CompassDirections(direction), " ord: ", direction
@@ -73,7 +73,7 @@ Because enums are ordinals, they have the `low`, `high`, `inc`, `dec`, and `ord`
 It is also possible to iterate through all possible values of ordinal enums, either as shown above, or `cdNorth..cdWest`, which is equivalent.
 
 
-``` nimrod
+``` nim
 when false:
   var nonOrdinal = sigQuit
   inc nonOrdinal

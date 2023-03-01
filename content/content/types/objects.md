@@ -5,7 +5,7 @@ title: Objects
 
 In Nim, objects are like structs from C family languages and define a grouping of fields. They are by default traced by the garbage collector, so there is no need to explicitly free them when allocated.
 
-``` nimrod
+``` nim
 type
   Animal* = object
     name*, species*: string
@@ -38,7 +38,7 @@ Initially, `carl` is created on the stack and initialized to zeros (or `""` in c
 
 `joe` is also created on the stack, but it's contents are immutable and can not be changed. Attempting to do so, say through `joe.age = 57`, will fail with an error at compile time.
 
-``` nimrod
+``` nim
 let mittens: ref Animal = new(Animal)
 
 mittens.name = "Mittens"
@@ -50,7 +50,7 @@ mittens.age = 6
 
 You might ask whether there is a more concise way of initializing  reference types, and there is if you give the reference type a name:
 
-``` nimrod
+``` nim
 type
   AnimalRef* = ref Animal
 
@@ -61,7 +61,7 @@ let spot = AnimalRef(name: "Spot",
 
 In many cases it is only wanted to have the object be a reference type, which is possible by declaring it as a `ref object`.
 
-``` nimrod
+``` nim
 type
   Thing* = ref object
     positionX*, positionY*: int

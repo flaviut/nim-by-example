@@ -8,7 +8,7 @@ Nim provides [channels](https://nim-lang.org/docs/channels_builtin.html), used t
 
 Here is an example with plain threads.
 
-``` nimrod
+``` nim
 import std/os # for sleep
 
 var
@@ -38,7 +38,7 @@ Usually, channels are created as global variables. That means you must [follow a
 
 The same example, using the higher level `spawn`:
 
-``` nimrod
+``` nim
 import threadpool, std/os
 
 var commChan: Channel[string]
@@ -60,7 +60,7 @@ sync()
 Note that all messages are deep copied when sent.
 
 Channels can be used in a non-blocking way as follows:
-``` nimrod
+``` nim
 while true:
   let tried = commChan.tryRecv()
   if tried.dataAvailable:
@@ -68,7 +68,7 @@ while true:
 ```
 
 When a channel is opened, it can be set with a max number of items:
-``` nimrod
+``` nim
 # create a channel to transfer ints
 var chan Channel[int]
 # allow max of 10 items in channel
