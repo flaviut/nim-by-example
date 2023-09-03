@@ -4,7 +4,7 @@ title: Channels
 
 # Channels
 
-Nim provides [channels](https://nim-lang.org/docs/channels_builtin.html), used to communicate between threads.
+Nim provides [channels](https://nim-lang.org/docs/system.html#example), used to communicate between threads.
 
 Here is an example with plain threads.
 
@@ -34,7 +34,7 @@ createThread(recver, recvMsg)
 joinThreads(sender, recver)
 ```
 
-Usually, channels are created as global variables. That means you must [follow a certain procedure](https://nim-lang.org/docs/channels_builtin.html#example-passing-channels-safely) if you wish to manually allocate shared memory for channels.
+Usually, channels are created as global variables. That means you must [follow a certain procedure](https://nim-lang.org/docs/system.html#example-passing-channels-safely) if you wish to manually allocate shared memory for channels.
 
 The same example, using the higher level `spawn`:
 
