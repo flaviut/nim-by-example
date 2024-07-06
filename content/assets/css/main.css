@@ -69,6 +69,7 @@ body {
 
 
 article {
+  padding: 0.05px;  /* disable margin collapsing */
   margin: 15px;
 
   transition: max-width 1s;
